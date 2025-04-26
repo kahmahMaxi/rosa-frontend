@@ -1,0 +1,25 @@
+{
+  "short_name": "ROSA | TECH",
+  "name": "Rosa offers a privacy-centric health management platform that integrates AI and blockchain technology to enhance user security and experience.",
+  "icons": [
+    {
+      "src": "logo-single.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo-single.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo-single.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

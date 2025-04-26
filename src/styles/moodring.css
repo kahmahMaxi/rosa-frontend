@@ -1,0 +1,49 @@
+
+
+
+
+.mood-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    /* margin: 0 auto; */
+    margin-bottom: 45px;
+    /* background: cadetblue; */
+}
+  
+.emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-40%, -40%);
+    font-size: 48px;
+    z-index: 2;
+}
+  
+.drop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 14px;
+    background: rgba(62, 71, 132, 1);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin: center;
+    transition: background 0.3s ease-in-out;
+}
+  
+.drop.active {
+    background: rgba(238, 70, 188, 1);
+}
+  
+
+
+
+  

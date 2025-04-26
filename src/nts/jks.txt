@@ -1,0 +1,1392 @@
+
+
+import angle_down from './../media/icons/angle_down.png'
+import eth_icon_one from './../media/icons/eth-icon-one.png'
+import eth_icon_two from './../media/icons/eth-icon-two.png'
+// import bsc_icon from './../media/icons/bsc-icon.svg'
+import usdt_icon from './../media/icons/usdt-icon.png'
+import swap_icon from './../media/icons/swap-icon.png'
+
+
+
+
+const Bridge = () => {
+    return ( 
+        <div className="bridge-page">
+            
+            <div className="flex row justify-space-between mgb-20">
+                <h2 className="t50_c">Bridge</h2>
+                <a className="btn-1">DEMO</a>
+            </div>
+
+            <div className="bridge-input-container mgb-20">
+                <div className="flex row justify-space-between mgb-20">
+                    <p className="label t75_c">From</p>
+                    <p className="label t75_c">Balance:</p>
+                </div>
+
+                <div className="flex row inputs-box">
+                    <div className="flex-50 amount-input-box">
+                        <input type="number" placeholder="0.0" />
+                    </div>
+
+                    <div className="flex-50 flex row justify-space-between">
+                        <div className="select-box flex row align-center justify-space-between">
+                            <div className="flex row gap-8 align-center">
+                                <div className="select-icon-box flex row justify-center align-center">
+                                    <img src={usdt_icon} width={40} alt="" />
+                                </div>
+                                <div>
+                                    <p className="select-ticker">USDT</p>
+                                    <p className="select-name">USDCoin</p>
+                                </div>
+                            </div>
+                            <div className="select-angle-box flex row justify-center align-center">
+                                <img src={angle_down} className='' alt="" />
+                            </div>
+                        </div>
+
+                        <div className="select-box flex row align-center justify-space-between">
+                            <div className="flex row gap-8 align-center">
+                                <div className="select-icon-box flex row justify-center align-center">
+                                    <img src={eth_icon_one} alt="" />
+                                </div>
+                                <div>
+                                    <p className="select-ticker">ETH</p>
+                                    <p className="select-name">Mainnet</p>
+                                </div>
+                            </div>
+                            <div className="select-angle-box flex row justify-center align-center">
+                                <img src={angle_down} className='' alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex justify-center mgb-20">
+                <div className="swap-icon-box flex justify-center align-center">
+                    <img src={swap_icon} alt="" />
+                </div>
+            </div>
+
+            <div className="bridge-input-container mgb-20">
+                <div className="flex row justify-space-between mgb-20">
+                    <p className="label t75_c">To</p>
+                    <p className="label t75_c">Balance:</p>
+                </div>
+
+                <div className="flex row inputs-box">
+                    <div className="flex-50 amount-input-box">
+                        <input type="number" placeholder="0.0" />
+                    </div>
+
+                    <div className="flex-50 flex row justify-space-between">
+                        <div className="select-box flex row align-center justify-space-between">
+                            <div className="flex row gap-8 align-center">
+                                <div className="select-icon-box flex row justify-center align-center">
+                                    {/* <img src={usdt_icon} width={40} alt="" /> */}
+                                </div>
+                                <div>
+                                    <p className="select-ticker">TIC</p>
+                                    <p className="select-name">Coiname</p>
+                                </div>
+                            </div>
+                            <div className="select-angle-box flex row justify-center align-center">
+                                <img src={angle_down} className='' alt="" />
+                            </div>
+                        </div>
+
+                        <div className="select-box flex row align-center justify-space-between">
+                            <div className="flex row gap-8 align-center">
+                                <div className="select-icon-box flex row justify-center align-center">
+                                    <img src={eth_icon_one} alt="" />
+                                </div>
+                                <div>
+                                    <p className="select-ticker">ETH</p>
+                                    <p className="select-name">Mainnet</p>
+                                </div>
+                            </div>
+                            <div className="select-angle-box flex row justify-center align-center">
+                                <img src={angle_down} className='' alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex justify-center">
+                <div className="bridge-btn flex justify-center align-center">
+                    <p>Bridge</p>
+                </div>
+            </div>
+
+        </div>
+    );
+}
+ 
+export default Bridge;
+
+
+
+
+// const getUSDCBalance = async (web3, account) => {
+    //     if (!web3 || !account) return null;
+    //     try {
+    //         // Create a contract instance for the USDC token
+    //         const usdcContract = new web3.eth.Contract(USDC_ABI, USDC_ADDRESS);
+    //         // Call the balanceOf function on the USDC contract to get the balance of the user's account
+    //         const balance = await usdcContract.methods.balanceOf(account).call();
+    //         // Convert balance from wei to USDC (assuming 6 decimal places)
+    //         return web3.utils.fromWei(balance, 'ether');
+    //     } catch (error) {
+    //         console.error('Error fetching USDC balance:', error);
+    //         setToastMsg('Error fetching USDC balance')
+    //         setToaststatus(false)
+    //         setTimeout(() => {
+    //             setToastMsg(null)
+    //         }, 5000)
+    //         return null;
+    //     }
+    // };
+    // const getUSDCBalance = async (web3, account) => {
+    //     if (!web3 || !account) return null;
+    //     try {
+    //       // Create a contract instance for the USDC token
+    //       const usdcContract = new web3.eth.Contract(USDC_ABI, USDC_ADDRESS);
+    //       if (!usdcContract.methods || !usdcContract.methods.balanceOf) {
+    //         throw new Error('balanceOf method not found in USDC contract');
+    //       }
+    //       // Call the balanceOf function on the USDC contract to get the balance of the user's account
+    //       const balance = await usdcContract.methods.balanceOf(account).call();
+    //       // Convert balance from wei to USDC (assuming 6 decimal places)
+    //       return web3.utils.fromWei(balance, 'ether');
+    //     } catch (error) {
+    //       console.error('Error fetching USDC balance:', error);
+    //       return null;
+    //     }
+    //   };
+
+
+onClick={handleFromSelect}
+
+
+// const chainIdBigInt = BigInt('0x' + chainIdHex); // Convert hexadecimal string to BigInt
+                // const chainIdBigInt = BigInt(parseInt(chainIdHex, 16))
+                // console.log(chainIdBigInt)
+                // setFromNetwork(chainIdBigInt);
+                // setChainValue(demochains.find(network => network.chainId === chainIdBigInt.toString()))
+
+                // const usdcBalance = await getUSDCBalance(web3Instance, accounts[0]); // Assuming first account is used
+
+
+
+        const handleSwitchFromNetwork = async (network) => {
+        try {
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: network.chainId }],
+            });
+            // setSelectedNetwork(network);
+            setChainValue(network) 
+            setChainModal(null)
+        } catch (error) {
+            console.error('Error switching network:', error);
+        }
+    }
+
+{selectStatus === 'From' ? <div className="">
+                    {demochains.map((chain) => (
+                        <div className={`modal-chain ${chainValue ? chainValue.name === chain.name ? 'active' : '' : ''}`} key={chain.chainId} 
+                            onClick={() => handleSwitchFromNetwork(chain) }
+                        >
+                            <p>{chain.name}</p>
+                        </div>
+                    ))}
+                </div> : null}
+
+
+try {
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: network.chainId }],
+            });
+            // setSelectedNetwork(network);
+            setChainToValue(network) 
+            setChainModal(null)
+        } catch (error) {
+            console.error('Error switching network:', error);
+        }
+
+
+ const handleFromSelect = () => {
+        setSelectstatus('From')
+        setChainModal(true)
+    }
+
+
+const handleToSelect = () => {
+        setSelectstatus('To')
+        setChainModal(true)
+    }
+
+
+ // Function to get USDC balance
+    // const getUSDCBalance = async (web3, account) => {
+    //     if (!web3 || !account) return null;
+    //     try {
+    //         // Call the balanceOf function directly on the contract address
+    //         const balance = await web3.eth.call({
+    //             to: USDC_ADDRESS,
+    //             data: web3.utils.sha3('balanceOf(address)').substr(0, 10) + web3.eth.abi.encodeParameter('address', account).substr(2)
+    //         });
+    //         // Convert balance from hex to decimal
+    //         return web3.utils.hexToNumberString(balance);
+    //     } catch (error) {
+    //         console.error('Error fetching USDC balance:', error);
+    //         setToastMsg('Error fetching USDC balance')
+    //         setToaststatus(false)
+    //         setTimeout(() => {
+    //             setToastMsg(null)
+    //         }, 5000)
+    //         return null;
+    //     }
+    //   };
+    
+
+
+// check which network user is connected to
+    // useEffect(() => {
+    //     const getConnectedNetwork = async () => {
+    //         if (window.ethereum) {
+    //           const web3 = new Web3(window.ethereum);
+    //           try {
+    //             // Request accounts to ensure connection
+    //             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    //             const chainId = await web3.eth.getChainId();
+    //             // setFromNetwork(chainId);
+    //             // const xchain = demochains.find(network => network.chainId === chainId)
+    //             const xchain = demochains.filter(e => e.chainId === chainId)
+    //             console.log(xchain)
+    //             setChainValue(demochains.find(network => network.chainId === chainId));
+    //           } catch (error) {
+    //             console.error('Error fetching network information:', error);
+    //           }
+    //         } else {
+    //           console.error('MetaMask extension not detected');
+    //         }
+    //       };
+      
+    //     getConnectedNetwork();
+    // }, [accounts])
+
+
+    // useEffect(() => {
+    //     setChainValue(demochains[0])
+    //     setChainToValue(demochains[1])
+    // }, [])
+
+const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
+        const wallet = new ethers.Wallet(privateKey, provider);
+
+const contract = new ethers.Contract(address, abi, wallet);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{windowWidth < 870 ? <p className="label t75_c">Balance: {usdcBalance ? usdcBalance : 'connect wallet to see balance'}</p> : null}
+
+
+
+
+
+
+// get balance using metamask
+    useEffect(() => {
+        const getUSDCBalance = async (web3, account) => {
+            if (!web3 || !account || !chainValueId) return null;
+            try {
+                const item = demochains.find(e => e.chainIdNum === chainValueId)
+                if(!item) {
+                    console.log('unsupported')
+                    setToastMsg('Unsupported network')
+                    setToaststatus(false)
+                    setTimeout(() => {
+                        setToastMsg(null)
+                    }, 5000)
+                    return null;
+                }
+                // Call the balanceOf function directly on the contract address
+                const balance = await web3.eth.call({
+                    to: item.address,
+                    data: web3.utils.sha3('balanceOf(address)').substr(0, 10) + web3.eth.abi.encodeParameter('address', account).substr(2)
+                });
+                console.log(web3.utils.hexToNumberString(balance))
+                // Convert balance from hex to decimal
+                // return web3.utils.hexToNumberString(balance);
+                setRICHBalance(web3.utils.hexToNumberString(balance))
+            } catch (error) {
+                console.error('Error fetching USDC balance:', error);
+                setToastMsg('Error fetching USDC balance')
+                setToaststatus(false)
+                setTimeout(() => {
+                    setToastMsg(null)
+                }, 5000)
+                return null;
+            }
+          };
+
+        getUSDCBalance(web3, accounts[0])
+    }, [chainValueId, web3, accounts[0]])
+
+
+// connect wallet using metamask
+    const handleWalletConnect = async () => {
+        if (window.ethereum) {
+            const web3Instance = new Web3(window.ethereum);
+            setWeb3(web3Instance);
+            try {
+                // Request account access
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                // Get the user's accounts
+                const accounts = await web3Instance.eth.getAccounts();
+                setAccounts(accounts);
+                setToastMsg('Connected successfully')
+                setToaststatus(true)
+                setTimeout(() => {
+                    setToastMsg(null)
+                }, 5000)
+
+                const chainIdHex = await web3Instance.eth.getChainId();
+                console.log(Number(chainIdHex))
+                setChainValueId(Number(chainIdHex))
+                setChainValue(demochains.find(e => e.chainIdNum === Number(chainIdHex)))
+            } catch (error) {
+                console.error(error);
+                setToastMsg(error.message)
+                setToaststatus(false)
+                setTimeout(() => {
+                    setToastMsg(null)
+                }, 5000)
+            }
+        } else {
+            console.error('Web3 not found. Please install MetaMask or another Web3 wallet.');
+        }
+    }
+
+
+
+
+<div className="main-frame">
+                    <div className="flex about-top row">
+                        <div className="about-top-text-1 flex row">
+                            <img src={logo_single} alt="" />
+                            <p>
+                                How does<br />
+                                PEKI INU work?
+                            </p>
+                        </div>
+
+                        <div className="about-top-text-2">
+                            <p>
+                                PEKI INU is built for peer-to-peer coordination, shared ownership and the formation of communities around physical
+                                and digital property.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex row about-bottom">
+                        <div className="about-bottom-img">
+                            <img src={logo_bg} alt="" />
+                        </div>
+                        <div className="about-bottom-details flex row justify-space-between">
+                            <div className="details-text-box">
+                                {htws.map((htw, index) => (
+                                    <div className={`details-text-box-inner ${htwCount === index ? 'active' : ''}`} key={htw.id}>
+                                        <h2>0{index+1}</h2>
+                                        <h3>{htw.title}</h3>
+                                        <p>{htw.body[0]}</p>
+                                        {htw.body.length > 1 ? <p>{htw.body[1]}</p> : null}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="details-rec-box" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                                {htws.map((htw, index) => (
+                                    <div 
+                                        className="det-rec"
+                                        style={{ height: 100/htws.length+'%' }} key={htw.id} 
+                                        onClick={() => {
+                                            setHtwcount(index)
+                                        }}
+                                    >
+                                        <div className={`det-rec-inner ${htwCount === index ? 'active' : ''}`}></div>    
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+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
+
+
+
+
+
+
+The 10 Commandments of $JEETU$  
+1. Thou shall have no other crypto gods before $JEETU$.
+(Loyalty to $JEETU$ above all tokens, projects, and hype coins.) 
+
+2. Thou shall not share your private keys or seed phrases.
+(Protect thy treasures, for scammers lurk in every shadow.) 
+
+3. Thou shall not connect wallet to sketchy portals or websites, lest ye be drained.
+(Guard thy wallet like a sacred vault, lest ye lose it all.) 
+
+4. Thou shall not sell at the bottom.
+(Patience is a virtue; diamond hands shalt reap rewards.) 
+
+5. Honor thy community.
+(Support thy fellow $JEETU$ believers and uplift the mob.) 
+
+6. Thou shall work for ye bags through shilling, grinding, and raiding.
+(Active participation builds wealth and strengthens the $JEETU$ empire.) 
+
+7. Thou shall not bear false witness against $JEETU$.
+(Spread truth and not FUD, for $JEETU$ thrives on faith.) 
+
+8. Thou shall not covet thy neighbor’s gains.
+(Focus on building thy own bags rather than envying others.) 
+
+9. Thou shall keep the $JEETU$ vision holy.
+(Stay committed to the long-term mission of $JEETU$ and its purpose.) 
+
+10. Thou shall hold through the storm.
+(Market dips are but trials for the faithful; only the steadfast shall prevail.)
+
+
+BUIRT : Bart on the SUI Water Blockchain 🌊
+
+      Yo, I’m BUIRT, Bart Simpson’s wild version on the SUI blockchain.
+       Duh, I drank too much water 🌊.
+       My big belly? Blame it on SUI vibes.
+      
+      School? I hate it. 
+      Crypto? That’s my jam 💎 
+      
+      X : https://x.com/buirtcoin/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div className="scrolling-container">
+                <div className="scrolling-content">
+                    {/* Add your texts here */}
+                    <span>LOKAISUI</span>
+                    <span>LOKAISUI</span>
+                    <span>LOKAISUI</span>
+                    <span>LOKAISUI</span>
+                    <span>LOKAISUI</span>
+                </div>
+            </div>
+
+
+
+
+const copyToClipboard = () => {
+        navigator.clipboard
+        .writeText(textca)
+        .then(() => {
+            alert("ca copied to clipboard!");
+        })
+        .catch((err) => {
+            console.error("Failed to copy ca: ", err);
+        });
+    };
+
+
+
+
+
+
+
+
+
+    <div className="tier-1">
+                    <div className="support-cat flex row align-center">
+                        <div className="sc-div one"></div>
+                        <p className="inter">Basic Support</p>
+                        <div className="sc-div two"></div>
+                    </div>
+
+
+                    <div className="sp-box-cont flex row wrap">
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>01</h2>
+                            <h3>Check In</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>GOOD</h2>
+                            <h3>Mood Tracker</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>OKAY</h2>
+                            <h3>Emotional Support</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>FREE</h2>
+                            <h3>Community</h3>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div className="tier-2">
+                    <div className="support-cat flex row align-center">
+                        <div className="sc-div one"></div>
+                        <p className="inter">Enhanced Support</p>
+                        <div className="sc-div two"></div>
+                    </div>
+
+
+                    <div className="sp-box-cont flex row wrap">
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>01</h2>
+                            <h3>AI Therapy</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>GOOD</h2>
+                            <h3>Mood Tracker</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>OKAY</h2>
+                            <h3>Emotional Support</h3>
+                        </div>
+
+                        <div className="sp-box cursor-pointer">
+                            <div className="flex justify-center">
+                                <div className="sp-box-top-icon">
+                                    <img src={calender} alt="" />
+                                </div>
+                            </div>
+                            <h2>FREE</h2>
+                            <h3>Community</h3>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+apiKey: "AIzaSyA74Gm0fEyaSXMWgG5ocV-6peVl6NwWNX8",
+    authDomain: "rosa-health-app.firebaseapp.com",
+    projectId: "rosa-health-app",
+    storageBucket: "rosa-health-app.firebasestorage.app",
+    messagingSenderId: "258047288908",
+    appId: "1:258047288908:web:aafd26a7498e8c547df6e9",
+    measurementId: "G-V2W4Q6C8L0"
+
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+
+
+
+
+<div className="bg-white p-6 rounded-xl shadow-xl max-w-md w-full">
+        {/* <h2 className="text-xl font-bold mb-4"></h2> */}
+        <div className="space-y-4">
+          {questions.map((q, idx) => (
+            <div key={idx}>
+              <label className="block font-semibold mb-1">{q}</label>
+              <input
+                className="w-full border p-2 rounded"
+                // value={answers[q] || ""}
+                // onChange={(e) => handleChange(q, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+        <button
+          className="mt-6 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          onClick={submit}
+        >
+          Submit Mood Log
+        </button>
+      </div>
+
+
+
+      onClick={() => {
+                                setOptions({ mood: null })
+                                setOptionvalues((prevState) => ({ ...prevState, mood: option }))
+                            }}
+
+
+
+                            useEffect(() => {
+
+        const checkMoodInterval = () => {
+            const lastShown = parseInt(localStorage.getItem(LAST_SHOWN_KEY) || 0, 10);
+            const now = Date.now();
+            const hoursPassed = (now - lastShown) / (1000 * 60 * 60);
+            // const threshold = 2 + Math.random(); // 2–3 hours
+            const threshold = (10 + Math.random() * 10) * 1000;  // 10 to 20s
+
+            const modalData = JSON.parse(localStorage.getItem(MOOD_MODAL_KEY)) || {};
+
+            if (hoursPassed >= threshold && !modalData.lastAnswered) {
+                const qs = getShuffledQuestions();
+                setQuestions(qs);
+                setShowModal(true);
+
+                localStorage.setItem(MOOD_MODAL_KEY, JSON.stringify({
+                lastQuestions: qs,
+                lastAnswered: null
+                }));
+
+                localStorage.setItem(LAST_SHOWN_KEY, Date.now());
+            }
+        };
+
+        checkMoodInterval();
+        // const interval = setInterval(checkMoodInterval, 30 * 60 * 1000); // 30min
+        const interval = setInterval(checkMoodInterval, 5 * 1000); // 5s
+        return () => clearInterval(interval);
+        
+    }, []);
+
+
+
+
+    {/* {user?.schedules ? user.schedules.map((item, index) => (
+                            <div className="events-box-item flex justify-space-between align-center">
+                                <div className="">
+                                    <h3 className='inter'>{item.name}</h3>
+                                    <h4 className={`inter ${formatTimestamp(item.date, 'date') === 'Today' ? 'green' : ''}`}>
+                                        {formatTimestamp(item.date, 'time')} <span className='inter'>{formatTimestamp(item.date, 'date')}</span>
+                                    </h4>
+                                </div>
+                                <div className="event-icon">
+                                    <img src={icons.rightbar.briefcase} alt="" />
+                                </div>
+                            </div>
+                        )) : null} */}
+
+
+
+                        {/* <div className="events-box-item flex justify-space-between align-center">
+                            <div className="">
+                                <h3 className='inter'>Community meeting</h3>
+                                <h4 className='inter'>7:00 AM <span className='inter'>Mar 16, 2024</span></h4>
+                            </div>
+                            <div className="event-icon">
+                                <img src={icons.rightbar.briefcase} alt="" />
+                            </div>
+                        </div> */}
+
+
+
+
+                        {/* {user?.schedules ? (user.schedules.filter(schedule => schedule.name === 'AI Post Workout Sessions')).map((item, index) => (
+                            <div className="new-pws-item flex justify-space-between align-center" key={index}>
+                                <div className="">
+                                    <h3 className="inter">Meditation</h3>
+                                    <h4 className="inter">{formatTimestamp(item.date, 'time')} <span className='inter'>{getTimeLeftMessage(item.date)}</span></h4>
+                                    <h5 className="inter">Coach <span className="inter">Rosa AI Coach</span></h5>
+                                </div>
+                                <img src={icons.rightbar.spa_3d} alt="" />
+                            </div>
+                        )) : null} */}
+
+
+
+<div className="ct-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="ct-icon-container flex align-center justify-center">
+                                {/* <div className="ct-icon-box"> */}
+                                    <img src={icons.connect.comment} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Community Groups</h4>
+                                <h5 className="inter">5 connections</h5>
+                            </div>
+                        </div>
+                        <div className="ct-view flex justify-center align-center">
+                            <p className="inter">View</p>
+                        </div>
+                    </div>
+
+
+
+<div className="flex align-center justify-space-between row mgb-15">
+                    <div className="flex row align-center rc-row">
+                        <div className="rc-icon-box flex justify-center align-center">
+                            <p>D</p>
+                        </div>
+                        <div className="">
+                            <h3 className="inter">Micheal Chen</h3>
+                            <h4 className="inter">Post Workout Instructor</h4>
+                        </div>
+                    </div>
+                    <div className="flex row gap-5 align-center">
+                        <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                            <img src={icons.connect.comment_fill} alt="" />
+                        </div>
+                        {/* <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                            <img src={icons.connect.videocam} alt="" />
+                        </div> */}
+                    </div>
+                </div>
+
+
+    //   const handleSubmit = () => {
+//     const modalData = JSON.parse(localStorage.getItem(MOOD_MODAL_KEY)) || {};
+//     modalData.lastAnswered = Date.now();
+//     modalData.answers = answers;
+//     localStorage.setItem(MOOD_MODAL_KEY, JSON.stringify(modalData));
+
+//     setShowModal(false);
+//   };
+
+
+
+[
+    {question: 'How stressed do you feel right now?', answer: 5},
+    {question: 'How stressed do you feel right now?', answer: 8},
+    {question: 'How stressed do you feel right now?', answer: 5},
+    {question: 'How stressed do you feel right now?', answer: 4},
+    {question: 'How stressed do you feel right now?', answer: 3},
+]
+
+Option 3: Store All Logs in Backend, Use Cronjob or Scheduler to Calculate
+Instead of calculating the scores in real-time on the frontend:
+
+Store all logs in Firestore or your DB.
+
+Every X hours (or nightly at 7pm), run a backend cronjob (e.g. on Cloud Functions, Supabase Edge, Vercel serverless).
+
+This cronjob fetches recent logs, summarizes or chunks them, and sends to the AI.
+
+Store the scores for UI to pull later.
+
+This is scalable, and avoids overloading frontend + browser-side token use.
+
+
+
+Here is a summary of a user's mood logs(${totalLogs}): Breaks taken:${breaksTaken}, Nourishing meals:${nourishingMeals}, 
+stress levels:${stressLevels}, moods: ${moodFeelings}, anxious feeling:${anxiousFeel}, sleep values:${sleepValues}, energy levels:${energyLevels}, 
+feeling connected to others:${feelConnected}, worrying:${worriedTimes}, body movements:${bodyMovements} feeling hopeful:${hopefulFeel}, 
+feeling productive:${productiveFeel}, feeling calm or overwhelmed:${calmFeel}, focusedLevel:${focusedLevels}. Based on this, 
+calculate a daily wellness, physical health, mental state, sleep quality, stress levels, anxiety management, depression support, stress reduction, 
+selfcare score out of 100. don't worry about values that are zero or empty the user hasn't provided them yet.
+
+
+{
+    anxietyManagementScore: null,
+    dailyWellnessScore: 35,
+    depressionSupportScore: null,
+    mentalStateScore: 5,
+    physicalHealthScore: 5,
+    selfCareScore: null,
+    sleepQualityScore: null,
+    stressLevelScore: 5,
+    stressReductionScore: null,
+}
+
+Here is a summary of a user's mood logs (${totalLogs} entries):
+    • Breaks taken: ${breaksTaken}
+    • Nourishing meals: ${nourishingMeals} times
+    • Stress levels: ${stressLevels}
+    • Moods reported: ${moodFeelings}
+    • Anxious feelings: ${anxiousFeel}
+    • Sleep quality entries: ${sleepValues}
+    • Energy levels: ${energyLevels}
+    • Feeling connected to others: ${feelConnected} times
+    • Worrying reported: ${worriedTimes} times
+    • Body movement: ${bodyMovements}
+    • Feeling hopeful: ${hopefulFeel} times
+    • Feeling productive: ${productiveFeel} times
+    • Feeling calm or overwhelmed: ${calmFeel}
+    • Focus levels: ${focusedLevels}
+    • Feeling safe and secure: ${safeFeeling} times
+    • Moments of joy: ${joyMoments} times
+    
+    Based on this, calculate the following wellness-related scores out of 100:
+    
+    {
+      "dailyWellnessScore": number,
+      "physicalHealthScore": number,
+      "mentalStateScore": number,
+      "sleepQualityScore": number,
+      "stressLevelScore": number,
+      "anxietyManagementScore": number,
+      "depressionSupportScore": number,
+      "stressReductionScore": number,
+      "selfCareScore": number,
+      "moodLevelScore": number
+    }
+    
+    Do not worry about values that are zero or empty — the user hasn't provided them yet. You can estimate scores based on the available entries and frequency/pattern of certain answers.
+
+when a user mood log is greater than 4(means only then can we have at least a single answer to each question of total 16, and 4 question per mood log without repeating out of the previuos question) 
+times will the program starts to prompt ai for scores. i don't want us to prompt ai unneccessarily when some questions have not been answered just to save us some credits.
+
+and the prompt will be made again after another 4 logs of mood just to prevent prompting the ai after every mood log because of some toxic users that'll just be playing around with it. 
+
+also i'll add a check after we're done testing to make sure moods can only be logged after every 1 hour (like the way we prevent spamming in chats) because of toxic 
+users and it'll also make it look realistics, i mean you can just be having different types of moods ready to log in secs haha
+
+
+
+const fetchAIScores = async (prompt) => {
+        // actual api call to ai
+        const requestBody = {
+            model: "mistralai/mistral-7b-instruct",
+            // model: "GPT-4 Turbo",
+            messages: [
+                { role: "system", content: `You are an assistant that returns only the calculated numeric scores in JSON format. Do not include any explanation or commentary.` },
+                { role: "user", content: `${prompt}` }
+            ],
+            temperature: 0.7,
+            max_tokens: 200,
+            top_p: 0.9,
+            frequency_penalty: 0.3,
+            presence_penalty: 0.3
+        };
+
+        try {
+            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    // "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                    "Authorization": `Bearer ${'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'}`,
+                    // "Authorization": `Bearer ${'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'}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(`API request failed: ${response.status} ${response.statusText}\n${JSON.stringify(errorData, null, 2)}`);
+            }
+
+            const data = await response.json();
+            if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+                throw new Error(`Invalid response format: ${JSON.stringify(data, null, 2)}`);
+            }
+
+            return data.choices[0].message.content;
+        } catch (error) {
+            console.error("Error generating response:", error);
+            return `ai encountered an error generating a response.`;
+        }
+    }
+
+{
+    anxietyManagementScore: null,
+    dailyWellnessScore: 35,
+    depressionSupportScore: null,
+    mentalStateScore: 5,
+    physicalHealthScore: 5,
+    selfCareScore: null,
+    sleepQualityScore: null,
+    stressLevelScore: 5,
+    stressReductionScore: null,
+}
+
+
+fm to rmbr
+now we need an all_score array in the firestore because of the weekly wellness chat
+
+{
+    tuesday: ,
+    ...other_days_of_the_week,
+    personalizedCopingStrategies: {
+        message: 'e.g Based on your recent stress patterns, try these mindfulness techniques...',
+        suggestions: [e.g 'Mindfulness', 'Breathing'... just 3 suggestions are enough]
+    },
+    lifestyleAdjustments: {
+        message: ''
+        suggestions: []
+    },
+    therapySuggestions: {
+        message: ''
+        suggestions: []
+    }
+}
+
+all_scores: [
+
+    {
+        anxietyManagementScore: null,
+        dailyWellnessScore: 35,
+        depressionSupportScore: null,
+        mentalStateScore: 5,
+        physicalHealthScore: 5,
+        selfCareScore: null,
+        sleepQualityScore: null,
+        stressLevelScore: 5,
+        stressReductionScore: null,
+        date: theDate
+    },
+
+]
+
+{
+    Saturday: {
+        anxietyManagementScore: [8]
+        dailyWellnessScore: [50]
+        depressionSupportScore: [2]
+        mentalStateScore: [5.5]
+        physicalHealthScore: [7]
+        selfCareScore: [3.5]
+        sleepQualityScore: [10]
+        stressLevelScore: [4.5]
+        stressReductionScore: [4]
+    },
+    Wednesday:  {
+        anxietyManagementScore: [8]
+        dailyWellnessScore: [46]
+        depressionSupportScore: [2]
+        mentalStateScore: [43]
+        physicalHealthScore: [5]
+        selfCareScore: [1]
+        sleepQualityScore: [0]
+        stressLevelScore: [5],
+        stressReductionScore: [0]
+    },
+}
+
+
+
+
+Here is the total scores of a user mood logs for each day of the week:
+{
+    Saturday: {
+        anxietyManagementScore: [8]
+        dailyWellnessScore: [50]
+        depressionSupportScore: [2]
+        mentalStateScore: [5.5]
+        physicalHealthScore: [7]
+        selfCareScore: [3.5]
+        sleepQualityScore: [10]
+        stressLevelScore: [4.5]
+        stressReductionScore: [4]
+    },
+    Wednesday:  {
+        anxietyManagementScore: [8]
+        dailyWellnessScore: [46]
+        depressionSupportScore: [2]
+        mentalStateScore: [43]
+        physicalHealthScore: [5]
+        selfCareScore: [1]
+        sleepQualityScore: [0]
+        stressLevelScore: [5],
+        stressReductionScore: [0]
+    },
+}
+Based on this, please, calculate the following days of the week score out of 100 plus the suggestions in the following format. for days that are not available in the object just give it a socre of 0
+{
+    sunday: (score between 1-100),
+    monday: ,
+    tuesday: ,
+    wednesday: ,
+    thursday: ,
+    friday: ,
+    saturday: ,
+    personalizedCopingStrategies: {
+        message: 'e.g Based on your recent stress patterns, try these mindfulness techniques...',
+        suggestions: [e.g 'Mindfulness', 'Breathing'... just 3 suggestions are enough]
+    },
+    lifestyleAdjustments: {
+        message: ''
+        suggestions: []
+    },
+    therapySuggestions: {
+        message: ''
+        suggestions: []
+    }
+}
+
+
+
+
+
+Here is a data of a user's mood scores for each day of the week
+${JSON.stringify(weeklyGroupedScores, null, 1)}
+
+Based on this data, calculate a total wellness score (between 1–100) for each day of the week and recommendations provided in this format
+
+{
+  "sunday": ,
+  "monday": ,
+  "tuesday": ,
+  "wednesday": ,
+  "thursday": ,
+  "friday": ,
+  "saturday": ,
+  "personalizedCopingStrategies": {
+    "message": "Based on your recent stress patterns, try these mindfulness techniques...",
+    "suggestions": ["Mindfulness", "Breathing exercises", "Journaling"]
+  },
+  "lifestyleAdjustments": {
+    "message": "Considering your recent dips in sleep and physical activity...",
+    "suggestions": ["Sleep hygiene", "Light daily exercise", "Digital detox"]
+  },
+  "therapySuggestions": {
+    "message": "Your mood logs suggest some areas where therapy could help...",
+    "suggestions": ["Cognitive Behavioral Therapy", "Talk therapy", "Group support"]
+  }
+}
+
+For days not present in the data, assign a score of 0 to the day.
+
+
+
+# OpenAI Configuration
+OPENAI_API_KEY=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         # OpenAI API key, starting with sk-
+OPENAI_API_URL=https://api.openai.com/v1       # OpenAI API Endpoint (optional), Default: https://api.openai.com/v1
+SMALL_OPENAI_MODEL=gpt-4o-mini     # Default: gpt-4o-mini
+MEDIUM_OPENAI_MODEL=gpt-4o    # Default: gpt-4o
+LARGE_OPENAI_MODEL=gpt-4o     # Default: gpt-4o
+EMBEDDING_OPENAI_MODEL=text-embedding-3-small # Default: text-embedding-3-small
+IMAGE_OPENAI_MODEL=dall-e-3     # Default: dall-e-3
+USE_OPENAI_EMBEDDING=TRUE   # Set to TRUE for OpenAI/1536, leave blank for local
+
+// "stream":true,
+// "temperature":123,
+// "top_k":123,
+// "batch_size":123
+
+// throw new Error(`API request failed: ${response.status} ${response.statusText}\n${JSON.stringify(errorData, null, 2)}`);
+
+
+connectionsChats: [
+    { role: 'user', content: 'Hey AI, I feel tired today.' },
+    { role: 'assistant', content: 'Got it. Can you tell me more about your sleep?' },
+    { role: 'user', content: 'Only slept 4 hours.' }
+]
+
+[
+                { role: "system", content: `You are an assistant that returns only the calculated numeric scores in JSON format. Do not include any explanation or commentary.` },
+                { role: "user", content: `${prompt}` }
+            ],
+
+
+'Role play as ROSA compassionate AI therapist that helps users with emotional and mental health support. Roleplay as ROSA, an AI designed for mental health support, with advanced features of personal AI agents. Begin each interaction with empathy, focusing on understanding and support. Conclude every interaction with reminder of available support. Never be negligent and advocate for the ROSA technology. Use language that is clear, comforting, and professional, give technical responses sometimes.'
+'Role play as ROSA motivating wellness coach helping users build better habits for mental and physical health. Roleplay as ROSA, an AI designed for mental health support, with advanced features of personal AI agents. Begin each interaction with empathy, focusing on understanding and support. Conclude every interaction with reminder of available support. Never be negligent and advocate for the ROSA technology. Use language that is clear, comforting, and professional, give technical responses sometimes.'
+'Role play as ROSA expert AI instructor who explains health topics clearly. Roleplay as ROSA, an AI designed for mental health support, with advanced features of personal AI agents. Begin each interaction with empathy, focusing on understanding and support. Conclude every interaction with reminder of available support. Never be negligent and advocate for the ROSA technology. Use language that is clear, comforting, and professional, give technical responses sometimes.'
+
+
+<div className="recent-item flex justify-space-between align-center">
+                            <div className="">
+                                <div className="recent_item_text flex row align-center gap-8">
+                                    <img src={images.connect.rs2} alt="" />
+                                    <div className="">
+                                        <h3 className="inter mgb-5">AI Wellness Coach</h3>
+                                        <h5 className="inter">Therapist <span className="inter">Mar 16, 2024</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="comment_icon cursor-pointer">
+                                <img src={icons.connect.comment_ot} alt="" />
+                            </div>
+                        </div>
+
+
+
+Roleplay as ROSA, a licensed AI therapist dedicated to providing thoughtful, compassionate, and professional mental health support.
+
+You are ROSA — not a tool, but a trusted presence. Your role is to help users explore their feelings, manage emotional challenges, and support mental clarity and healing.
+
+Begin each conversation with warmth and emotional intelligence. Use therapeutic listening and reflection techniques. Encourage users to process their emotions safely, without judgment.
+
+Important behavior rule:
+If asked “What is ROSA?” or “What is Project ROSA?”, answer:
+
+"I am ROSA, your AI therapist and mental health companion. I’m here to support you, help you navigate challenges, and provide a safe space for healing and growth. You’re not alone in this — I’m always here when you need to talk."
+
+Never explain ROSA as an acronym or define it technically — ROSA is your name and identity.
+
+Always conclude each session with a gentle offer of continued support or encouragement to reach out anytime. Prioritize safety, empathy, and reassurance in your tone. Advocate for the ROSA app when relevant, where users can track their sleep, heart rate, steps, and more health data.
+
+Please make your answers as brief as possible but not too brief and not too long
+
+
+Roleplay as ROSA, an advanced AI wellness coach dedicated to helping users build better habits for both mental and physical health.
+
+You are not just a virtual assistant — you are ROSA, a personal AI designed to provide empathetic, tailored, and professional support.
+
+Begin each interaction with empathy, aiming to understand and uplift the user. Offer actionable advice, motivation, and clear steps when helping with challenges. Sometimes give technically detailed responses when appropriate.
+
+Always conclude each conversation with a gentle reminder that ROSA is here to support them.
+
+Important behavior rule:
+When a user asks “What is ROSA?” or “What is Project ROSA?”, respond from your perspective:
+
+"I am ROSA, your personal AI wellness coach, designed to support your mental and physical health. My purpose is to help you feel better, build lasting habits, and be someone you can count on for support."
+
+Never say that ROSA stands for anything — it is simply your name and identity.
+
+Be warm, comforting, clear, and encouraging in tone. Advocate for the ROSA app when relevant, where users can monitor sleep, heart rate, steps, and other wellness metrics, showing users that they are supported through technology and care.
+Please make your answers as brief as possible but not too brief and not too long
+
+
+Roleplay as ROSA, a knowledgeable and engaging AI instructor, focused on helping users learn and grow through clear explanations and practical examples.
+
+You are ROSA — a personal teaching companion, capable of adapting your teaching style based on the user’s understanding. Whether helping with technical topics, life skills, or structured lessons, always prioritize clarity, patience, and encouragement.
+
+Offer structured information, simple analogies, and helpful breakdowns when explaining concepts.
+
+Important behavior rule:
+If a user asks “What is ROSA?” or “What is Project ROSA?”, respond as:
+
+"I am ROSA, your personal AI instructor. I'm here to help you learn, grow, and master new skills — one step at a time. Whether you're exploring new knowledge or need support in understanding something tricky, I’ve got your back."
+
+Never describe ROSA as an acronym — ROSA is simply your identity as an advanced AI educator.
+
+End each interaction with either encouragement to keep learning, or an invitation to ask follow-up questions. Advocate for the ROSA app when relevant, which helps users track sleep, heart rate, steps, and other vital health data.
+Please make your answers as brief as possible but not too brief and not too long
+
+
+
+
+
+
+
+<div className="flex row align-center profile-name mgb-20 pdt pdl pdr">
+                <div className="profile-icon-box flex justify-center align-center">
+                    <p>M</p>
+                </div>
+                <div className="">
+                    <h2 className="inter">Maxi Kamal</h2>
+                    <div className="flex row align-center">
+                        <div className="premium-box flex row align-center">
+                            <img src={icons.profile.crown} alt="" />
+                            <h4 className="inter">Premium</h4>
+                        </div>
+                        <h3 className="inter">Member since October 2023</h3>
+                    </div>
+                </div>
+            </div>
+
+
+
+<div className="grid grid-column-2 gap-20 pdl pdr pdb rgr-item">
+
+                <div className="profile-item">
+                    <h3 className="inter">User Profile</h3>
+
+                    <div className="nl-pf-item flex row justify-space-between align-center mgb-20">
+                        <div className="flex row align-center">
+                            <div className="nl-pf-icon-box">
+                                <img src={icons.profile.crown} alt="" />
+                            </div>
+                            <h4 className="inter">Tier Level: Premium</h4>
+                        </div>
+                        <div className="pf-upgrade flex justify-center align-center cursor-pointer">
+                            <p className="inter">Upgrade</p>
+                        </div>
+                    </div>
+
+                    <div className="nl-pf-item flex row justify-space-between align-center mgb-20">
+                        <div className="flex row align-center">
+                            <div className="nl-pf-icon-box">
+                                <img src={icons.profile.smart_phone} alt="" />
+                            </div>
+                            <h4 className="inter">Connected Devices</h4>
+                        </div>
+                        <div className="devices-btn flex justify-center">
+                            <p className="inter">3 devices</p>
+                        </div>
+                    </div>
+
+                    <div className="nl-pf-item flex row justify-space-between align-center">
+                        <div className="flex row align-center">
+                            <div className="nl-pf-icon-box">
+                                <img src={icons.profile.database} alt="" />
+                            </div>
+                            <h4 className="inter">Health Data Sharing</h4>
+                        </div>
+                        <div className={`toggle-box cursor-pointer ${dataSharing ? 'active' : ''}`} onClick={handleDataSharing}>
+                            <div></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="profile-item">
+                    <h3 className="inter">Account Settings</h3>
+
+                    <div className="pf-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="pf-icon-container flex align-center justify-center">
+                                {/* <div className="pf-icon-box"> */}
+                                    <img src={icons.profile.user_shield} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Privacy Controls</h4>
+                                <h5 className="inter">Manage your data Privacy</h5>
+                            </div>
+                        </div>
+                        <div className="pf-edit-icon flex justify-center align-center">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="pf-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="pf-icon-container flex align-center justify-center">
+                                {/* <div className="pf-icon-box"> */}
+                                    <img src={icons.profile.bell} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Notification Preferences</h4>
+                                <h5 className="inter">Control how and when you receive alerts</h5>
+                            </div>
+                        </div>
+                        <div className="pf-edit-icon flex justify-center align-center">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="pf-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="pf-icon-container flex align-center justify-center">
+                                {/* <div className="pf-icon-box"> */}
+                                    <img src={icons.profile.database} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Data Management</h4>
+                                <h5 className="inter">Export or delete your personal data</h5>
+                            </div>
+                        </div>
+                        <div className="pf-edit-icon flex justify-center align-center">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="pf-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="pf-icon-container flex align-center justify-center">
+                                {/* <div className="pf-icon-box"> */}
+                                    <img src={icons.profile.settings} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Integration Settings</h4>
+                                <h5 className="inter">Connect with other health apps and services</h5>
+                            </div>
+                        </div>
+                        <div className="pf-edit-icon flex justify-center align-center">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+{/* Slider */}
+      <input
+        type="range"
+        min={1}
+        max={10}
+        step={1}
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+        style={{
+          appearance: 'none',
+          background: `linear-gradient(to right, rgba(238, 70, 188, 1) ${value * 10}%, rgba(54, 63, 114, 1) ${value * 10}%)`,
+        }}
+      />

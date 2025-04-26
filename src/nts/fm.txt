@@ -1,0 +1,887 @@
+
+// dashboard
+
+<div className="db-text">
+    <h2 className="inter">Dashboard Overview</h2>
+</div>
+
+<div className="welcome-box flex row justify-space-between align-center">
+    <div className="welcome-text">
+        <h2>Hello <span>{user?.username},</span></h2>
+        <h3>How are you feeling now</h3>
+        <Link className="cursor-pointer flex row align-center welcome-box-link">
+            <p>Log a Mood</p>
+            {/* <img src={icons.home.angle_right_aqua} alt="" /> */}
+        </Link>
+    </div>
+    <div className="welcome-box-img">
+        <img src={images.home.lsm} alt="" />
+    </div>
+</div>
+
+
+
+<div className="grid grid-column-2 gap-30 row st-qa-box">
+                <div className="sta-box et">
+                    <h2 className="inter">Emotional Status Tracker</h2>
+                    <div className="progress-container">
+
+                        <div className="mood-progress">
+                            <div className="flex justify-space-between align-center row mgb-10">
+                                <h3 className="inter">Current Mood</h3>
+                                <div className="flex align-center row stress-box">
+                                    <h4>Moderate Stress</h4>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div className="bar"><div className="bar-inner"></div></div>
+                        </div>
+
+                        <div className="wellness-score">
+                            <div className="flex justify-space-between align-center row mgb-10">
+                                <h3 className="inter">Daily Wellness Score</h3>
+                                <div className="flex align-center row well-box">
+                                    <h4>72/100</h4>
+                                    <div>
+                                        <img src="" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bar"><div className="bar-inner"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="sta-box qa">
+                    <h2 className="inter">Quick Actions</h2>
+                    <div className="grid grid-column-2 gap-10">
+
+                        <div className="act-box flex align-center justify-center cursor-pointer"
+                            onClick={() => setcheckinbox(true)}
+                        >
+                            <div className="flex align-center column">
+                                <div className="act-icon-container check-in flex justify-center align-center">
+                                    {/* <div className=""> */}
+                                        <img src={icons.home.calender_edit} alt="" />
+                                    {/* </div> */}
+                                </div>
+                                <h5 className="inter">Daily Check-in</h5>
+                            </div>
+                        </div>
+                        <div className="act-box flex align-center justify-center cursor-pointer"
+                            onClick={() => navigate('/wellness')}
+                        >
+                            <div className="flex align-center column">
+                                <div className="act-icon-container sm flex justify-center align-center">
+                                    {/* <div className=""> */}
+                                        <img src={icons.sidebar.active.heart} alt="" />
+                                    {/* </div> */}
+                                </div>
+                                <h5 className="inter">Wellness</h5>
+                            </div>
+                        </div>
+                        <div className="act-box flex align-center justify-center cursor-pointer"
+                            onClick={() => setbe(true)}
+                        >
+                            <div className="flex align-center column">
+                                <div className="act-icon-container be flex justify-center align-center">
+                                    {/* <div className=""> */}
+                                        <img src={icons.home.spa} alt="" />
+                                    {/* </div> */}
+                                </div>
+                                <h5 className="inter">Breathing Exercise</h5>
+                            </div>
+                        </div>
+                        <div className="act-box flex align-center justify-center cursor-pointer"
+                            onClick={() => navigate('/crisis')}
+                        >
+                            <div className="flex align-center column">
+                                <div className="act-icon-container cs flex justify-center align-center">
+                                    {/* <div className=""> */}
+                                        <img src={icons.home.ambulance} alt="" />
+                                    {/* </div> */}
+                                </div>
+                                <h5 className="inter">Crisis Support</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                
+            </div>
+
+
+
+
+
+
+
+
+
+// rightbar
+
+ // function formatDateStamp(timestamp) {
+    //     const date = new Date(timestamp);
+        
+    //     const now = new Date();
+    //     const isToday =
+    //         date.getDate() === now.getDate() &&
+    //         date.getMonth() === now.getMonth() &&
+    //         date.getFullYear() === now.getFullYear();
+        
+    //     const timeOptions = {
+    //         hour: 'numeric',
+    //         minute: '2-digit',
+    //         hour12: true,
+    //     };
+    //     const timeStr = date.toLocaleTimeString(undefined, timeOptions); // e.g., 9:20 AM
+        
+    //     if (isToday) {
+    //         return `${timeStr} Today`;
+    //     } else {
+    //         const dateOptions = {
+    //         month: 'short',
+    //         day: 'numeric',
+    //         year: 'numeric',
+    //         };
+    //         const dateStr = date.toLocaleDateString(undefined, dateOptions); // e.g., Mar 16, 2024
+    //         return `${timeStr} ${dateStr}`;
+    //     }   
+    // }
+      
+
+<div className="flex justify-space-between align-center notis-row">
+                        <div className="notis-icon-box">
+                            <img src={icons.profile.bell} alt="" />
+                            <div className="flex justify-center align-center notis-count-box"><p className="inter">1</p></div>
+                        </div>
+
+                        <div className="notis-image">
+                            <img src={images.general.profile} alt="" />
+                        </div>
+                    </div>
+
+<div className="user-info-container">
+                        <div className="user-info-box">
+                            <div className="mgb-30 flex column align-center ui-column">
+                                <div className="mgb-5 ui-column-dp flex justify-center align-center">
+                                    <img src={images.general.profile} alt="" />
+                                </div>
+                                <h2 className="inter mgb-5">{user ? user.username : '_'}</h2>
+                                <div className="flex row align-center">
+                                    <h3 className="inter">{user ? user.physical_info ? user.physical_info.age : '_' : '_'} years old</h3>
+                                    <div className="ui-line"></div>
+                                    <div className="flex row align-center">
+                                        <div className="uil-icon">
+                                            <img src={icons.rightbar.location} alt="" />
+                                        </div>
+                                        <h3>{user ? user.physical_info ? user.physical_info.location : '_' : '_'}</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-column-3 row uti-row">
+
+                                <div className="uti-item flex align-center justify-center">
+                                    <div className="">
+                                        <h4 className="inter">Blood</h4>
+                                        <h5 className="inter">{user ? user.physical_info ? user.physical_info.bloodgroup : '_' : '_'}</h5>
+                                    </div>
+                                </div>
+                                <div className="uti-item flex align-center justify-center middle">
+                                    <div className="">
+                                        <h4 className="inter">Height</h4>
+                                        <h5 className="inter">{user ? user.physical_info ? user.physical_info.height : '_' : '_'}cm</h5>
+                                    </div>
+                                </div>
+                                <div className="uti-item flex align-center justify-center">
+                                    <div className="">
+                                        <h4 className="inter">Weight</h4>
+                                        <h5 className="inter">{user ? user.physical_info ? user.physical_info.weight : '_' : '_'}kg</h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="upc-container">
+                        <div className="upc-box">
+
+                            <h2 className="inter">Upcoming</h2>
+
+                            <div className="upc-item flex row">
+                                <div className="upc-icon-box flex justify-center align-center">
+                                    <img src={icons.profile.bell} alt="" />
+                                </div>
+
+                                <div className="">
+                                    <h3>AI Therapy Session</h3>
+                                    <h4>9:20AM - 11:30</h4>
+                                </div>
+                            </div>
+
+                            <div className="upc-item flex row">
+                                <div className="upc-icon-box flex justify-center align-center">
+                                    <img src={icons.profile.bell} alt="" />
+                                </div>
+
+                                <div className="">
+                                    <h3>Community Meeting</h3>
+                                    <h4>7:00AM <span>Due Soon</span></h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="pws-container">
+                        <h2 className="inter">Post workout sessions</h2>
+
+                        <div className="pws-box">
+
+                            <div className="pws-item">
+                                <h3 className="inter">Meditaion</h3>
+                                <h4 className="inter">
+                                    5:00pm - 6:00pm <br /><br />
+                                    Coach: Terry Bjorvick
+                                </h4>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+// header 
+<h2 className='inter'>
+                            Pages 
+                            / <span>
+                                {path.pathname === '/' ? 'Home' : path.pathname === '/wellness' ? 'Wellness' : 
+                                path.pathname === '/insights' ? 'Insights' : path.pathname === '/connect' ? 'Connect' : path.pathname === '/profile' ? 'Profile' : 'Crisis' }
+                            </span>
+                        </h2>
+
+{windowWidth < 850 ? 
+                            <div className="handle-rightbar-icon handle-bars cursor-pointer" onClick={handleShowrightbar}>
+                                <img src={showrightbar ? icons.header.close : icons.header.bell} alt="" />
+                                {!showrightbar ? <div className="flex align-center justify-center"><p>3</p></div> : null }
+                            </div>
+                        : null }
+
+.handle-rightbar-icon {
+    position: relative;
+}
+.handle-rightbar-icon div {
+    width: 10px;
+    height: 10px;
+    background: var(--error-act);
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+
+
+
+/// wellness
+
+<div className="wellness-title-box pdt pdl pdr">
+                <h2 className="inter">Wellness Tracking</h2>
+            </div>
+
+            <div className="grid grid-column-2 gap-20 pdl pdr pdb rgr-item">
+
+                <div className="wellness-item">
+                    <h3 className="inter">Wellness Tracking</h3>
+
+                    <div className="wt-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="wt-icon-container flex align-center justify-center">
+                                {/* <div className="wt-icon-box"> */}
+                                    <img src={icons.wellness.heart_ecg} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Physical Health</h4>
+                                <div className="flex row align-flex-end"><h5 className="inter">75/100</h5> <h6 className="inter green">+5%</h6></div>
+                            </div>
+                        </div>
+                        <div className="wt-item-angle">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="wt-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="wt-icon-container flex align-center justify-center">
+                                {/* <div className="wt-icon-box"> */}
+                                    <img src={icons.wellness.self_improvement} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Mental State</h4>
+                                <div className="flex row align-flex-end"><h5 className="inter">68/100</h5> <h6 className="inter green">+2%</h6></div>
+                            </div>
+                        </div>
+                        <div className="wt-item-angle">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="wt-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="wt-icon-container flex align-center justify-center">
+                                {/* <div className="wt-icon-box"> */}
+                                    <img src={icons.wellness.moon} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Sleep Quality</h4>
+                                <div className="flex row align-flex-end"><h5 className="inter">82/100</h5> <h6 className="inter green">+8%</h6></div>
+                            </div>
+                        </div>
+                        <div className="wt-item-angle">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                    <div className="wt-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="wt-icon-container flex align-center justify-center">
+                                {/* <div className="wt-icon-box"> */}
+                                    <img src={icons.home.spa} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Stress Levels</h4>
+                                <div className="flex row align-flex-end"><h5 className="inter">45/100</h5> <h6 className="inter red">-3%</h6></div>
+                            </div>
+                        </div>
+                        <div className="wt-item-angle">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="wellness-item">
+                    <h3 className="inter">Intervention Modules</h3>
+
+                    <div className="wt-item cursor-pointer" onClick={() => handleImRequest('anxiety')}>
+                        <div className="flex justify-space-between align-center mgb-10">
+                            <h4 className="inter">Anxiety Management</h4>
+                            <h5 className="inter">45%</h5>
+                        </div>
+                        <h5 className="inter mgb-10">Tool and techniques to manage anxiety</h5>
+                        <div className="bar"><div className="bar-inner" style={{width: '45%'}}></div></div>
+                    </div>
+
+                    <div className="wt-item cursor-pointer" onClick={() => handleImRequest('depression')}>
+                        <div className="flex justify-space-between align-center mgb-10">
+                            <h4 className="inter">Depression Support</h4>
+                            <h5 className="inter">30%</h5>
+                        </div>
+                        <h5 className="inter mgb-10">Resources for depression management</h5>
+                        <div className="bar"><div className="bar-inner" style={{width: '30%'}}></div></div>
+                    </div>
+
+                    <div className="wt-item cursor-pointer" onClick={() => handleImRequest('stress')}>
+                        <div className="flex justify-space-between align-center mgb-10">
+                            <h4 className="inter">Stress Reduction</h4>
+                            <h5 className="inter">70%</h5>
+                        </div>
+                        <h5 className="inter mgb-10">Effective stress reduction methods</h5>
+                        <div className="bar"><div className="bar-inner" style={{width: '70%'}}></div></div>
+                    </div>
+
+                    <div className="wt-item cursor-pointer" onClick={() => handleImRequest('selfcare')}>
+                        <div className="flex justify-space-between align-center mgb-10">
+                            <h4 className="inter">Self-Care Toolkit</h4>
+                            <h5 className="inter">60%</h5>
+                        </div>
+                        <h5 className="inter mgb-10">Personalized self-care activities</h5>
+                        <div className="bar"><div className="bar-inner" style={{width: '60%'}}></div></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+// insights
+<div className="isg-title-box pdt pdl pdr">
+                <h2 className="inter">Insights</h2>
+                <p className="inter">Track and manage your overall wellness</p>
+            </div>
+
+            <div className="chart-container pdl pdr mgb-20">
+                <div className="chart-box">
+                    <h2 className="inter mgb-10">Personal Analytics</h2>
+
+                    <ResponsiveContainer width="100%" height={350}>
+                        <LineChart data={data} className='overflow-y-hidden'>
+                            <XAxis dataKey="day" stroke="#F9F9F9" />
+                            <YAxis stroke="#F9F9F9" />
+                            <Tooltip />
+                            <Line type="monotone" dataKey="value" stroke="#007BFF" strokeWidth={3} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
+
+
+<div className="rmd-container pdl pdr mgb-20">
+                <div className="rmd-box">
+                    <h2 className="inter mgb-10">Recommendations</h2>
+
+                    <div className="rmd-item">
+                        <h3 className="inter mgb-10">Personalized Coping Strategies</h3>
+                        <h4 className="inter mgb-10">Based on your recent stress patterns, try these mindfulness techniques</h4>
+                        <div className="flex align-center row gap-10">
+                            <p className="inter">Mindfulness</p>
+                            <p className="inter">Breathing</p>
+                            <p className="inter">Focus</p>
+                        </div>
+                    </div>
+                    <div className="rmd-item">
+                        <h3 className="inter mgb-10">Lifestyle Adjustments</h3>
+                        <h4 className="inter mgb-10">Small changes to your daily routine that could improve your mental wellness</h4>
+                        <div className="flex align-center row gap-10">
+                            <p className="inter">Sleep</p>
+                            <p className="inter">Exercise</p>
+                            <p className="inter">Nutrition</p>
+                        </div>
+                    </div>
+                    <div className="rmd-item">
+                        <h3 className="inter mgb-10">Therapy Suggestions</h3>
+                        <h4 className="inter mgb-10">Professional support options that match your current needs</h4>
+                        <div className="flex align-center row gap-10">
+                            <p className="inter">CBT</p>
+                            <p className="inter">Counseling</p>
+                            <p className="inter">Group Therapy</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+ const [data, setData] = useState([
+        { day: "Mon", value: 20 },
+        { day: "Tue", value: 30 },
+        { day: "Wed", value: 50 },
+        { day: "Thu", value: 40 },
+        { day: "Fri", value: 70 }
+    ]);
+    
+    // Simulating backend data update
+    useEffect(() => {
+        const interval = setInterval(() => {
+          const newData = data.map((item) => ({
+            ...item,
+            value: Math.floor(Math.random() * 100),
+          }));
+          setData(newData);
+        }, 5000); // Update every 3 seconds
+    
+        return () => clearInterval(interval);
+    }, [data]);
+
+
+// connect
+<div className="connect-title-box pdt pdl pdr">
+                <h2 className="inter">Connect</h2>
+                <p className="inter">Access your support network</p>
+            </div>
+    
+<div className="grid grid-column-2 gap-20 pdl pdr pdb rgr-item">
+
+                <div className="connect-item">
+                    <h3 className="inter">Support Network</h3>
+
+
+                    <div className="ct-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="ct-icon-container flex align-center justify-center">
+                                {/* <div className="ct-icon-box"> */}
+                                    <img src={icons.connect.breif_case} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Connections</h4>
+                                <h5 className="inter">3</h5>
+                            </div>
+                        </div>
+                        <div className="flex gap-10">
+                            <div className="ct-view flex justify-center align-center" 
+                                onClick={() => setViewpfc(true)}
+                            >
+                                <p className="inter">View</p>
+                            </div>
+                            <div className="ct-add flex justify-center align-center" 
+                                onClick={() => setAddpfc(true)}
+                            >
+                                <p className="inter">Add</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div className="ct-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="ct-icon-container flex align-center justify-center">
+                                {/* <div className="ct-icon-box"> */}
+                                    <img src={icons.connect.home_health} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Therapist Portal</h4>
+                                <h5 className="inter">1</h5>
+                            </div>
+                        </div>
+                        <div className="ct-view flex justify-center align-center">
+                            <p className="inter">View</p>
+                        </div>
+                    </div>
+
+                    <div className="ct-item flex justify-space-between align-center cursor-pointer">
+                        <div className="flex row align-center">
+                            <div className="ct-icon-container flex align-center justify-center">
+                                {/* <div className="ct-icon-box"> */}
+                                    <img src={icons.connect.phone} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">Emergency Contacts</h4>
+                                <h5 className="inter">2 </h5>
+                            </div>
+                        </div>
+                        <div className="ct-view flex justify-center align-center">
+                            <p className="inter">View</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="connect-item">
+                    <h3 className="inter">Communication</h3>
+
+                    <div className="ct-item">
+                        <div className="flex row align-center mgb-15">
+                            <div className="ct-icon-container flex align-center justify-center">
+                                {/* <div className="ct-icon-box"> */}
+                                    <img src={icons.connect.phone} alt="" />
+                                {/* </div> */}
+                            </div>
+                            <div className="">
+                                <h4 className="inter">AI Therapy Session</h4>
+                                <h5 className="inter">Available 24/7</h5>
+                            </div>
+                        </div>
+                        <div className="flex row align-center gap-10">
+                            <div className="com-h-btn cursor-pointer flex align-center">
+                                <p>View History</p>
+                            </div>
+                            <div className="com-start-btn flex align-center justify-center">
+                                <p>Start Session</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="ct-item">
+                        <h4 className="inter rc-title">Recent Conversations</h4>
+
+                        <div className="flex align-center justify-space-between row mgb-15">
+                            <div className="flex row align-center rc-row">
+                                <div className="rc-icon-box flex justify-center align-center">
+                                    <p>D</p>
+                                </div>
+                                <div className="">
+                                    <h3 className="inter">Dr. Sarah Johnson</h3>
+                                    <h4 className="inter">Therapist</h4>
+                                </div>
+                            </div>
+                            <div className="flex row gap-5 align-center">
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.comment_fill} alt="" />
+                                </div>
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.videocam} alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex align-center justify-space-between row mgb-15">
+                            <div className="flex row align-center rc-row">
+                                <div className="rc-icon-box flex justify-center align-center">
+                                    <p>A</p>
+                                </div>
+                                <div className="">
+                                    <h3 className="inter">Anxiety Support Group</h3>
+                                    <h4 className="inter">Community</h4>
+                                </div>
+                            </div>
+                            <div className="flex row gap-5 align-center">
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.comment_fill} alt="" />
+                                </div>
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.videocam} alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex align-center justify-space-between row ">
+                            <div className="flex row align-center rc-row">
+                                <div className="rc-icon-box flex justify-center align-center">
+                                    <p>A</p>
+                                </div>
+                                <div className="">
+                                    <h3 className="inter">Micheal Chen</h3>
+                                    <h4 className="inter">Wellness Coach</h4>
+                                </div>
+                            </div>
+                            <div className="flex row gap-5 align-center">
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.comment_fill} alt="" />
+                                </div>
+                                <div className="rc-qa-icon cursor-pointer flex justify-center align-center">
+                                    <img src={icons.connect.videocam} alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+{/* {checkAdded(item.name) === true ? 
+                                    <div className="ct-add flex justify-center align-center added">
+                                        <p className="inter">Added</p>
+                                    </div>
+                                : 
+                                    <div className="ct-add flex justify-center align-center cursor-pointer" 
+                                        onClick={() => handleConnectionAddtion(item.name)}
+                                    >
+                                        <p className="inter">Add</p>
+                                    </div>
+                                } */}
+
+
+
+// open schedule
+<div className="os-form">
+                    
+                    <div className="os-input-relative">
+                        <div className="os-input-cont">
+                            <p>Name:</p>
+                            <div className={`os-select-box cursor-pointer ${eventname ? 'selected' : ''}`} onClick={handleEventselect} >
+                                <h3>{eventname ? eventname : 'Select'}</h3>
+                            </div>
+                        </div>
+                        <div className={`os-down-box ${eventnameselect ? 'active' : ''}`}>
+                            {eventNames.map(value => (
+                                <h5 className="cursor-pointer" key={value}
+                                    onClick={() => {
+                                        seteventnameselect(null)
+                                        seteventname(value)
+                                    }}
+                                >
+                                    {value}
+                                </h5>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="os-input-relative">
+                        <div className="os-input-cont">
+                            <p>Date:</p>
+                            
+                        </div>
+                    </div>
+
+                    {errorstate ? <div className="status-messg os">
+                        <p >{errorstate}</p>
+                    </div> : null}
+
+                    <button className="auth-btn os-btn"
+                        onClick={handleSubmitSchedule}
+                    >
+                        Open
+                    </button>
+
+                </div>
+
+
+
+
+
+    breathing exercise 
+    <div className="be-list">
+                    <h2 className="inter">🧘 Box Breathing (Square Breathing)</h2>
+
+                    <div className="be-item-cont">
+
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 1</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🫁</p>
+                                {/* <img src={icons.be.spa} alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Inhale for 4 seconds:</span> Slowly breathe in through your nose, letting your lungs fill up completely. Focus on expanding your belly as you count to four in your mind.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 2</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>⏸️</p>
+                                {/* <img src={icons.be.nose} alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Hold for 4 seconds:</span> Gently hold your breath. Try not to tense your body. Just stay still and feel the air inside you as you mentally count to four.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 3</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🌬️</p>
+                                {/* <img src={icons.be.lips} alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Exhale for 4 seconds</span> Breathe out slowly and evenly through your mouth, releasing tension from your chest and shoulders. Exhale fully while counting to four.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 4</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🕒</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Hold for 4 seconds</span> Again, hold your breath with empty lungs, staying relaxed. Count to four before starting the next round.
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div className="be-list">
+                    <h2 className="inter">🌊 2. 4-7-8 Breathing</h2>
+
+                    <div className="be-item-cont">
+
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 1</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🫁</p>
+                                {/* <img src={icons.be.spa} alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Inhale for 4 seconds:</span> Breathe in through your nose quietly and deeply for a count of four, focusing on filling your lungs gently.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 2</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>⏹️</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Pause for 7 seconds</span> Hold your breath comfortably. Try to keep your body still and calm as you count to seven—this is the most important part.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 3</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>😮‍💨</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Exhale for 8 seconds:</span> Slowly and completely exhale through your mouth. Make a soft “whooshing” sound if you like, and count to eight as you breathe out.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 4</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🔁</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Repeat cycle:</span> Try this for four full cycles. With each repetition, you should feel more relaxed and clear-headed.
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div className="be-list">
+                    <h2 className="inter">👄 Pursed-Lip Breathing</h2>
+
+                    <div className="be-item-cont">
+
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 1</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>👃</p>
+                                {/* <img src={icons.be.spa} alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Inhale through your nose (2 seconds):</span> Breathe in slowly and gently through your nose. Try not to rush—keep the pace natural and light.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 2</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>👄</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Purse your lips</span> Press your lips together as if you're about to whistle or blow out a candle. This slows your breath down and helps control airflow.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 3</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>💨</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Exhale slowly (4 seconds):</span> Blow the air out through your pursed lips slowly and evenly. Focus on making the exhale twice as long as the inhale.
+                            </h4>
+                        </div>
+                        <div className="be-item-box">
+                            <h3 className="text-align-center inter">Step 4</h3>
+                            <div className="be-item-icon-box flex justify-center">
+                                <p>🔁</p>
+                                {/* <img src="" alt="" /> */}
+                            </div>
+                            <h4 className="text-align-center inter">
+                                <span>Repeat and relax several times:</span> Continue this breathing pattern for a few minutes. It’s excellent for calming panic or catching your breath. Continue at your own pace.
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
