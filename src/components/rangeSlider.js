@@ -1,8 +1,8 @@
 
 import { useState, useRef } from 'react';
 
-export default function CustomRangeSlider() {
-  const [value, setValue] = useState(3); // default value
+export default function CustomRangeSlider({ value, setValue }) {
+  // const [value, setValue] = useState(3); // default value
   const sliderRef = useRef(null);
 
   const handleDrag = (e) => {

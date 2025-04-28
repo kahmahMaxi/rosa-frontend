@@ -11,7 +11,7 @@ import { setmodalgeneral } from "../redux/modalsSlice";
 
 
 
-const Sos = () => {
+const Sos = ({ windowWidth }) => {
 
     const modalgeneral = useSelector((state) => state.modalgeneral.value)
 
@@ -37,7 +37,7 @@ const Sos = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-column-2 gap-16 row">
+                <div className={`grid ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} gap-16 row`}>
 
                     <div className="sos-modal-item red">
                         <img src={icons.crisis.crisis_support} className="sos-modal-cr-img mgb-16" alt="" />

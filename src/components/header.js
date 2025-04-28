@@ -78,7 +78,7 @@ const Header = () => {
                 <BarsDrop dropPress={setAlltoNull} />
             : null}
 
-            {path.pathname !== '/signin' && path.pathname !== '/signup' ? <div className="main-header">
+            {path.pathname !== '/auth' ? <div className="main-header">
                 <div className="main-header-inner flex row align-center justify-space-between">
                     <div className="">
                         {/* <h2 className='inter'>

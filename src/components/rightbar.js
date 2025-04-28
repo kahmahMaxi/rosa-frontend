@@ -200,7 +200,7 @@ const RightBar = () => {
 
             <OpenSchedule showSchedule={osmodal} />
 
-            {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
+            {pathlocation.pathname !== '/auth' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
 
                 <div className="rightbar-inner">
 

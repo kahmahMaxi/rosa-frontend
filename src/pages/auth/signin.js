@@ -10,7 +10,7 @@ import { useSignin } from '../../hooks/auth/useSignin';
 import { useAppuserin } from '../../hooks/general/useAppuserin';
 import { images } from './../../utilities/img'
 
-const SignIn = () => {
+const SignIn = ({ showsignin }) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ const SignIn = () => {
     const [errorstate, setErrorstate] = useState(null)    
 
     useEffect(() => {
-        checkAppUser()
+        // checkAppUser()
     }, [])
 
 
@@ -46,42 +46,34 @@ const SignIn = () => {
     }
 
     return (
-        <div className="auth-container">
-            <div className="auth-box">
-                <div className="container-100">
-                    <div className="auth-title">
-                        <img src={images.general.rs_logo_block} alt="" />
-                        <h2 className="inter">Sign In</h2>
-                        <h3 className='inter'>Welcome back to your ROSA Dashboard</h3>
-                    </div>
-                    <div className="form-row">
-                        <form onSubmit={handleAuth} method='post'>
-                            <div className="input-cont">
-                                <p>Email:</p>
-                                <input type="text" name="email" placeholder="e.g noName@pheel" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                            </div>
-                            <div className="input-cont">
-                                <p>Password:</p>
-                                <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                            </div>
 
-                            {error ? <div className="status-messg">
-                                <p >{error}</p>
-                            </div> : null}
-                            {errorstate ? <div className="status-messg">
-                                <p >{errorstate}</p>
-                            </div> : null}
-
-                            <button className={`auth-btn ${loadingState ? 'auth-btn-loading' : ''}`} disabled={loadingState}>
-                                {loadingState ? 'Loading please wait...' : 'Sign In'}
-                            </button>
-
-                            <h4>Don't have an account yet? <Link to="/signup">Sign up</Link></h4>
-                        </form>
-                    </div>
+        <div className={`sign-in-box sign-up-in-box ${showsignin ? 'active' : ''}`}>
+            <form onSubmit={handleAuth} method='post'>
+                <div className="input-cont mgb-16">
+                    <p className='inter mgb-10'>Email:</p>
+                    <input type="text" name="email" placeholder="e.g noName@pheel" value={email} onChange={(e)=>setEmail(e.target.value)} />
                 </div>
-            </div>
+                <div className="input-cont mgb-16">
+                    <p className='inter mgb-10'>Password:</p>
+                    <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                </div>
+
+                {error ? <div className="status-messg">
+                    <p >{error}</p>
+                </div> : null}
+                {errorstate ? <div className="status-messg">
+                    <p >{errorstate}</p>
+                </div> : null}
+
+                <button className={`auth-btn ${loadingState ? 'auth-btn-loading' : ''}`} disabled={loadingState}>
+                    {loadingState ? 'Loading please wait...' : 'Sign In'}
+                </button>
+
+                {/* <h4>Don't have an account yet? <Link to="/signup">Sign up</Link></h4> */}
+            </form>
         </div>
+        
+        
     )
 }
 

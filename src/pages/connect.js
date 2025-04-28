@@ -121,7 +121,7 @@ const Connect = () => {
 
                 <h1 className="inter mgb-16">Support Network</h1>
 
-                <div className="grid row grid-column-2 gap-24">
+                <div className={`grid row ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} gap-24`}>
                     <div className="support-item flex row gap-16 align-center cursor-pointer" onClick={() => setAddpfc(true)}>
                         <div className="support-item-icon flex align-center justify-center">
                             <img src={icons.connect.briefcase_ot} alt="" />

@@ -113,7 +113,7 @@ const Wellness = () => {
 
                 <h1 className="inter">Wellness tracking</h1>
 
-                <div className="grid row grid-column-2 gap-16">
+                <div className={`grid row ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} gap-16`}>
 
                     <div className="wellness-tracking-item">
                         <div className="flex justify-space-between row">
@@ -270,8 +270,6 @@ const Wellness = () => {
                             </div>
                         </div>
                     </div>
-
-
 
                 </div>
 
