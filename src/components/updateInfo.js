@@ -66,31 +66,31 @@ const UpdateInfo = ({showinfo}) => {
 
             <div className="uic-inner">
 
-                <div className="uic-title">
-                    <h2>Physical Info</h2>
-                    <h3>Submit your physical info</h3>
+                <div className="uic-title mgb-24">
+                    <h2 className="inter">Physical Info</h2>
+                    <h3 className="inter">Your physical info</h3>
                 </div>
 
-                <div className="form-row">
+                {/* <div className="form-row"> */}
                     <form onSubmit={handleSubmitInfo}>
                         {/* <div className="input-cont">
                             <p>Location:</p>
                             <input type="text" name="location" placeholder="Germany, Berlin" value={location} onChange={(e)=>setLocation(e.target.value)} />
                         </div> */}
-                        <div className="input-cont">
-                            <p>Age:</p>
+                        <div className="input-cont mgb-16">
+                            <p className="inter mgb-10">Age:</p>
                             <input type="number" name="age" placeholder="18" value={age} onChange={(e)=>setAge(e.target.value)} />
                         </div>
-                        <div className="input-cont">
-                            <p>Blood Group:</p>
+                        <div className="input-cont mgb-16">
+                            <p className="inter mgb-10">Blood Group:</p>
                             <input type="text" name="bloodgroup" placeholder="o+" value={bloodgroup} onChange={(e)=>setBloodGroup(e.target.value)} />
                         </div>
-                        <div className="input-cont">
-                            <p>Height(cm):</p>
+                        <div className="input-cont mgb-16">
+                            <p className="inter mgb-10">Height(cm):</p>
                             <input type="number" name="height" placeholder="180cm" value={height} onChange={(e)=>setHeight(e.target.value)} />
                         </div>
-                        <div className="input-cont">
-                            <p>Weight(kg):</p>
+                        <div className="input-cont mgb-16">
+                            <p className="inter mgb-10">Weight(kg):</p>
                             <input type="number" name="weight" placeholder="90kg" value={weight} onChange={(e)=>setWeight(e.target.value)} />
                         </div>
 
@@ -105,7 +105,7 @@ const UpdateInfo = ({showinfo}) => {
                             Submit
                         </button>
                     </form>
-                </div>
+                {/* </div> */}
 
             </div>
 

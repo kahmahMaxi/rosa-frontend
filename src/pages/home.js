@@ -187,7 +187,7 @@ const Home = () => {
             />
 
             <MoodLogModal
-                showModal={showModal}
+                // showModal={showModal}
                 questions={questions}
                 // submit={handleSubmit}
             />

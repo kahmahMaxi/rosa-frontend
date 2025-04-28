@@ -81,6 +81,41 @@
     }
 }
 
+@media (max-width: 700px) {
+    .start-session-box {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+    .recent-box {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .week-score-item {
+        max-width: 35px;
+    }
+    .week-score-bar-cont {
+        width: 35px;
+        padding: 9px 6px;
+    }
+    .week-score-days {
+        width: 35px;
+        padding: 4px 0;
+    }
+    .week-score-days h3 {
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .week-score-item h2 {
+        font-size: 10px;
+        font-weight: 500;
+    }
+}
+
 @media (max-width: 500px) {
     .rightbar {
         width: 310px;
@@ -106,7 +141,118 @@
     .new-qa-box p {
         font-size: 13px;
     }
+
+    .wellness {
+        padding: 11px;
+    }
+
+    .insights {
+        padding: 11px;
+    }
+    .weekly-cont h1 {
+        font-size: 18px;
+    }
+    .recomendations-item h2 {
+        font-size: 13px;
+    }
+    .recomendations-item h3 {
+        font-size: 10px;
+    }
+    .recommendation-img {
+        width: 63px;
+    }
+    .recommendation-img img {
+        width: 31px;
+    }
+    .recomendations-item p {
+        font-size: 11px;
+    }
+
+    .connect {
+        padding: 11px;
+    }
+    .connect-box-item h1 {
+        font-size: 22px;
+    }
+
+    .profile {
+        padding: 11px;
+    }
+    .premium-level-box img {
+        width: 50px;
+        height: 50px;
+    }
+    .premium-level-box {
+        padding: 10px;
+    }
+    .profile-frames h3 {
+        font-size: 12px;
+    }
+    .profile-frames {
+        padding: 10px;
+    }
+    .profile-frames h2 {
+        font-size: 14px;
+    }
+
+    .sos-cont {
+        padding: 20px 10px;
+    }
+    .sos-cont .sos-inner {
+        padding: 10px;
+        margin-top: 150px;
+    }
+    .sos-inner h2 {
+        font-size: 22px;
+    }
+
+    .view-pfc {
+        padding: 0 10px;
+    }
+    .pfc-chat-box {
+        padding: 15px 10px;
+    }
+
+    .open-schedule {
+        padding: 0 10px;
+    }
+
+    .update-info-container {
+        padding: 0 10px;
+    }
 }
+
+@media (max-width: 400px) {
+    .ww-overall-score-box {
+        padding: 14px 13px;
+    }
+    .week-score-item {
+        max-width: 30px;
+    }
+    .week-score-bar-cont {
+        width: 30px;
+        border-radius: 7px;
+        padding: 7px 3px;
+    }
+    .week-score-days {
+        width: 30px;
+    }
+    .week-score-days h3 {
+        font-size: 9px;
+        font-weight: 500;
+    }
+    .week-score-label h4 {
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 

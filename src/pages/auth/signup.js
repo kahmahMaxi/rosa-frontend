@@ -11,7 +11,7 @@ import { images } from '../../utilities/img';
 
 
 
-const SignUp = () => {
+const SignUp = ({ showsignin }) => {
 
     const navigate = useNavigate()
     const { checkAppUser } = useAppuserin()
@@ -25,7 +25,7 @@ const SignUp = () => {
 
 
     useEffect(() => {
-        checkAppUser()
+        // checkAppUser()
     }, [])
 
 
@@ -50,46 +50,38 @@ const SignUp = () => {
 
 
     return(
-        <div className="auth-container">
-            <div className="auth-box">
-                <div className="container-100">
-                    <div className="auth-title">
-                        <img src={images.general.rs_logo_block} alt="" />
-                        <h2 className="inter">Sign Up</h2>
-                        <h3 className='inter'>Welcome to your ROSA Dashboard</h3>
-                    </div>
-                    <div className="form-row">
-                        <form onSubmit={handleAuth} method='post'>
-                            <div className="input-cont">
-                                <p>Username:</p>
-                                <input type="text" name="username" placeholder="e.g noName" value={username} onChange={(e)=>setUsername(e.target.value)} />
-                            </div>
-                            <div className="input-cont">
-                                <p>Email:</p>
-                                <input type="text" name="email" placeholder="e.g noName@pheel" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                            </div>
-                            <div className="input-cont">
-                                <p>Password:</p>
-                                <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-                            </div>
-                            
-                            {error ? <div className="status-messg">
-                                <p >{error}</p>
-                            </div> : null}
-                            {errorstate ? <div className="status-messg">
-                                <p >{errorstate}</p>
-                            </div> : null}
-
-                            <button className={`auth-btn ${loadingState ? 'auth-btn-loading' : ''}`} disabled={loadingState}>
-                                {loadingState ? 'Loading please wait...' : 'Create'}
-                            </button>
-
-                            <h4>Already have an account? <Link to="/signin">Sign in</Link></h4>
-                        </form>
-                    </div>
+        
+        <div className={`sign-up-box sign-up-in-box ${!showsignin ? 'active' : ''}`}>
+            <form onSubmit={handleAuth} method='post'>
+                <div className="input-cont mgb-16">
+                    <p className='inter mgb-10'>Username:</p>
+                    <input type="text" name="username" placeholder="e.g noName" value={username} onChange={(e)=>setUsername(e.target.value)} />
                 </div>
-            </div>
+                <div className="input-cont mgb-16">
+                    <p className='inter mgb-10'>Email:</p>
+                    <input type="text" name="email" placeholder="e.g noName@pheel" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                </div>
+                <div className="input-cont mgb-16">
+                    <p className='inter mgb-10'>Password:</p>
+                    <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                </div>
+                
+                {error ? <div className="status-messg">
+                    <p >{error}</p>
+                </div> : null}
+                {errorstate ? <div className="status-messg">
+                    <p >{errorstate}</p>
+                </div> : null}
+
+                <button className={`auth-btn ${loadingState ? 'auth-btn-loading' : ''}`} disabled={loadingState}>
+                    {loadingState ? 'Loading please wait...' : 'Create Account'}
+                </button>
+
+                {/* <h4>Already have an account? <Link to="/signin">Sign in</Link></h4> */}
+            </form>
         </div>
+
+                    
     )
 }
 

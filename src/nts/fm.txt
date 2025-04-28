@@ -885,3 +885,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
+
+
+  {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
+  {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
+  {path.pathname !== '/signin' && path.pathname !== '/signup' ? <div className="main-header">

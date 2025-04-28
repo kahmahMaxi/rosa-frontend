@@ -66,7 +66,7 @@ const Profile = () => {
             : null}
 
             <div className="mgb-24 premium-level-box flex justify-space-between align-center">
-                <div className="flex align-center gap-16">
+                <div className={`flex align-center ${windowWidth > 500 ? 'gap-16' : 'gap-7'}`}>
                     <img src={icons.profile.crown_3d} alt="" />
                     <div className="">
                         <h3 className="inter mgb-10">Subscription Level</h3>
@@ -78,7 +78,7 @@ const Profile = () => {
                 <h5 className="inter cursor-pointer">Upgrade</h5>
             </div>
 
-            <div className="mgb-32 grid grid-column-2 row gap-24">
+            <div className={`mgb-32 grid ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} row gap-24`}>
                 <div className="profile-frames flex align-center justify-space-between">
                     <div className="">
                         <h2 className="inter mgb-7">Connected devices</h2>
@@ -99,7 +99,7 @@ const Profile = () => {
                 <div className="grid grid-column-1 gap-12">
 
                     <div className="profile-frames flex justify-space-between align-center">
-                        <div className="flex row align-center gap-16">
+                        <div className={`flex row align-center ${windowWidth > 500 ? 'gap-16' : 'gap-6'}`}>
                             <div className="icon-right flex justify-center align-center">
                                 <img src={icons.profile.shield_p} alt="" />
                             </div>
@@ -115,7 +115,7 @@ const Profile = () => {
                     </div>
 
                     <div className="profile-frames flex justify-space-between align-center">
-                        <div className="flex row align-center gap-16">
+                        <div className={`flex row align-center ${windowWidth > 500 ? 'gap-16' : 'gap-6'}`}>
                             <div className="icon-right flex justify-center align-center">
                                 <img src={icons.profile.bell_p} alt="" />
                             </div>
@@ -131,7 +131,7 @@ const Profile = () => {
                     </div>
 
                     <div className="profile-frames flex justify-space-between align-center">
-                        <div className="flex row align-center gap-16">
+                        <div className={`flex row align-center ${windowWidth > 500 ? 'gap-16' : 'gap-6'}`}>
                             <div className="icon-right flex justify-center align-center">
                                 <img src={icons.profile.bars_p} alt="" />
                             </div>
@@ -147,7 +147,7 @@ const Profile = () => {
                     </div>
 
                     <div className="profile-frames flex justify-space-between align-center">
-                        <div className="flex row align-center gap-16">
+                        <div className={`flex row align-center ${windowWidth > 500 ? 'gap-16' : 'gap-6'}`}>
                             <div className="icon-right flex justify-center align-center">
                                 <img src={icons.profile.link} alt="" />
                             </div>

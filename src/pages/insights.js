@@ -95,7 +95,7 @@ const Insights = () => {
             <div className="weekly-cont">
                 <h1 className="inter mgb-16">Wellness Week Overall Score</h1>
 
-                <div className="ww-overall-score-box flex row gap-20">
+                <div className={`ww-overall-score-box flex row ${windowWidth > 500 ? 'gap-20' : 'gap-7'}`}>
                     <div className="week-score-label flex column gap-22">
                         <h4 className="inter">100</h4>
                         <h4 className="inter">80</h4>
@@ -184,7 +184,7 @@ const Insights = () => {
 
                 <div className="grid grid-column-1 gap-12">
 
-                    <div className="recomendations-item flex row align-center gap-15">
+                    <div className={`recomendations-item flex row align-center ${windowWidth > 500 ? 'gap-15' : 'gap-7'}`}>
                         <div className="recommendation-img flex align-center justify-center">
                             <img src={icons.insights.leaf} alt="" />
                         </div>
@@ -199,7 +199,7 @@ const Insights = () => {
                         </div>
                     </div>
 
-                    <div className="recomendations-item flex row align-center gap-15">
+                    <div className={`recomendations-item flex row align-center ${windowWidth > 500 ? 'gap-15' : 'gap-7'}`}>
                         <div className="recommendation-img flex align-center justify-center">
                             <img src={icons.insights.user_jog} alt="" />
                         </div>
@@ -214,7 +214,7 @@ const Insights = () => {
                         </div>
                     </div>
 
-                    <div className="recomendations-item flex row align-center gap-15">
+                    <div className={`recomendations-item flex row align-center ${windowWidth > 500 ? 'gap-15' : 'gap-7'}`}>
                         <div className="recommendation-img flex align-center justify-center">
                             <img src={icons.insights.chair} alt="" />
                         </div>

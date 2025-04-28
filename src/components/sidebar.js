@@ -75,9 +75,9 @@ const Sidebar = () => {
 
         <div className="">
 
-            <Sos />
+            <Sos windowWidth={windowWidth} />
 
-            {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
+            {pathlocation.pathname !== '/auth' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
                 <div className="sidebar-top flex justify-space-between align-center">
                     <div className="sidebar-logo-cont flex row align-center">
                         <div className="tech-logo">
