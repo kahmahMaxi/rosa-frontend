@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openSidebar, closeSidebar } from './../redux/sidebarSlice';
 import { openRightbar, closeRightbar } from './../redux/rightbarSlice';
 
+// hooks
+import { useWallet } from '../hooks/general/useWallet';
+
 
 
 import dp1 from './../media/img/dp1.png'
@@ -15,6 +18,8 @@ import BarsDrop from './barsdrop'
 
 
 const Header = () => {
+
+    const { walletAddress, connectWallet } = useWallet()
 
     const showsidebar = useSelector((state) => state.showsidebar.value)
     const showrightbar = useSelector((state) => state.showrightbar.value)
@@ -60,6 +65,11 @@ const Header = () => {
                 dispatch(openRightbar())
             }
         }
+    }
+
+    const formatWalletAddress = (address) => {
+        if (!address) return '';
+        return `${address.slice(0, 4)}...${address.slice(-3)}`;
     }
 
     const setAlltoNull = () => {
@@ -125,11 +135,11 @@ const Header = () => {
                         </div>
 
                         {windowWidth > 500 ? 
-                            <div className="connect-wallet-btn flex row align-center cursor-pointer">
+                            <div className="connect-wallet-btn flex row align-center cursor-pointer" onClick={connectWallet}>
                                 <div className="connect-icon-box">
                                     <img src={icons.home.wallet_ot} alt="" />
                                 </div>
-                                <p>Connect</p>
+                                <p>{walletAddress ? formatWalletAddress(walletAddress) : 'Connect Wallet'}</p>
                             </div>
                         : null}
 

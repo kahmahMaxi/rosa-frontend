@@ -8,10 +8,16 @@ import { images } from "../utilities/img";
 // components
 import BackDrop from "../components/backdrop";
 
+// states_g
+import { setmodalgeneral } from "../redux/modalsSlice";
+import { setgtMessage } from "../redux/gtmsgSlice";
+import { gtError } from "../redux/gtstatusSlice";
+
 // hooks
 import { useAppuserout } from "../hooks/general/useAppuserout";
-import { setmodalgeneral } from "../redux/modalsSlice";
+import { useWallet } from '../hooks/general/useWallet';
 
+import { transferRosaTokens } from "../utilities/transferToken";
 
 
 
@@ -19,6 +25,7 @@ import { setmodalgeneral } from "../redux/modalsSlice";
 const Profile = () => {
 
     const { checkAppUser } = useAppuserout()
+    const { walletAddress, connectWallet } = useWallet()
 
     const user = useSelector((state) => state.user.value)
     const modalgeneral = useSelector((state) => state.modalgeneral.value)
@@ -53,6 +60,23 @@ const Profile = () => {
         }
     }
 
+    const handleTransferToken = async () => {
+        if(walletAddress) {
+            const response = await transferRosaTokens(
+                walletAddress,  // your connected wallet
+                'w4JpjVWzKMQ7GuMRnM7BVxLRN7eWyQnKNNdnQ5jHzDm',   // wallet address to send tokens to
+                5 * 10 ** 6, // if 6 decimals
+                '6dZiYn3DTdPeBiWu5FbpbdyMXMwi47KQpddZnmZkpump' // your $ROSA token address from pump.fun
+            );
+            console.log(response)
+        } else {
+            dispatch(gtError())
+            dispatch(setgtMessage('connect wallet first'))
+            connectWallet()
+        }
+          
+    }
+
     const setAlltoNull = () => {
         dispatch(setmodalgeneral(null))
     }
@@ -75,7 +99,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <h5 className="inter cursor-pointer">Upgrade</h5>
+                <h5 className="inter cursor-pointer" onClick={handleTransferToken}>Upgrade</h5>
             </div>
 
             <div className={`mgb-32 grid ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} row gap-24`}>
