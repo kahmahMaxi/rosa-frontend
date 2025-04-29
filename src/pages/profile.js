@@ -36,7 +36,7 @@ const Profile = () => {
     const [dataSharing, setDatasharing] = useState(null)
 
     useEffect(() => {
-            checkAppUser()
+        checkAppUser()
     }, [])
 
     useEffect(() => {
