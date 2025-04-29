@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-react-app": "^7.0.1"
+    "eslint-config-react-app": "^7.0.1",
+    "typescript": "^5.8.3"
   }
 }
