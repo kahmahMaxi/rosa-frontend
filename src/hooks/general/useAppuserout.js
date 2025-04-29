@@ -16,7 +16,7 @@ export const useAppuserout = () => {
         try {
             var storeditem = localStorage.getItem('rosatechuser')
             if(!storeditem) {
-                navigate('/signin')
+                navigate('/auth')
             } else {
                 // check if user is null then make request to the db to get details
                 if(!user) {
