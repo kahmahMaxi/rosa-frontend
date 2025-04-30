@@ -215,22 +215,32 @@ body {
 
 .btn-1 {
     display: inline-block;
-    padding: 15px 45px;
-    /* border: 2px solid var(--bl-br1); */
-    /* background: linear-gradient(to bottom right, var(--bwog-y2), var(--bwog-y1)); */
-    /* background: linear-gradient(to top right, var(--mec-b1) 50%, var(--mec-r1) 50%); */
-    background: var(--ry-br1);
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--mec-w1);
-    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+    padding: 0 20px;
+    height: 50px;
+    background: rgba(0, 0, 0, .25);
+    border-radius: 5px;
     cursor: pointer;
     transition: .5s;
 }
-.btn-1.sup {
-    background: var(--ry-gr2);
+.btn-1 span {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'proba regular';
+    color: var(--n200);
 }
+.btn-1 img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+.btn-1.active {
+    background: var(--rs-p1);
+}
+.btn-1:hover {
+    background: var(--rs-p1);
+}
+
 
 .btn-sp {
     display: inline-block;
@@ -788,6 +798,163 @@ animation_-_s
     color: rgba(16, 19, 35, 1);
 }
 
+/* home_-_styles */
+.home {
+    width: 100%;
+    /* height: 100%; */
+    height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./../media/img/bg7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-position: center -800px; */
+    /* position: relative; */
+}
+
+.home-frame {
+    height: 100vh;
+    overflow-y: hidden;
+    /* padding: 0 100px; */
+    /* background: red; */
+}
+
+.home-frame-inner {
+    /* width: 100%; */
+    /* background: yellow; */
+}
+
+.home-text {
+    overflow-y: hidden;
+    /* flex: 0 0 50%;
+    max-width: 0 0 50%; */
+    padding-right: 180px;
+    /* background: red; */
+}
+
+.home-text h1 {
+    text-align: justify;
+    text-transform: uppercase;
+    font-size: 45px;
+    color: var(--n200);
+    /* font-family: 'aqs'; */
+    font-family: 'proba regular';
+    font-weight: 900;
+    overflow-y: hidden;
+    line-height: 40px;
+    margin-bottom: 35px;
+}
+
+.home-text h1 span {
+    /* text-align: justify; */
+    font-family: 'aqs';
+    font-weight: 900;
+    font-size: 90px;
+    color: var(--rs-p1);
+    overflow-y: hidden;
+    line-height: 75px;
+}
+
+.home-text h3 {
+    font-size: 19px;
+    color: var(--n300);
+    font-family: 'proba regular';
+    /* font-family: 'pcap'; */
+    margin-bottom: 30px;
+}
+
+.ft-item-cont {
+    padding: 20px;
+}
+
+.ft-item {
+    background: var(--rs-dark-blue);
+    border-radius: 7px;
+    width: 300px;
+    height: 130px;
+    padding: 0 20px;
+    box-shadow: rgba(237, 17, 183, 0.24) 0px 3px 8px;
+}
+.ft-item.aqua {
+    box-shadow: rgba(176, 255, 255, 0.24) 0px 3px 8px;
+}
+
+.ft-item h2 {
+    font-size: 19px;
+    font-family: 'proba bold';
+    color: var(--rs-p1);
+    margin-bottom: 4px;
+}
+.ft-item.aqua h2 {
+    color: var(--rs-aqua);
+}
+
+.ft-item p {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'proba regular';
+    color: var(--n100);
+}
+
+
+.copy-address-box {
+    margin-bottom: 30px;
+    border-radius: 50px;
+    padding: 7px 15px;
+    background: var(--mec-w1);
+    width: 470px;
+    height: 55px;
+    /* border: 2px solid var(--peki-b1); */
+    /* box-shadow: var(--peki-b1) 4px 4px 0 0; */
+}
+
+.copy-address-box img {
+    width: 30px;
+    /* filter: invert(1); */
+    cursor: pointer;
+}
+
+.copy-btn-box {
+    background: var(--ry-br1);
+    padding: 0 15px;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.copy-btn-box h5 {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: sans-serif;
+    color: var(--mec-w1);
+}
+
+.copy-address-box p {
+    color: var(--peki-b1);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'poppins medium';
+}
+
+.home-img {
+    /* flex: 0 0 40%;
+    max-width: 40%; */
+}
+  
+/* Keyframes for the scrolling animation */
+@keyframes scroll-left {
+    0% {
+      transform: translateX(100%); /* Start at the right */
+    }
+    100% {
+      transform: translateX(-100%); /* Move completely to the left */
+    }
+}
 
 
 

@@ -10,7 +10,7 @@ export const useAppuserin = () => {
         try {
             var storeditem = localStorage.getItem('rosatechuser')
             if(storeditem) {
-                navigate('/')
+                navigate('/dashboard')
             }
         } catch(err) {
             console.log(err)
