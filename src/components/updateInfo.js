@@ -24,13 +24,13 @@ const UpdateInfo = ({showinfo}) => {
     const [bloodgroup, setBloodGroup] = useState('')
     const [height, setHeight] = useState('')
     const [weight, setWeight] = useState('')
-    const [location, setLocation] = useState('')
+    // const [location, setLocation] = useState('')
     const [errorstate, setErrorstate] = useState(null)
 
     const handleSubmitInfo = async (event) => {
         event.preventDefault()
         setErrorstate(null)
-        if(bloodgroup.length < 1 || height.length < 1 || weight.length < 1 || location.length < 1 ) {
+        if(bloodgroup.length < 1 || height.length < 1 || weight.length < 1 || age.length < 1 ) {
             setErrorstate('Please fill in all fields')
         } else {
             
