@@ -798,6 +798,106 @@ animation_-_s
     color: rgba(16, 19, 35, 1);
 }
 
+/* notis-comp */
+.notis-cont {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    scale: 0.5;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    z-index: 777;
+}
+.notis-cont.active {
+    opacity: 1;
+    /* pointer-events: all; */
+    scale: 1;
+}
+
+.notis-cont .notis-inner {
+    width: 450px;
+    height: 400px;
+    background: rgba(54, 63, 114, 1);
+    /* background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(./../media/img/mesh_bg1.png); */
+    padding: 20px 16px;
+    position: relative;
+    border-radius: 24px;
+    transition: all .5s;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.notis-cont.active .notis-inner {
+    pointer-events: all;
+}
+.notis-inner::-webkit-scrollbar {
+    /* width: 3px; */
+    display: none;
+}
+.notis-inner::-webkit-scrollbar-track {
+    background: var(--layer-main-dark);
+}
+.notis-inner::-webkit-scrollbar-thumb {
+    background: var(--rs-p1);
+}
+
+.notis-inner h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--n100);
+}
+.notis-inner h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--n100);
+    white-space: nowrap; /* Prevents wrapping */
+    width: 180px;
+}
+.notis-inner h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--n100);
+}
+.notis-inner h4 {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(175, 181, 217, 1);
+}
+.notis-inner h5 {
+    padding: 13px;
+    width: fit-content;
+    border-radius: 12px;
+    background: rgba(238, 70, 188, 1);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--n100);
+}
+
+.notis-item {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(62, 71, 132, 1);
+}
+.notis-item img {
+    max-width: 70px;
+    width: 100%;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+
+
+
+
+
+
 /* home_-_styles */
 .home {
     width: 100%;

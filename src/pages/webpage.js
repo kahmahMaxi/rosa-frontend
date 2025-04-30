@@ -76,7 +76,7 @@ const WebPage = () => {
                                 </div>
 
                                 <div className="flex row wrap gap-15 hm-btn-cont">
-                                    <Link to="auth" target="_blank" className='flex justify-center align-center btn-1 active'>
+                                    <Link to="auth" className='flex justify-center align-center btn-1 active'>
                                         {/* <img src={chat} alt="" /> */}
                                         <span>Enter</span>
                                     </Link>
