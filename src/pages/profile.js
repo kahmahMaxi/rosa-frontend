@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { icons } from "../utilities/icn";
 import { images } from "../utilities/img";
@@ -18,6 +19,7 @@ import { useAppuserout } from "../hooks/general/useAppuserout";
 import { useWallet } from '../hooks/general/useWallet';
 
 import { transferRosaTokens } from "../utilities/transferToken";
+import { setUser } from "../redux/userSlice";
 
 
 
@@ -31,6 +33,7 @@ const Profile = () => {
     const modalgeneral = useSelector((state) => state.modalgeneral.value)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [dataSharing, setDatasharing] = useState(null)
@@ -77,6 +80,13 @@ const Profile = () => {
           
     }
 
+    const handleLogout = () => {
+        // localStorage.removeItem('your_key_name')
+        localStorage.clear()
+        dispatch(setUser(null))
+        navigate('/auth')
+    }
+
     const setAlltoNull = () => {
         dispatch(setmodalgeneral(null))
     }
@@ -117,7 +127,7 @@ const Profile = () => {
                 </div>
             </div>
 
-            <div className="profile-frame-outer">
+            <div className="profile-frame-outer mgb-24">
                 <h1 className="inter mgb-24">Account Settings</h1>
 
                 <div className="grid grid-column-1 gap-12">
@@ -187,6 +197,10 @@ const Profile = () => {
                     </div>
 
                 </div>
+            </div>
+
+            <div className="logout-btn flex justify-flex-end cursor-pointer" onClick={handleLogout}>
+                <p className="inter">Logout</p>
             </div>
 
         </div>

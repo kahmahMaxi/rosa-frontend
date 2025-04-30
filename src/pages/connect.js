@@ -31,7 +31,7 @@ const Connect = () => {
     const dispatch = useDispatch()
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const [viewpfc, setViewpfc] = useState(null)
+    // const [viewpfc, setViewpfc] = useState(null)
     const [addpfc, setAddpfc] = useState(null)
     const [whatpfc, setwhatpfc] = useState(null)
 
@@ -53,13 +53,12 @@ const Connect = () => {
     }, []);
 
     const handleWhatpfc = (value) => {
-        setAddpfc(true)
+        dispatch(setmodalgeneral('pfc'))
         setwhatpfc(value)
     }
 
     const setAlltoNull = () => {
-        setViewpfc(null)
-        setAddpfc(null)
+        // setAddpfc(null)
         setwhatpfc(null)
         dispatch(setmodalgeneral(null))
     }
@@ -69,13 +68,13 @@ const Connect = () => {
 
         <div className="connect">
 
-            {viewpfc || addpfc || modalgeneral ? 
+            {modalgeneral ? 
                 <BackDrop dropPress={setAlltoNull} />
             : null}
 
             {/* <ViewPfComp viewpfc={viewpfc} /> */}
             
-            <AddPfComp addpfc={addpfc} whatpfc={whatpfc} />
+            <AddPfComp whatpfc={whatpfc} />
 
             <div className="mgb-32 flex row wrap gap-24">
 
@@ -122,7 +121,7 @@ const Connect = () => {
                 <h1 className="inter mgb-16">Support Network</h1>
 
                 <div className={`grid row ${windowWidth > 500 ? 'grid-column-2' : 'grid-column-1'} gap-24`}>
-                    <div className="support-item flex row gap-16 align-center cursor-pointer" onClick={() => setAddpfc(true)}>
+                    <div className="support-item flex row gap-16 align-center cursor-pointer" onClick={() => dispatch(setmodalgeneral('pfc'))}>
                         <div className="support-item-icon flex align-center justify-center">
                             <img src={icons.connect.briefcase_ot} alt="" />
                         </div>

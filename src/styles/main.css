@@ -1890,7 +1890,7 @@ animation_-_s
     position: absolute;
     padding: 16px;
     top: 0;
-    left: -500px;
+    left: -600px;
     transition: all .5s;
 }
 .pfc-view-box.active {
@@ -2072,6 +2072,8 @@ animation_-_s
     height: 43px;
     border-radius: 12px;
     background: rgba(238, 70, 188, 1);
+    outline: none;
+    border: none;
 }
 .pfc-chat-send.isSending {
     background: rgba(102, 112, 133, 1);
@@ -2205,6 +2207,21 @@ animation_-_s
 .profile-frames .toggle-icon.active  div{
     left: 15px;
 }
+
+.logout-btn p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--n100);
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: rgba(238, 70, 188, 1);
+    width: fit-content;
+}
+
+
+
+
+
 
 
 
