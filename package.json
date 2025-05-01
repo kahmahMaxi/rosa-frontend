@@ -5,6 +5,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "@solana/spl-token": "^0.4.13",
+    "@solana/wallet-adapter-base": "^0.9.26",
+    "@solana/wallet-adapter-react": "^0.15.38",
+    "@solana/wallet-adapter-react-ui": "^0.9.38",
+    "@solana/wallet-adapter-wallets": "^0.19.36",
     "@solana/web3.js": "^1.98.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
