@@ -77,7 +77,7 @@ const Sidebar = () => {
 
             <Sos windowWidth={windowWidth} />
 
-            {pathlocation.pathname !== '/auth' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
+            {pathlocation.pathname !== '/auth' && pathlocation.pathname !== '/' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
                 <div className="sidebar-top flex justify-space-between align-center">
                     <div className="sidebar-logo-cont flex row align-center">
                         <div className="tech-logo">
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 <div className="sidebar-links-cont">
 
                     
-                    <Link to='/' className={`sidebar-link-item flex row align-center cursor-pointer ${pathlocation.pathname === '/' ? 'active' : ''}`} onClick={handleShowsidebar}>
+                    <Link to='dashboard' className={`sidebar-link-item flex row align-center cursor-pointer ${pathlocation.pathname === '/' ? 'active' : ''}`} onClick={handleShowsidebar}>
                         <div className="sidebar-icon-box">
                             <img src={`${pathlocation.pathname === '/' ? icons.sidebar.active.new.home : icons.sidebar.inactive.new.home}`} alt="" />
                         </div>

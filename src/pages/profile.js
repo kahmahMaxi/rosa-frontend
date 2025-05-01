@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { icons } from "../utilities/icn";
 import { images } from "../utilities/img";
@@ -17,7 +18,7 @@ import { useAppuserout } from "../hooks/general/useAppuserout";
 import { useWallet } from "../hooks/general/useWallet";
 
 import { transferRosaTokens } from "../utilities/transferToken";
-
+import { setUser } from "../redux/userSlice";
 import { useWallet as useWalletFromAdapter } from "@solana/wallet-adapter-react";
 import { Connection, PublicKey, clusterApiUrl } from "@solana/web3.js";
 import {
@@ -123,7 +124,8 @@ const Profile = () => {
   const user = useSelector((state) => state.user.value);
   const modalgeneral = useSelector((state) => state.modalgeneral.value);
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [dataSharing, setDatasharing] = useState(null);
@@ -248,8 +250,8 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="profile-frame-outer">
-        <h1 className="inter mgb-24">Account Settings</h1>
+            <div className="profile-frame-outer mgb-24">
+                <h1 className="inter mgb-24">Account Settings</h1>
 
         <div className="grid grid-column-1 gap-12">
           <div className="profile-frames flex justify-space-between align-center">
@@ -331,14 +333,21 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="icon-angle">
-              <img src={icons.general.angle_right} alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+                        <div className="icon-angle">
+                            <img src={icons.general.angle_right} alt="" />
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+
+            <div className="logout-btn flex justify-flex-end cursor-pointer" onClick={handleLogout}>
+                <p className="inter">Logout</p>
+            </div>
+
+        </div>
+
+    );
+}
+ 
 export default Profile;

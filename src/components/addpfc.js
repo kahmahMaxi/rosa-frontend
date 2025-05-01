@@ -16,13 +16,15 @@ import { useAichat } from "../hooks/patch/useAichat"
 
 // states
 import { setUser } from "../redux/userSlice"
+import { setmodalgeneral } from "../redux/modalsSlice"
 
 
 
 
-const AddPfComp = ({ addpfc, whatpfc }) => {
+const AddPfComp = ({ whatpfc }) => {
 
     const user = useSelector((state) => state.user.value)
+    const modalgeneral = useSelector((state) => state.modalgeneral.value)
 
     const dispatch = useDispatch()
     const messagesEndRef = useRef(null);
@@ -111,9 +113,15 @@ const AddPfComp = ({ addpfc, whatpfc }) => {
         }
     }, [pfcchatbox, user])
     
-
+    const handleGCKeyDown = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            // event.preventDefault(); // prevents the default newline behavior of the textarea
+            handleChatting(event)
+        }
+    }
     
-    const handleChatting = async () => {
+    const handleChatting = async (event) => {
+        event.preventDefault(); // prevents the default page refresh
         if(!loading) {
             if(inputmessage.length > 1 && pfcchatbox) {
                 console.log(inputmessage, pfcchatbox)
@@ -162,14 +170,14 @@ const AddPfComp = ({ addpfc, whatpfc }) => {
 
 
     return(
-        <div className={`view-pfc ${addpfc ? 'active' : ''}`}>
+        <div className={`view-pfc ${modalgeneral === 'pfc' ? 'active' : ''}`}>
             <div className={`view-pfc-inner modal-general ${pfcchatbox ? 'increasedheight' : ''}`}>
 
                 <div className={`pfc-view-box ${!pfcchatbox ? 'active' : ''}`}>
                     <div className="flex justify-space-between align-center mgb-16">
                         <h2 className="inter">Professional Connections</h2>
 
-                        <div className="modals-close-icon flex justify-center align-center">
+                        <div className="modals-close-icon flex justify-center align-center cursor-pointer" onClick={() => dispatch(setmodalgeneral(null))}>
                             <img src={icons.header.close} alt="" />
                         </div>
                     </div>
@@ -222,7 +230,7 @@ const AddPfComp = ({ addpfc, whatpfc }) => {
                             </div>
                         </div>
 
-                        <div className="modals-close-icon flex justify-center align-center cursor-pointer">
+                        <div className="modals-close-icon flex justify-center align-center cursor-pointer" onClick={() => dispatch(setmodalgeneral(null))}>
                             <img src={icons.header.close} alt="" />
                         </div>
                     </div>
@@ -240,15 +248,19 @@ const AddPfComp = ({ addpfc, whatpfc }) => {
                         </div>
                     </div>
 
-                    <div className="pfc-chat-input flex align-center gap-8">
+                    {/* <div className="pfc-chat-input flex align-center gap-8"> */}
+                        <form className="pfc-chat-input flex align-center gap-8" onSubmit={handleChatting}>
+                            <input type="text" placeholder="Message..." 
+                                value={inputmessage} 
+                                onChange={(e) => setInputmessage(e.target.value)} 
+                                onKeyDown={handleGCKeyDown}
+                            />
 
-                        <input type="text" placeholder="Message..." value={inputmessage} onChange={(e) => setInputmessage(e.target.value)} />
-
-                        <div className={`pfc-chat-send flex justify-center align-center cursor-pointer ${loading ? 'isSending' : ''}`} onClick={handleChatting}>
-                            <img src={icons.general.paper_plane} alt="" />
-                        </div>
-
-                    </div>
+                            <button className={`pfc-chat-send flex justify-center align-center cursor-pointer ${loading ? 'isSending' : ''}`} >
+                                <img src={icons.general.paper_plane} alt="" />
+                            </button>
+                        </form>
+                    {/* </div> */}
 
                 </div>
 

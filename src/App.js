@@ -9,6 +9,7 @@ import ToastGeneral from './components/toast';
 import Loading from './components/loading';
 
 // pages
+import WebPage from './pages/webpage';
 import AuthPage from './pages/auth/authpage';
 import SignIn from './pages/auth/signin';
 import SignUp from './pages/auth/signup';
@@ -65,13 +66,11 @@ function App() {
 
                 <Route 
                   index
-                  path='/'
-                  element={<Home />}
+                  element={<WebPage />}
                 />
-
+                
                 {/* auths */}
                 <Route 
-                  index
                   path='/auth'
                   element={<AuthPage />}
                 />
@@ -81,34 +80,33 @@ function App() {
                   element={<SignIn />}
                 />
                 <Route 
-                  index
                   path='/signup'
                   element={<SignUp />}
                 /> */}
                 {/* auths */}
 
                 <Route 
-                  index
+                  path='/dashboard'
+                  element={<Home />}
+                />
+
+                <Route 
                   path='/wellness'
                   element={<Wellness />}
                 />
                 <Route 
-                  index
                   path='/insights'
                   element={<Insights />}
                 />
                 <Route 
-                  index
                   path='/connect'
                   element={<Connect />}
                 />
                 <Route 
-                  index
                   path='/profile'
                   element={<Profile />}
                 />
                 <Route 
-                  index
                   path='/crisis'
                   element={<Crisis />}
                 />
