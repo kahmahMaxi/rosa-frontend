@@ -38,6 +38,7 @@ import './styles/wellness-score.css'
 
 // custom_-_js_-_files
 import './scripts/main';
+import { SolanaWalletProvider } from './components/SolanaWalletProvider';
 
 function App() {
 
@@ -48,6 +49,8 @@ function App() {
       {/* <WalletContextProvider> */}
           
         <BrowserRouter>
+
+        <SolanaWalletProvider>
           <div className="tech-container flex row">
 
             <Loading />
@@ -114,6 +117,7 @@ function App() {
             <RightBar />
 
           </div>
+        </SolanaWalletProvider>
 
       </BrowserRouter>
 
