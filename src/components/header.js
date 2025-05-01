@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // states_g
-import { openSidebar, closeSidebar } from "./../redux/sidebarSlice";
-import { openRightbar, closeRightbar } from "./../redux/rightbarSlice";
+import { openSidebar, closeSidebar } from './../redux/sidebarSlice';
+import { openRightbar, closeRightbar } from './../redux/rightbarSlice';
+import { setmodalgeneral } from '../redux/modalsSlice';
 
 // hooks
 import { useWallet } from "../hooks/general/useWallet";
@@ -14,8 +15,10 @@ import { useWallet as useWalletFromAdapter } from "@solana/wallet-adapter-react"
 
 import dp1 from "./../media/img/dp1.png";
 import { icons } from "../utilities/icn";
-import { images } from "../utilities/img";
-import BarsDrop from "./barsdrop";
+import { images } from '../utilities/img';
+import BarsDrop from './barsdrop'
+import Notifications from './notismodal';
+
 
 const Header = () => {
   const { walletAddress, connectWallet } = useWallet();
@@ -97,7 +100,9 @@ const Header = () => {
         <BarsDrop dropPress={setAlltoNull} />
       ) : null}
 
-      {path.pathname !== "/auth" ? (
+            <Notifications />
+
+      {path.pathname !== "/auth" && path.pathname !== '/' ? (
         <div className="main-header">
           <div className="main-header-inner flex row align-center justify-space-between">
             <div className="">
@@ -146,14 +151,12 @@ const Header = () => {
                 </p>
               ) : null}
 
-              <div className="in-bar-box flex justify-center align-center">
-                <div className="handle-rightbar-icon flex justify-center align-center cursor-pointer">
-                  <img src={icons.header.bell_outline} alt="" />
-                  <div className="flex align-center justify-center">
-                    <p>23</p>
-                  </div>
-                </div>
-              </div>
+                        <div className="in-bar-box flex justify-center align-center">
+                            <div className="handle-rightbar-icon flex justify-center align-center cursor-pointer" onClick={() => dispatch(setmodalgeneral('notis'))}>
+                                <img src={icons.header.bell_outline} alt="" />
+                                <div className="flex align-center justify-center"><p>1</p></div>
+                            </div>
+                        </div>
 
               {windowWidth > 500 ? (
                 <div
