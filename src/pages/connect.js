@@ -96,7 +96,7 @@ const Connect = () => {
                                 <div className="">
                                     <div className="recent_item_text flex row align-center gap-8">
                                         <img 
-                                            src={item.name === 'AI Wellness Coach' ? images.connect.rs2 : item.name === 'AI Therapist' ? images.connect.rs1 : images.connect.rs3 }
+                                            src={item.name === 'AI Wellness Coach' ? images.connect.rs4_1 : item.name === 'AI Therapist' ? images.connect.rs1 : images.connect.rs5 }
                                             alt="" 
                                         />
                                         <div className="">

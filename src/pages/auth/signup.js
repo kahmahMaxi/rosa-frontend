@@ -37,14 +37,22 @@ const SignUp = ({ showsignin }) => {
         } else {
             if(!validator.isEmail(email)) {
                 setErrorstate('Please enter a valid email')
-            } else if(!validator.isStrongPassword(password)) {
-                setErrorstate('Password is not strong enough')
             } else {
 
                 setErrorstate(null)
                 await signUpWithGoogle(username, email, password)
 
             }
+            // if(!validator.isEmail(email)) {
+            //     setErrorstate('Please enter a valid email')
+            // } else if(!validator.isStrongPassword(password)) {
+            //     setErrorstate('Password is not strong enough')
+            // } else {
+
+            //     setErrorstate(null)
+            //     await signUpWithGoogle(username, email, password)
+
+            // }
         }
     }
 
