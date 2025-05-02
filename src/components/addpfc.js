@@ -17,6 +17,8 @@ import { useAichat } from "../hooks/patch/useAichat"
 // states
 import { setUser } from "../redux/userSlice"
 import { setmodalgeneral } from "../redux/modalsSlice"
+import { gtError } from "../redux/gtstatusSlice"
+import { setgtMessage } from "../redux/gtmsgSlice"
 
 
 
@@ -126,35 +128,41 @@ const AddPfComp = ({ whatpfc }) => {
             if(inputmessage.length > 1 && pfcchatbox) {
                 console.log(inputmessage, pfcchatbox)
                 if(user) {
-                    // const prevMessages = user.connectionsChats || []
-                    const prevtherapy = user.connectionsChats?.therapy || []
-                    const prevcoach = user.connectionsChats?.coach || []
-                    const previnstructor = user.connectionsChats?.instructor || []
-    
-                    const newMessage = { role: 'user', content: inputmessage }
-    
-                    const itemToUpdate = (type) => {
-                        switch (type) {
-                            case 'AI Therapist':
-                                const therapyupdate = { therapy: [...prevtherapy, newMessage], coach: prevcoach, instructor: previnstructor }
-                                return therapyupdate;
-                            case 'AI Wellness Coach':
-                                const coachupdate = { coach: [...prevcoach, newMessage], therapy: prevtherapy, instructor: previnstructor }
-                                return coachupdate;
-                            case 'AI Instructor':
-                                const instructorupdate = { instructor: [...previnstructor, newMessage], therapy: prevtherapy, coach: prevcoach }
-                                return instructorupdate;
-                            default:
-                                const defaultupdate = { therapy: [...prevtherapy, newMessage], coach: prevcoach, instructor: previnstructor }
-                                return defaultupdate;
+                    const chatno = user.chatno || 0
+                    if(chatno > 5 && !user.upgraded) {
+                        dispatch(gtError())
+                        dispatch(setgtMessage('upgrade to premium to continue using rosa'))
+                    } else {
+                        // const prevMessages = user.connectionsChats || []
+                        const prevtherapy = user.connectionsChats?.therapy || []
+                        const prevcoach = user.connectionsChats?.coach || []
+                        const previnstructor = user.connectionsChats?.instructor || []
+        
+                        const newMessage = { role: 'user', content: inputmessage }
+        
+                        const itemToUpdate = (type) => {
+                            switch (type) {
+                                case 'AI Therapist':
+                                    const therapyupdate = { therapy: [...prevtherapy, newMessage], coach: prevcoach, instructor: previnstructor }
+                                    return therapyupdate;
+                                case 'AI Wellness Coach':
+                                    const coachupdate = { coach: [...prevcoach, newMessage], therapy: prevtherapy, instructor: previnstructor }
+                                    return coachupdate;
+                                case 'AI Instructor':
+                                    const instructorupdate = { instructor: [...previnstructor, newMessage], therapy: prevtherapy, coach: prevcoach }
+                                    return instructorupdate;
+                                default:
+                                    const defaultupdate = { therapy: [...prevtherapy, newMessage], coach: prevcoach, instructor: previnstructor }
+                                    return defaultupdate;
+                            }
                         }
+                        var itemUpdate = { ...user, connectionsChats: itemToUpdate(pfcchatbox) }
+                        // var itemUpdate = { ...user, connectionsChats: [...prevMessages, ...newMessage] }
+                        // console.log(itemUpdate)
+                        dispatch(setUser(itemUpdate))
+        
+                        await handleAireply(pfcchatbox, inputmessage)
                     }
-                    var itemUpdate = { ...user, connectionsChats: itemToUpdate(pfcchatbox) }
-                    // var itemUpdate = { ...user, connectionsChats: [...prevMessages, ...newMessage] }
-                    // console.log(itemUpdate)
-                    dispatch(setUser(itemUpdate))
-    
-                    await handleAireply(pfcchatbox, inputmessage)
                 }
             } else {
                 console.log('no inputmessage or pfcchatbox')

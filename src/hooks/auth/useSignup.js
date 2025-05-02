@@ -75,10 +75,13 @@ export const useSignup = () => {
                     const user = response.user
     
                     console.log(user.email, username);
+
+                    const notisItem = [ {title: 'Welcome to Neurosa 🌐🧠', body: `hey ${username}, you’ve just joined a movement at the frontier of wellness and web3. Connect your wallet, explore decentralized features, and be part of a future where tech meets self-care. Let’s shape the next era—together.`} ]
     
                     const newUser = {
                         username: username,
                         useremail: user.email,
+                        notis: notisItem,
                         createdAt: new Date().getTime(), // timestamp for when the user is created
                         lastActivity: new Date().getTime(), 
                     };

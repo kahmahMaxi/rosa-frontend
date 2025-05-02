@@ -66,6 +66,10 @@ export const images = {
         rs4,
         rs4_1,
         rs5,
+        rs3,
+        rs4,
+        rs4_1,
+        rs5,
     },
 
 }

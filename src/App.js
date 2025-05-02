@@ -65,7 +65,7 @@ function App() {
 
               <Routes>
 
-                <Route 
+              <Route 
                   index
                   element={<WebPage />}
                 />
@@ -85,11 +85,6 @@ function App() {
                   element={<SignUp />}
                 /> */}
                 {/* auths */}
-
-                <Route 
-                  path='/vortexdemo'
-                  element={<FullPage />}
-                />
 
                 <Route 
                   path='/dashboard'
