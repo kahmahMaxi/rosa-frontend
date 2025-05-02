@@ -11,7 +11,7 @@ import BackDrop from "../components/backdrop";
 // states_g
 import { setmodalgeneral } from "../redux/modalsSlice";
 import { setgtMessage } from "../redux/gtmsgSlice";
-import { gtError } from "../redux/gtstatusSlice";
+import { gtError, gtSuccess } from "../redux/gtstatusSlice";
 
 // hooks
 import { useAppuserout } from "../hooks/general/useAppuserout";
@@ -44,7 +44,7 @@ const ROSA_TOKEN_MINT = new PublicKey(
   "6dZiYn3DTdPeBiWu5FbpbdyMXMwi47KQpddZnmZkpump"
 );
 const DESTINATION_WALLET = new PublicKey(
-  "w4JpjVWzKMQ7GuMRnM7BVxLRN7eWyQnKNNdnQ5jHzDm"
+  "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
 );
 const USDC_TOKEN_MINT = new PublicKey(
   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
@@ -52,7 +52,7 @@ const USDC_TOKEN_MINT = new PublicKey(
 const EXTRA_TOKEN_MINT = new PublicKey(
   "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
 );// JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
-const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
+const AMOUNT_TO_SEND = 7 * 10 ** 6; // assuming 6 decimals
 
 // Put these in a separate file for utility functions
 const getSolBalance = async (walletAddress) => {
@@ -164,18 +164,18 @@ const Profile = () => {
 
     const solBalance = await getSolBalance(publicKey); // works fine
     const rosaBalance = await getTokenBalance(publicKey, ROSA_TOKEN_MINT); // // TODO: Fix this if you need it
-    const usdcBalance = await getTokenBalance(publicKey, USDC_TOKEN_MINT);
-    const extraBalance = await getTokenBalance(publicKey, EXTRA_TOKEN_MINT);
+    // const usdcBalance = await getTokenBalance(publicKey, USDC_TOKEN_MINT);
+    // const extraBalance = await getTokenBalance(publicKey, EXTRA_TOKEN_MINT);
 
     console.log(
       "SOL Balance:",
       solBalance,
       "ROSA Balance:",
       rosaBalance / 1e6,
-      "USDC Balance:",
-      usdcBalance,
-      "EXTRA Balance:",
-      extraBalance
+    //   "USDC Balance:",
+    //   usdcBalance,
+    //   "EXTRA Balance:",
+    //   extraBalance
     );
 
     if (rosaBalance < AMOUNT_TO_SEND) {
@@ -183,17 +183,24 @@ const Profile = () => {
       dispatch(setgtMessage("Insufficient $ROSA tokens to upgrade"));
       return; // uncomment this later
     }
-
+    
     const tx = await transferRosaTokens(
       wallet.adapter,
       DESTINATION_WALLET.toBase58(),
       AMOUNT_TO_SEND,
       ROSA_TOKEN_MINT.toBase58()
     );
-
+    
     console.log("Transfer TX:", tx);
+    dispatch(gtSuccess());
     dispatch(setgtMessage("Upgrade successful!"));
   };
+
+  const handleLogout = () => {
+    localStorage.clear()
+    dispatch(setUser(null))
+    navigate('/auth')
+  }
 
   const setAlltoNull = () => {
     dispatch(setmodalgeneral(null));

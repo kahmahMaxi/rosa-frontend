@@ -16,6 +16,9 @@ import bgelipse from './../media/img/bgelipse.png'
 import rs1 from './../media/img/rs_c1.png'
 import rs2 from './../media/img/rs_c2.jpeg'
 import rs3 from './../media/img/rs_c3.png'
+import rs4 from './../media/img/rs4.jpg'
+import rs4_1 from './../media/img/rs4_1.jpg'
+import rs5 from './../media/img/rs5.jpg'
 
 
 
@@ -46,7 +49,10 @@ export const images = {
     connect: {
         rs1,
         rs2,
-        rs3
+        rs3,
+        rs4,
+        rs4_1,
+        rs5,
     },
 
 }

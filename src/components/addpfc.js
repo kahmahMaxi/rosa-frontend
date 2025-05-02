@@ -188,7 +188,7 @@ const AddPfComp = ({ whatpfc }) => {
                                 <div className="flex row align-center gap-8">
                                     <div className="pfc-dp flex justify-center align-center">
                                         <img 
-                                            src={item.name === 'AI Wellness Coach' ? images.connect.rs2 : item.name === 'AI Therapist' ? images.connect.rs1 : images.connect.rs3 } 
+                                            src={item.name === 'AI Wellness Coach' ? images.connect.rs4_1 : item.name === 'AI Therapist' ? images.connect.rs1 : images.connect.rs5 } 
                                             alt="" 
                                         />
                                     </div>
@@ -216,7 +216,7 @@ const AddPfComp = ({ whatpfc }) => {
                             <div className="flex row gap-8 align-center">
                                 <div className="pfc-dp">
                                     <img 
-                                        src={pfcchatbox === 'AI Wellness Coach' ? images.connect.rs2 : pfcchatbox === 'AI Therapist' ? images.connect.rs1 : images.connect.rs3 }
+                                        src={pfcchatbox === 'AI Wellness Coach' ? images.connect.rs4_1 : pfcchatbox === 'AI Therapist' ? images.connect.rs1 : images.connect.rs5 }
                                         alt=""     
                                     />
                                 </div>
