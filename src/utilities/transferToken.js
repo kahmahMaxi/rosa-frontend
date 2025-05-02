@@ -21,7 +21,8 @@ export const transferRosaTokens = async (
 ) => {
   try {
     const connection = new Connection(
-      "https://api.mainnet-beta.solana.com",
+      // "https://api.mainnet-beta.solana.com",
+      // process.env.REACT_APP_RPC_URL,
       "confirmed"
     );
     const fromPubkey = walletAdapter.publicKey;

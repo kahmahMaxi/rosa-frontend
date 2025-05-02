@@ -39,17 +39,17 @@ const Notifications = () => {
                     </div>
                 </div>
 
-                <div className="notis-item flex row gap-10">
-                    <img src={images.connect.rs1} alt="" />
+                <div className="grid grid-column-1 gap-10">
+                    {(user?.notis || []).map((item, index) => (
+                        <div className="notis-item flex row gap-10">
+                            <img src={images.connect.rs1} alt="" />
 
-                    <div className="">
-                        <h3 className="inter mgb-10">Welcome to Neurosa 🌐🧠</h3>
-                        <h4 className="inter">
-                            hey {user?.username}, you’ve just joined a movement at the frontier of wellness and web3.
-                            Connect your wallet, explore decentralized features, and be part of a future where tech meets self-care.
-                            Let’s shape the next era—together.
-                        </h4>
-                    </div>
+                            <div className="">
+                                <h3 className="inter mgb-10">{item.title}</h3>
+                                <h4 className="inter">{item.body}</h4>
+                            </div>
+                        </div>
+                    )) }
                 </div>
 
             </div>

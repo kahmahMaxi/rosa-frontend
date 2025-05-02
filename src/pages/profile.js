@@ -16,6 +16,7 @@ import { gtError, gtSuccess } from "../redux/gtstatusSlice";
 // hooks
 import { useAppuserout } from "../hooks/general/useAppuserout";
 import { useWallet } from "../hooks/general/useWallet";
+import { useUpgrade } from "../hooks/patch/useUpgrade";
 
 import { transferRosaTokens } from "../utilities/transferToken";
 import { setUser } from "../redux/userSlice";
@@ -28,7 +29,8 @@ import {
 } from "@solana/spl-token";
 
 // Put these in a separate file for configs and constants
-const SOLANA_RPC = "https://solana-rpc.publicnode.com";
+const SOLANA_RPC = process.env.REACT_APP_RPC_URL;
+// const SOLANA_RPC = "https://solana-rpc.publicnode.com";
 /*    Kept on getting rate limited so rotating the RPC URL
         https://api.mainnet-beta.solana.com
         https://solana-api.projectserum.com
@@ -46,13 +48,13 @@ const ROSA_TOKEN_MINT = new PublicKey(
 const DESTINATION_WALLET = new PublicKey(
   "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
 );
-const USDC_TOKEN_MINT = new PublicKey(
-  "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
-); // only have usdc so using it to test
-const EXTRA_TOKEN_MINT = new PublicKey(
-  "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
-);// JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
-const AMOUNT_TO_SEND = 7 * 10 ** 6; // assuming 6 decimals
+// const USDC_TOKEN_MINT = new PublicKey(
+//   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+// ); // only have usdc so using it to test
+// const EXTRA_TOKEN_MINT = new PublicKey(
+//   "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
+// );// JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
+const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
 
 // Put these in a separate file for utility functions
 const getSolBalance = async (walletAddress) => {
@@ -118,6 +120,7 @@ const getTokenBalance = async (
 const Profile = () => {
   const { checkAppUser } = useAppuserout();
   const { walletAddress, connectWallet } = useWallet();
+  const { upgradeUser } = useUpgrade()
 
   const { wallet, connected, publicKey } = useWalletFromAdapter();
 
@@ -160,6 +163,7 @@ const Profile = () => {
     if (!connected || !publicKey) {
       dispatch(gtError());
       dispatch(setgtMessage("Connect your wallet to upgrade"));
+      return
     }
 
     const solBalance = await getSolBalance(publicKey); // works fine
@@ -171,11 +175,12 @@ const Profile = () => {
       "SOL Balance:",
       solBalance,
       "ROSA Balance:",
-      rosaBalance / 1e6,
-    //   "USDC Balance:",
-    //   usdcBalance,
-    //   "EXTRA Balance:",
-    //   extraBalance
+      rosaBalance,
+      // rosaBalance / 1e6,
+      // "USDC Balance:",
+      // usdcBalance,
+      // "EXTRA Balance:",
+      // extraBalance
     );
 
     if (rosaBalance < AMOUNT_TO_SEND) {
@@ -183,7 +188,8 @@ const Profile = () => {
       dispatch(setgtMessage("Insufficient $ROSA tokens to upgrade"));
       return; // uncomment this later
     }
-    
+
+    console.log('transfer starting')
     const tx = await transferRosaTokens(
       wallet.adapter,
       DESTINATION_WALLET.toBase58(),
@@ -192,8 +198,11 @@ const Profile = () => {
     );
     
     console.log("Transfer TX:", tx);
-    dispatch(gtSuccess());
-    dispatch(setgtMessage("Upgrade successful!"));
+    dispatch(gtSuccess())
+    dispatch(setgtMessage("tokens transferred, upgrading you..."));
+    
+    // please uncomment this when you're fix the transfer
+    // await upgradeUser()
   };
 
   const handleLogout = () => {
@@ -210,25 +219,25 @@ const Profile = () => {
     <div className="profile">
       {modalgeneral ? <BackDrop dropPress={setAlltoNull} /> : null}
 
-      <div className="mgb-24 premium-level-box flex justify-space-between align-center">
+      <div className={`mgb-24 premium-level-box flex justify-space-between align-center ${!user?.upgrade ? 'free' : ''}`}>
         <div
           className={`flex align-center ${
             windowWidth > 500 ? "gap-16" : "gap-7"
           }`}
         >
-          <img src={icons.profile.crown_3d} alt="" />
+          <img src={!user?.upgrade ? icons.connect.smile_ot : icons.profile.crown_3d} alt="" />
           <div className="">
             <h3 className="inter mgb-10">Subscription Level</h3>
-            <h2 className="inter mgb-5">Premium</h2>
+            <h2 className={`inter mgb-5 ${!user?.upgrade ? 'free' : ''}`}>{!user?.upgrade ? 'Free' : 'Premium'}</h2>
             <h4 className="inter">
               Member since <span className="inter">Oct 2024</span>
             </h4>
           </div>
         </div>
 
-        <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
+        {!user?.upgrade ? <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
           Upgrade
-        </h5>
+        </h5> : null}
       </div>
 
       <div

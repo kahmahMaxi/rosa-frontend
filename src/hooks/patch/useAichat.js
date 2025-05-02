@@ -174,7 +174,10 @@ Role play as ROSA, a friendly AI instructor offering guidance on wellness topics
                     const filtered = prevRecentConvo.filter(item => item.name !== whatai)
                     const newConvo = { name: whatai, shortname: getShortname(whatai), date: now }
 
-                    const updatedData = { connectionsChats: itemToUpdate(whatai), recentConversations: [newConvo, ...filtered], lastActivity: now }
+                    const prevchatno = user.chatno || 0
+                    const newchatno = prevchatno + 1
+
+                    const updatedData = { connectionsChats: itemToUpdate(whatai), recentConversations: [newConvo, ...filtered], chatno: newchatno, lastActivity: now }
         
                     // Update the document with the new data
                     await updateDoc(userDocRef, updatedData);
