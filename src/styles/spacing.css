@@ -165,6 +165,15 @@
 .mgb-50 {
     margin-bottom: 50px;
 }
+.mgb-54 {
+    margin-bottom: 54px;
+}
+.mgb-55 {
+    margin-bottom: 55px;
+}
+.mgb-56 {
+    margin-bottom: 56px;
+}
 .mgb-60 {
     margin-bottom: 60px;
 }
@@ -176,6 +185,24 @@
 }
 .mgb-77 {
     margin-bottom: 77px;
+}
+.mgb-78 {
+    margin-bottom: 78px;
+}
+.mgb-79 {
+    margin-bottom: 79px;
+}
+.mgb-80 {
+    margin-bottom: 80px;
+}
+.mgb-81 {
+    margin-bottom: 81px;
+}
+.mgb-82 {
+    margin-bottom: 82px;
+}
+.mgb-83 {
+    margin-bottom: 83px;
 }
 
 
@@ -215,6 +242,9 @@
 }
 .grid-row-gap-40 {
     grid-row-gap: 40px;
+}
+.grid-row-gap-45 {
+    grid-row-gap: 45px;
 }
 .grid-row-gap-50 {
     grid-row-gap: 50px;

@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import chat from './../media/icons/chat.png'
 import file from './../media/icons/file.png'
 import git from './../media/icons/git.png'
+import { Vortex } from "../components/vortex";
+import { images } from "../utilities/img";
+import { icons } from "../utilities/icn";
 
 
 
@@ -18,10 +21,23 @@ const WebPage = () => {
     //     {fileLink: ra11, classname: 'rh3', songname: 'Mi troverai sempre qui'},{fileLink: ra12, classname: 'rh4', songname: 'Tu sei'},
     // ]
 
-    const [textca, setTextca] = useState("A5qoJwvYZMRYhQFYSczRduvc9VwWAXYSYnH4wVxUVRCs");
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     const [pause, setPause] = useState(false);
     const containerRef = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup: Remove the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     // useEffect(() => {
     //     const container = containerRef.current;
@@ -45,16 +61,16 @@ const WebPage = () => {
     //     return () => clearInterval(scrollInterval);
     // }, [pause]);
 
-  const copyToClipboard = () => {
-    navigator.clipboard
-      .writeText(textca)
-      .then(() => {
-        alert("ca copied to clipboard!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy ca: ", err);
-      });
-  };
+//   const copyToClipboard = () => {
+//     navigator.clipboard
+//       .writeText(textca)
+//       .then(() => {
+//         alert("ca copied to clipboard!");
+//       })
+//       .catch((err) => {
+//         console.error("Failed to copy ca: ", err);
+//       });
+//   };
 
 
 
@@ -62,68 +78,118 @@ const WebPage = () => {
         <div className="">
 
             <section id="home" className="home">
-                <div className="home-frame flex justify-center align-center">
-                    <div className="flex row wrap align-center home-frame-inner">
+                <Vortex
+                    backgroundColor="black"
+                    className="home-vortex"
+                >
 
-                        <div className="home-text flex">
-                            <div className="home-text-inner">
-                                <div className="home-head-subhead">
-                                    <h1>
-                                        Welcome, meet <br />
-                                        <span>Rosa</span>
-                                    </h1>
-                                    <h3>Experience the future of mental health support with Rosa, your health AI companion.</h3>
-                                </div>
+                    <div className="home-frame">
+                        
 
-                                <div className="flex row wrap gap-15 hm-btn-cont">
-                                    <Link to="auth" className='flex justify-center align-center btn-1 active'>
-                                        {/* <img src={chat} alt="" /> */}
-                                        <span>Enter</span>
-                                    </Link>
-                                    <a href="https://gitbook.neurosa.io/" target="_blank" className='flex justify-center align-center btn-1'>
-                                        <img src={file} alt="" />
-                                        <span>Whitepaper</span>
-                                    </a>
-                                    <a href="https://github.com/Rosa-Health/" target="_blank" className='flex justify-center align-center btn-1'>
-                                        <img src={git} alt="" />
-                                        <span>Github</span>
-                                    </a>
+                        <div className="flex row justify-space-between align-center mgb-80">
+                            <div className="flex row aligm-center gap-13">
+                                <img src={images.general.new_rosa_logo_single} className="rs_logo_single" alt="" />
+
+                                <div className="">
+                                    <img src={images.general.rosa_text} className="rs_text_img mgb-5" alt="" />
+                                    <h5 className="inter">Mental Wellness Assistant</h5>
                                 </div>
-                                
                             </div>
+
+                            {windowWidth > 500 ? <div className="flex row gap-12">
+                                <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                    <img src={icons.webpage.file} alt="" />
+                                    <h3 className="inter">Whitepaper</h3>
+                                </div>
+                                <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                    <img src={icons.webpage.git} alt="" />
+                                    <h3 className="inter">GitHub</h3>
+                                </div>
+                            </div> : null}
                         </div>
 
-                        <div className="home-img">
-                            <div className="grid grid-column-2 gap-30 ft-item-cont">
-                                <div className="ft-item flex align-center">
-                                    <div className="">
-                                        <h2>24/7 Support</h2>
-                                        <p>Always here when you need someone to talk to</p>
-                                    </div>
-                                </div>
-                                <div className="ft-item flex align-center aqua">
-                                    <div className="">
-                                        <h2>AI Powered</h2>
-                                        <p>Advanced language model trained for mental health</p>
-                                    </div>
-                                </div>
-                                <div className="ft-item flex align-center">
-                                    <div className="">
-                                        <h2>Private</h2>
-                                        <p>Secure and confidential conversations</p>
-                                    </div>
-                                </div>
-                                <div className="ft-item flex align-center aqua">
-                                    <div className="">
-                                        <h2>Accessible</h2>
-                                        <p>Available on any device via the website and mobile app</p>
-                                    </div>
+                        <div className={`${windowWidth < 500 ? 'mgb-50' : 'mgb-70'} home-title-cont`}>
+                            <div className="home-title-box">
+                                <h1 className="inter mgb-25">
+                                    Experience the future of mental health support with Rosa, your health Al companion.
+                                </h1>
+                                <div className="home-enter-btn cursor-pointer">
+                                    <h3 className="inter">Get Started</h3>
                                 </div>
                             </div>
                         </div>
 
+                        {windowWidth < 500 ? <div className="flex row gap-12 mgb-32">
+                            <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                <img src={icons.webpage.file} alt="" />
+                                <h3 className="inter">Whitepaper</h3>
+                            </div>
+                            <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                <img src={icons.webpage.git} alt="" />
+                                <h3 className="inter">GitHub</h3>
+                            </div>
+                        </div> : null}
+
+                        <div className="flex row wrap align-flex-end justify-space-between">
+                            <div className={`ring-display-container flex ${windowWidth < 500 ? 'align-flex-start' : 'align-flex-end'}`}>
+                                <div className="ring-display-box">
+                                    <h2 className="inter mgb-5">Get your Rosa ring</h2>
+                                    <h4 className="inter mgb-20 wt_sub_title">Track your mental and health easy and stylish</h4>
+                                    <div className="watch-trailer-btn flex row align-center gap-13 cursor-pointer">
+                                        <img src={icons.crisis.play}  alt="" />
+                                        <h3 className="inter">Watch trailer</h3>
+                                    </div>
+                                </div>
+
+                                <img src={images.web_page.rs_ring} className="rs_ring" alt="" />
+                            </div>
+
+                            <div className={`grid ${windowWidth < 500 ? 'grid-column-1' : 'grid-column-2'} row grid-column-gap-40 grid-row-gap-45 rs-features-container`}>
+                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                        <img src={icons.webpage.clock_rotate} alt="" />
+                                    </div>
+                                    <div className="">
+                                        <h2 className="inter mgb-5">24/7 Support</h2>
+                                        <h4 className="inter">Always here when you need someone to talk to</h4>
+                                    </div>
+                                </div>
+
+                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                        <img src={icons.webpage.shield_check} alt="" />
+                                    </div>
+                                    <div className="">
+                                        <h2 className="inter mgb-5">Private</h2>
+                                        <h4 className="inter">Secure and confidential conversations</h4>
+                                    </div>
+                                </div>
+
+                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                        <img src={icons.webpage.stars} alt="" />
+                                    </div>
+                                    <div className="">
+                                        <h2 className="inter mgb-5">AI Powered</h2>
+                                        <h4 className="inter">Advanced language model trained for mental health</h4>
+                                    </div>
+                                </div>
+
+                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                        <img src={icons.webpage.clipboard} alt="" />
+                                    </div>
+                                    <div className="">
+                                        <h2 className="inter mgb-5">Accessible</h2>
+                                        <h4 className="inter">Available on any device via the website and mobile app</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-                </div>
+
+                </Vortex>
             </section>
 
             
