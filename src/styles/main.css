@@ -184,7 +184,7 @@ a {
 body {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background: var(--rs-dark-blue);
+    /* background: var(--rs-dark-blue); */
     /* background: var(--rs-sd-mp); */
 }
 
@@ -342,6 +342,34 @@ body {
 
 .position-relative {
     position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+
+.h-full {
+    height: 100%;
+}
+.w-full {
+    width: 100%;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.z-0 {
+    z-index: 0;
+}
+.z-10 {
+    z-index: 10;
+}
+
+.bg-transparent {
+    background: transparent;
 }
 
 .center-width {
@@ -903,32 +931,131 @@ animation_-_s
     width: 100%;
     /* height: 100%; */
     height: 100vh;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     position: fixed;
     top: 0;
     left: 0;
     padding: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./../media/img/bg7.jpg);
+    background: rgba(16, 19, 35, 1);
+    /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./../media/img/bg7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    /* background-position: center -800px; */
-    /* position: relative; */
+    background-position: center; */
 }
 
 .home-frame {
     height: 100vh;
-    overflow-y: hidden;
-    /* padding: 0 100px; */
-    /* background: red; */
+    padding: 24px;
 }
 
-.home-frame-inner {
-    /* width: 100%; */
-    /* background: yellow; */
+.home-vortex {
+    width: 100%;
+    height: 100%;
 }
+
+.home-frame h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--n100);
+}
+.home-frame h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--n100);
+}
+.home-frame h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--n100);
+}
+.home-frame h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(175, 181, 217, 1);    
+}
+.home-frame h5 {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(113, 123, 188, 1);
+}
+.rs_logo_single {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.rs_text_img {
+    width: 88px;
+    height: 15px;
+    object-fit: contain;
+}
+.home-head-btn {
+    background: rgba(41, 48, 86, 1);
+    padding: 14px 18px;
+    border-radius: 12px;
+}
+.home-head-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.home-title-cont {
+    padding-left: 96px;
+}
+.home-title-box {
+    width: 600px;
+}
+.home-enter-btn {
+    background: rgba(238, 70, 188, 1);
+    border-radius: 12px;
+    padding: 13px 24px;
+    width: fit-content;
+}
+.ring-display-container {
+    height: 199px;
+    max-width: 467px;
+    width: 100%;
+    position: relative;
+    /* background: red; */
+}
+.ring-display-box {
+    background: rgba(41, 48, 86, 1);
+    border: 1px solid rgba(54, 63, 114, 1);
+    width: 446px;
+    /* height: 154px; */
+    border-radius: 24px;
+    padding: 20px;
+}
+.wt_sub_title {
+    width: 200px;
+}
+.rs_ring {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 190px;
+    object-fit: contain;
+}
+.watch-trailer-btn img {
+    width: 12px;
+    height: 15px;
+    object-fit: contain;
+}
+.watch-trailer-btn h3 {
+    color: rgba(238, 70, 188, 1) !important;
+}
+
+.rs-features-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(238, 70, 188, 0.2);
+}
+.rs-features-icon-box img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
 
 .home-text {
     overflow-y: hidden;

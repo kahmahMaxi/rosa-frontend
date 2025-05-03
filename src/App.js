@@ -39,6 +39,7 @@ import './styles/wellness-score.css'
 // custom_-_js_-_files
 import './scripts/main';
 import { SolanaWalletProvider } from './components/SolanaWalletProvider';
+import FullPage from './pages/demovortex';
 
 function App() {
 
@@ -84,6 +85,11 @@ function App() {
                   element={<SignUp />}
                 /> */}
                 {/* auths */}
+
+                <Route 
+                  path='/vortexdemo'
+                  element={<FullPage />}
+                />
 
                 <Route 
                   path='/dashboard'

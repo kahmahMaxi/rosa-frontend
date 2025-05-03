@@ -119,12 +119,19 @@ import play from './../media/icons/play.png'
 // import nose from './../media/icons/be/nose.png'
 // import lips from './../media/icons/be/lips.png'
 
+import file from './../media/icons/file.png'
+import git from './../media/icons/git.png'
+import stars from './../media/icons/stars.png'
+import clock_rotate from './../media/icons/clock_rotate.png'
+import clipboard from './../media/icons/clipboard.png'
+import shield_check from './../media/icons/shield_check.png'
+
 
 
 
 
 export const icons = {
-
+    
     general: {
         angle_right,
         angle_left,
@@ -133,6 +140,15 @@ export const icons = {
         spa_3d_female,
         timer,
         lips,
+    },
+
+    webpage: {
+        file,
+        git,
+        clock_rotate,
+        stars,
+        clipboard,
+        shield_check,
     },
 
     header: {

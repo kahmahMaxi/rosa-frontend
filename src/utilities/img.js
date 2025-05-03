@@ -9,7 +9,10 @@ import rs_logo_single_nb from './../media/img/rs_logo_single_nb.png'
 import rs_logo_glow from './../media/img/rs_logo_glow.png'
 import tech_logo from './../media/img/tech_logo.png'
 
-import lsm from './../media/img/lsm.png'
+import new_rosa_logo_single from './../media/img/rs_logo_single_new.png'
+import new_rosa_logo_block from './../media/img/rs_logo_block_new.png'
+import rosa_text from './../media/img/rs_logo_text.png'
+
 
 import bgelipse from './../media/img/bgelipse.png'
 
@@ -19,6 +22,8 @@ import rs3 from './../media/img/rs_c3.png'
 import rs4 from './../media/img/rs4.jpg'
 import rs4_1 from './../media/img/rs4_1.jpg'
 import rs5 from './../media/img/rs5.jpg'
+
+import rs_ring from './../media/img/rs_ring.png'
 
 
 
@@ -32,6 +37,14 @@ export const images = {
         dp2,
         tech_logo,
         rs_logo_glow,
+
+        new_rosa_logo_block,
+        new_rosa_logo_single,
+        rosa_text,
+    },
+
+    web_page: {
+        rs_ring,
     },
 
     sidebar: {
@@ -39,7 +52,7 @@ export const images = {
     },
 
     home: {
-        lsm
+        // lsm
     },
 
     wellness: {

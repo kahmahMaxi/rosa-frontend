@@ -891,3 +891,63 @@
   {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`sidebar ${showsidebar ? 'active' : ''}`}>
   {pathlocation.pathname !== '/signin' && pathlocation.pathname !== '/signup' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
   {path.pathname !== '/signin' && path.pathname !== '/signup' ? <div className="main-header">
+
+
+
+  // webpage 
+  <div className="home-text flex">
+                                <div className="home-text-inner">
+                                    <div className="home-head-subhead">
+                                        <h1>
+                                            Welcome, meet <br />
+                                            <span>Rosa</span>
+                                        </h1>
+                                        <h3>Experience the future of mental health support with Rosa, your health AI companion.</h3>
+                                    </div>
+
+                                    <div className="flex row wrap gap-15 hm-btn-cont">
+                                        <Link to="auth" className='flex justify-center align-center btn-1 active'>
+                                            {/* <img src={chat} alt="" /> */}
+                                            <span>Enter</span>
+                                        </Link>
+                                        <a href="https://gitbook.neurosa.io/" target="_blank" className='flex justify-center align-center btn-1'>
+                                            <img src={file} alt="" />
+                                            <span>Whitepaper</span>
+                                        </a>
+                                        <a href="https://github.com/Rosa-Health/" target="_blank" className='flex justify-center align-center btn-1'>
+                                            <img src={git} alt="" />
+                                            <span>Github</span>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div className="home-img">
+                                <div className="grid grid-column-2 gap-30 ft-item-cont">
+                                    <div className="ft-item flex align-center">
+                                        <div className="">
+                                            <h2>24/7 Support</h2>
+                                            <p>Always here when you need someone to talk to</p>
+                                        </div>
+                                    </div>
+                                    <div className="ft-item flex align-center aqua">
+                                        <div className="">
+                                            <h2>AI Powered</h2>
+                                            <p>Advanced language model trained for mental health</p>
+                                        </div>
+                                    </div>
+                                    <div className="ft-item flex align-center">
+                                        <div className="">
+                                            <h2>Private</h2>
+                                            <p>Secure and confidential conversations</p>
+                                        </div>
+                                    </div>
+                                    <div className="ft-item flex align-center aqua">
+                                        <div className="">
+                                            <h2>Accessible</h2>
+                                            <p>Available on any device via the website and mobile app</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
