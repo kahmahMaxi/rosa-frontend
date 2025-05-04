@@ -53,7 +53,7 @@ const DESTINATION_WALLET = new PublicKey(
 // ); // only have usdc so using it to test
 // const EXTRA_TOKEN_MINT = new PublicKey(
 //   "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
-// );// JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
+// ); // JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
 const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
 
 // Put these in a separate file for utility functions
@@ -120,15 +120,15 @@ const getTokenBalance = async (
 const Profile = () => {
   const { checkAppUser } = useAppuserout();
   const { walletAddress, connectWallet } = useWallet();
-  const { upgradeUser } = useUpgrade()
+  const { upgradeUser } = useUpgrade();
 
   const { wallet, connected, publicKey } = useWalletFromAdapter();
 
   const user = useSelector((state) => state.user.value);
   const modalgeneral = useSelector((state) => state.modalgeneral.value);
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [dataSharing, setDatasharing] = useState(null);
@@ -163,11 +163,11 @@ const Profile = () => {
     if (!connected || !publicKey) {
       dispatch(gtError());
       dispatch(setgtMessage("Connect your wallet to upgrade"));
-      return
+      return;
     }
 
     const solBalance = await getSolBalance(publicKey); // works fine
-    const rosaBalance = await getTokenBalance(publicKey, ROSA_TOKEN_MINT); // // TODO: Fix this if you need it
+    const rosaBalance = await getTokenBalance(publicKey, ROSA_TOKEN_MINT);
     // const usdcBalance = await getTokenBalance(publicKey, USDC_TOKEN_MINT);
     // const extraBalance = await getTokenBalance(publicKey, EXTRA_TOKEN_MINT);
 
@@ -179,37 +179,40 @@ const Profile = () => {
       // rosaBalance / 1e6,
       // "USDC Balance:",
       // usdcBalance,
-      // "EXTRA Balance:",
-      // extraBalance
+    //   "EXTRA Balance:",
+    //   extraBalance
     );
 
     if (rosaBalance < AMOUNT_TO_SEND) {
       dispatch(gtError());
       dispatch(setgtMessage("Insufficient $ROSA tokens to upgrade"));
-      return; // uncomment this later
+      return;
     }
 
-    console.log('transfer starting')
+    console.log("transfer starting");
+    // TODO: Wrap this in a try-catch block to handle errors like rejecting the transaction and others
     const tx = await transferRosaTokens(
+      SOLANA_RPC,
       wallet.adapter,
       DESTINATION_WALLET.toBase58(),
       AMOUNT_TO_SEND,
-      ROSA_TOKEN_MINT.toBase58()
+        ROSA_TOKEN_MINT.toBase58()
     );
-    
+
     console.log("Transfer TX:", tx);
-    dispatch(gtSuccess())
+    dispatch(gtSuccess());
     dispatch(setgtMessage("tokens transferred, upgrading you..."));
-    
+
+    // Include this in the try-catch block above
     // please uncomment this when you're fix the transfer
     // await upgradeUser()
   };
 
   const handleLogout = () => {
-    localStorage.clear()
-    dispatch(setUser(null))
-    navigate('/auth')
-  }
+    localStorage.clear();
+    dispatch(setUser(null));
+    navigate("/auth");
+  };
 
   const setAlltoNull = () => {
     dispatch(setmodalgeneral(null));
@@ -219,25 +222,38 @@ const Profile = () => {
     <div className="profile">
       {modalgeneral ? <BackDrop dropPress={setAlltoNull} /> : null}
 
-      <div className={`mgb-24 premium-level-box flex justify-space-between align-center ${!user?.upgrade ? 'free' : ''}`}>
+      <div
+        className={`mgb-24 premium-level-box flex justify-space-between align-center ${
+          !user?.upgrade ? "free" : ""
+        }`}
+      >
         <div
           className={`flex align-center ${
             windowWidth > 500 ? "gap-16" : "gap-7"
           }`}
         >
-          <img src={!user?.upgrade ? icons.connect.smile_ot : icons.profile.crown_3d} alt="" />
+          <img
+            src={
+              !user?.upgrade ? icons.connect.smile_ot : icons.profile.crown_3d
+            }
+            alt=""
+          />
           <div className="">
             <h3 className="inter mgb-10">Subscription Level</h3>
-            <h2 className={`inter mgb-5 ${!user?.upgrade ? 'free' : ''}`}>{!user?.upgrade ? 'Free' : 'Premium'}</h2>
+            <h2 className={`inter mgb-5 ${!user?.upgrade ? "free" : ""}`}>
+              {!user?.upgrade ? "Free" : "Premium"}
+            </h2>
             <h4 className="inter">
               Member since <span className="inter">Oct 2024</span>
             </h4>
           </div>
         </div>
 
-        {!user?.upgrade ? <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
-          Upgrade
-        </h5> : null}
+        {!user?.upgrade ? (
+          <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
+            Upgrade
+          </h5>
+        ) : null}
       </div>
 
       <div
@@ -266,8 +282,8 @@ const Profile = () => {
         </div>
       </div>
 
-            <div className="profile-frame-outer mgb-24">
-                <h1 className="inter mgb-24">Account Settings</h1>
+      <div className="profile-frame-outer mgb-24">
+        <h1 className="inter mgb-24">Account Settings</h1>
 
         <div className="grid grid-column-1 gap-12">
           <div className="profile-frames flex justify-space-between align-center">
@@ -349,21 +365,21 @@ const Profile = () => {
               </div>
             </div>
 
-                        <div className="icon-angle">
-                            <img src={icons.general.angle_right} alt="" />
-                        </div>
-                    </div>
-
-                </div>
+            <div className="icon-angle">
+              <img src={icons.general.angle_right} alt="" />
             </div>
-
-            <div className="logout-btn flex justify-flex-end cursor-pointer" onClick={handleLogout}>
-                <p className="inter">Logout</p>
-            </div>
-
+          </div>
         </div>
+      </div>
 
-    );
-}
- 
+      <div
+        className="logout-btn flex justify-flex-end cursor-pointer"
+        onClick={handleLogout}
+      >
+        <p className="inter">Logout</p>
+      </div>
+    </div>
+  );
+};
+
 export default Profile;
