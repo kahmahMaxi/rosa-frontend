@@ -14,6 +14,7 @@ import {
 } from "@solana/spl-token";
 
 export const transferRosaTokens = async (
+  rpcEndpoint,
   walletAdapter,
   toPublicKey,
   amount,
@@ -21,6 +22,7 @@ export const transferRosaTokens = async (
 ) => {
   try {
     const connection = new Connection(
+      rpcEndpoint || clusterApiUrl("mainnet-beta"),
       // "https://api.mainnet-beta.solana.com",
       // process.env.REACT_APP_RPC_URL,
       "confirmed"
