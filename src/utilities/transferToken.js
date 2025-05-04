@@ -1,16 +1,16 @@
 import {
   Connection,
   PublicKey,
+  SendTransactionError,
   Transaction,
-  SystemProgram,
-  sendAndConfirmTransaction,
-  sendAndConfirmRawTransaction,
   clusterApiUrl,
 } from "@solana/web3.js";
 import {
-  getOrCreateAssociatedTokenAccount,
-  createTransferInstruction,
   getAssociatedTokenAddress,
+  createTransferInstruction,
+  createAssociatedTokenAccountInstruction,
+  getAccount,
+  TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 
 export const transferRosaTokens = async (
@@ -23,38 +23,68 @@ export const transferRosaTokens = async (
   try {
     const connection = new Connection(
       rpcEndpoint || clusterApiUrl("mainnet-beta"),
-      // "https://api.mainnet-beta.solana.com",
-      // process.env.REACT_APP_RPC_URL,
       "confirmed"
     );
+
     const fromPubkey = walletAdapter.publicKey;
     const toPubkey = new PublicKey(toPublicKey);
     const mint = new PublicKey(mintAddress);
 
+    // Derive associated token accounts
     const fromTokenAccount = await getAssociatedTokenAddress(mint, fromPubkey);
     const toTokenAccount = await getAssociatedTokenAddress(mint, toPubkey);
 
+    // Initialize transaction
+    const transaction = new Transaction();
+
+    // Check if destination ATA exists; create it if not
+    try {
+      await getAccount(connection, toTokenAccount);
+    } catch (error) {
+      if (error.message.includes("TokenAccountNotFoundError")) {
+        const createAtaIx = createAssociatedTokenAccountInstruction(
+          fromPubkey, // Payer (sender)
+          toTokenAccount, // ATA address
+          toPubkey, // Owner (recipient)
+          mint // Token mint
+        );
+        transaction.add(createAtaIx);
+        console.log("Added instruction to create destination ATA");
+      } else {
+        throw error;
+      }
+    }
+
+    // Add transfer instruction
     const transferIx = createTransferInstruction(
       fromTokenAccount,
       toTokenAccount,
       fromPubkey,
-      // eslint-disable-next-line no-undef
-      BigInt(amount)
+      // BigInt(amount),
+      amount,
+      [],
+      TOKEN_PROGRAM_ID
     );
+    transaction.add(transferIx);
 
-    const transaction = new Transaction().add(transferIx);
+    // Set blockhash and fee payer
+    const { blockhash } = await connection.getLatestBlockhash();
+    transaction.recentBlockhash = blockhash;
     transaction.feePayer = fromPubkey;
-    transaction.recentBlockhash = (
-      await connection.getLatestBlockhash()
-    ).blockhash;
 
+    // Sign and send
     const signedTx = await walletAdapter.signTransaction(transaction);
-    const txid = await connection.sendRawTransaction(signedTx.serialize());
-
-    console.log("Transaction ID:", txid);
-    return txid;
+    const txid = await connection.sendRawTransaction(signedTx.serialize(), {
+      skipPreflight: true,
+    });
+    const confirmation = await connection.confirmTransaction(txid);
+    // console.log("Transaction ID:", txid, "Confirmation:", confirmation);
+    return { txid, confirmation };
   } catch (error) {
     console.error("Transfer failed:", error);
+    if (error instanceof SendTransactionError) {
+      console.log("Transaction logs:", await error.getLogs());
+    }
     throw error;
   }
 };

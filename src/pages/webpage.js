@@ -97,14 +97,14 @@ const WebPage = () => {
                             </div>
 
                             {windowWidth > 500 ? <div className="flex row gap-12">
-                                <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                <Link to="http://gitbook.neurosa.io" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
                                     <img src={icons.webpage.file} alt="" />
                                     <h3 className="inter">Whitepaper</h3>
-                                </div>
-                                <div className="home-head-btn flex row gap-10 cursor-pointer">
+                                </Link>
+                                <Link to="https://github.com/Rosa-Health/" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
                                     <img src={icons.webpage.git} alt="" />
                                     <h3 className="inter">GitHub</h3>
-                                </div>
+                                </Link>
                             </div> : null}
                         </div>
 
@@ -113,32 +113,32 @@ const WebPage = () => {
                                 <h1 className="inter mgb-25">
                                     Experience the future of mental health support with Rosa, your health Al companion.
                                 </h1>
-                                <div className="home-enter-btn cursor-pointer">
+                                <Link to="/auth" className="home-enter-btn cursor-pointer">
                                     <h3 className="inter">Get Started</h3>
-                                </div>
+                                </Link>
                             </div>
                         </div>
 
                         {windowWidth < 500 ? <div className="flex row gap-12 mgb-32">
-                            <div className="home-head-btn flex row gap-10 cursor-pointer">
+                            <Link to="http://gitbook.neurosa.io" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
                                 <img src={icons.webpage.file} alt="" />
                                 <h3 className="inter">Whitepaper</h3>
-                            </div>
-                            <div className="home-head-btn flex row gap-10 cursor-pointer">
+                            </Link>
+                            <Link to="https://github.com/Rosa-Health/" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
                                 <img src={icons.webpage.git} alt="" />
                                 <h3 className="inter">GitHub</h3>
-                            </div>
+                            </Link>
                         </div> : null}
 
                         <div className="flex row wrap align-flex-end justify-space-between">
                             <div className={`ring-display-container flex ${windowWidth < 500 ? 'align-flex-start' : 'align-flex-end'}`}>
                                 <div className="ring-display-box">
-                                    <h2 className="inter mgb-5">Get your Rosa ring</h2>
+                                    <h2 className="inter mgb-5">Get your ROSA RING</h2>
                                     <h4 className="inter mgb-20 wt_sub_title">Track your mental and health easy and stylish</h4>
-                                    <div className="watch-trailer-btn flex row align-center gap-13 cursor-pointer">
+                                    <Link to="https://youtu.be/8KldCljbBH0" target="_blank" className="watch-trailer-btn flex row align-center gap-13 cursor-pointer">
                                         <img src={icons.crisis.play}  alt="" />
                                         <h3 className="inter">Watch trailer</h3>
-                                    </div>
+                                    </Link>
                                 </div>
 
                                 <img src={images.web_page.rs_ring} className="rs_ring" alt="" />

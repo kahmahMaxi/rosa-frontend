@@ -1031,6 +1031,7 @@ animation_-_s
     border-radius: 12px;
     padding: 13px 24px;
     width: fit-content;
+    display: inline-block;
 }
 .ring-display-container {
     height: 199px;

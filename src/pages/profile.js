@@ -27,34 +27,21 @@ import {
   getAccount,
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
+import { startLoading, stopLoading } from "../redux/loadingSlice";
+
 
 // Put these in a separate file for configs and constants
 const SOLANA_RPC = process.env.REACT_APP_RPC_URL;
-// const SOLANA_RPC = "https://solana-rpc.publicnode.com";
-/*    Kept on getting rate limited so rotating the RPC URL
-        https://api.mainnet-beta.solana.com
-        https://solana-api.projectserum.com
-        https://solana-api.moralis.io/v1/mainnet
-        https://api.devnet.solana.com
-        https://api.testnet.solana.com
-        https://solana-rpc.publicnode.com
-*/
-// const connection = new Connection(clusterApiUrl(WalletAdapterNetwork.Mainnet), 'confirmed');
 const connection = new Connection(SOLANA_RPC);
-
 const ROSA_TOKEN_MINT = new PublicKey(
   "6dZiYn3DTdPeBiWu5FbpbdyMXMwi47KQpddZnmZkpump"
 );
 const DESTINATION_WALLET = new PublicKey(
-  "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
+  "w4JpjVWzKMQ7GuMRnM7BVxLRN7eWyQnKNNdnQ5jHzDm"
 );
-// const USDC_TOKEN_MINT = new PublicKey(
-//   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
-// ); // only have usdc so using it to test
-// const EXTRA_TOKEN_MINT = new PublicKey(
-//   "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
-// ); // JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
-const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
+// const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
+const AMOUNT_TO_SEND = 1000; // // AMOUNT_TO_SEND in token units
+
 
 // Put these in a separate file for utility functions
 const getSolBalance = async (walletAddress) => {
@@ -65,7 +52,7 @@ const getSolBalance = async (walletAddress) => {
 const getTokenBalance = async (
   walletAddress,
   mintAddress,
-  adjustForDecimals = true
+  adjustForDecimals = false // i had to set this one to false so getTokenbalance will return raw units
 ) => {
   try {
     const ata = await getAssociatedTokenAddress(
@@ -159,53 +146,71 @@ const Profile = () => {
   };
 
   const handleTransferToken = async () => {
+    dispatch(startLoading())
     console.log("Transfering Token", connected, publicKey);
     if (!connected || !publicKey) {
       dispatch(gtError());
       dispatch(setgtMessage("Connect your wallet to upgrade"));
+      dispatch(stopLoading())
       return;
     }
 
     const solBalance = await getSolBalance(publicKey); // works fine
     const rosaBalance = await getTokenBalance(publicKey, ROSA_TOKEN_MINT);
-    // const usdcBalance = await getTokenBalance(publicKey, USDC_TOKEN_MINT);
-    // const extraBalance = await getTokenBalance(publicKey, EXTRA_TOKEN_MINT);
+    
 
     console.log(
       "SOL Balance:",
       solBalance,
       "ROSA Balance:",
       rosaBalance,
-      // rosaBalance / 1e6,
-      // "USDC Balance:",
-      // usdcBalance,
-    //   "EXTRA Balance:",
-    //   extraBalance
+      "amount to send:",
+      AMOUNT_TO_SEND,
     );
 
     if (rosaBalance < AMOUNT_TO_SEND) {
       dispatch(gtError());
       dispatch(setgtMessage("Insufficient $ROSA tokens to upgrade"));
+      dispatch(stopLoading())
       return;
     }
 
+    const real_amount_to_send = AMOUNT_TO_SEND * 10 ** 6
+
     console.log("transfer starting");
     // TODO: Wrap this in a try-catch block to handle errors like rejecting the transaction and others
-    const tx = await transferRosaTokens(
-      SOLANA_RPC,
-      wallet.adapter,
-      DESTINATION_WALLET.toBase58(),
-      AMOUNT_TO_SEND,
+    try {
+      const tx = await transferRosaTokens(
+        SOLANA_RPC,
+        wallet.adapter,
+        DESTINATION_WALLET.toBase58(),
+        real_amount_to_send,
         ROSA_TOKEN_MINT.toBase58()
-    );
+      );
+  
+      console.log(
+        "Transfer TX:", tx.txid, 
+        "confirmation object", tx.confirmation
+      );
+      if(!tx.confirmation.value.err) {
+        dispatch(gtSuccess());
+        dispatch(setgtMessage("tokens transferred, upgrading you..."));
 
-    console.log("Transfer TX:", tx);
-    dispatch(gtSuccess());
-    dispatch(setgtMessage("tokens transferred, upgrading you..."));
+        await upgradeUser()
 
-    // Include this in the try-catch block above
-    // please uncomment this when you're fix the transfer
-    // await upgradeUser()
+      } else {
+        dispatch(gtSuccess());
+        dispatch(setgtMessage("tokens failed to send"));
+        dispatch(stopLoading())
+      }
+      
+      
+    } catch (err) {
+      console.log(err);
+      dispatch(gtError());
+      dispatch(setgtMessage("an error occured"));
+      dispatch(stopLoading)
+    }
   };
 
   const handleLogout = () => {
@@ -224,7 +229,7 @@ const Profile = () => {
 
       <div
         className={`mgb-24 premium-level-box flex justify-space-between align-center ${
-          !user?.upgrade ? "free" : ""
+          !user?.upgraded ? "free" : ""
         }`}
       >
         <div
@@ -234,14 +239,14 @@ const Profile = () => {
         >
           <img
             src={
-              !user?.upgrade ? icons.connect.smile_ot : icons.profile.crown_3d
+              !user?.upgraded ? icons.connect.smile_ot : icons.profile.crown_3d
             }
             alt=""
           />
           <div className="">
             <h3 className="inter mgb-10">Subscription Level</h3>
-            <h2 className={`inter mgb-5 ${!user?.upgrade ? "free" : ""}`}>
-              {!user?.upgrade ? "Free" : "Premium"}
+            <h2 className={`inter mgb-5 ${!user?.upgraded ? "free" : ""}`}>
+              {!user?.upgraded ? "Free" : "Premium"}
             </h2>
             <h4 className="inter">
               Member since <span className="inter">Oct 2024</span>
@@ -249,7 +254,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {!user?.upgrade ? (
+        {!user?.upgraded ? (
           <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
             Upgrade
           </h5>

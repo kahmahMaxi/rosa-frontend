@@ -1393,3 +1393,176 @@ Please make your answers as brief as possible but not too brief and not too long
 
       
 secondtechuser@use.use
+
+
+/*    Kept on getting rate limited so rotating the RPC URL
+        https://api.mainnet-beta.solana.com
+        https://solana-api.projectserum.com
+        https://solana-api.moralis.io/v1/mainnet
+        https://api.devnet.solana.com
+        https://api.testnet.solana.com
+        https://solana-rpc.publicnode.com
+*/
+
+// const SOLANA_RPC = "https://solana-rpc.publicnode.com";
+// const connection = new Connection(clusterApiUrl(WalletAdapterNetwork.Mainnet), 'confirmed');
+
+// const USDC_TOKEN_MINT = new PublicKey(
+//   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+// ); // only have usdc so using it to test
+// const EXTRA_TOKEN_MINT = new PublicKey(
+//   "G69PHH9cLCgFVbhyo9RcVG8CQ2euwiGowfZfRCcFwKGu"
+// ); // JUST ANOTHER SHITCOIN I HAVE THAT I USED FOR TESTING
+
+
+// const usdcBalance = await getTokenBalance(publicKey, USDC_TOKEN_MINT);
+    // const extraBalance = await getTokenBalance(publicKey, EXTRA_TOKEN_MINT);
+
+// rosaBalance / 1e6,
+      // "USDC Balance:",
+      // usdcBalance,
+    //   "EXTRA Balance:",
+    //   extraBalance
+
+
+
+    // // Check if the source ATA exists, create it if it doesn't
+    // let sourceAccount;
+    // try {
+    //   sourceAccount = await connection.getAccountInfo(fromTokenAccount);
+    //   if (!sourceAccount) {
+    //     console.log("Source ATA does not exist, creating it...");
+    //     const createSourceATAInstruction = createAssociatedTokenAccountInstruction(
+    //       fromPubkey, // Payer
+    //       fromTokenAccount, // ATA address
+    //       fromPubkey, // Owner
+    //       mint, // Mint
+    //       TOKEN_PROGRAM_ID
+    //     );
+    //     const tx = new Transaction().add(createSourceATAInstruction);
+    //     const { blockhash } = await connection.getLatestBlockhash();
+    //     tx.recentBlockhash = blockhash;
+    //     tx.feePayer = fromPubkey;
+    //     const signedTx = await walletAdapter.signTransaction(tx);
+    //     const txid = await connection.sendRawTransaction(signedTx.serialize());
+    //     await connection.confirmTransaction(txid);
+    //   }
+    // } catch (error) {
+    //   console.error("Error checking/creating source ATA:", error);
+    //   throw error;
+    // }
+
+    // // Check if the destination ATA exists, create it if it doesn't
+    // let destinationAccount;
+    // try {
+    //   destinationAccount = await connection.getAccountInfo(toTokenAccount);
+    //   if (!destinationAccount) {
+    //     console.log("Destination ATA does not exist, creating it...");
+    //     const createDestinationATAInstruction = createAssociatedTokenAccountInstruction(
+    //       fromPubkey, // Payer (sender pays for creating the destination ATA)
+    //       toTokenAccount, // ATA address
+    //       toPubkey, // Owner
+    //       mint, // Mint
+    //       TOKEN_PROGRAM_ID
+    //     );
+    //     const tx = new Transaction().add(createDestinationATAInstruction);
+    //     const { blockhash } = await connection.getLatestBlockhash();
+    //     tx.recentBlockhash = blockhash;
+    //     tx.feePayer = fromPubkey;
+    //     const signedTx = await walletAdapter.signTransaction(tx);
+    //     const txid = await connection.sendRawTransaction(signedTx.serialize());
+    //     await connection.confirmTransaction(txid);
+    //   }
+    // } catch (error) {
+    //   console.error("Error checking/creating destination ATA:", error);
+    //   throw error;
+    // }
+
+
+    // console.log("Using RPC:", connection.rpcEndpoint);
+
+
+
+
+
+
+import {
+  Connection,
+  PublicKey,
+  Transaction,
+  SystemProgram,
+  sendAndConfirmTransaction,
+  sendAndConfirmRawTransaction,
+  clusterApiUrl,
+  SendTransactionError,
+} from "@solana/web3.js";
+import {
+  TOKEN_PROGRAM_ID,
+  getOrCreateAssociatedTokenAccount,
+  createTransferInstruction,
+  getAssociatedTokenAddress,
+  createAssociatedTokenAccountInstruction,
+} from "@solana/spl-token";
+
+export const transferRosaTokens = async (
+  rpcEndpoint,
+  walletAdapter,
+  toPublicKey,
+  amount,
+  mintAddress
+) => {
+  try {
+    const connection = new Connection(
+      rpcEndpoint || clusterApiUrl("mainnet-beta"),
+      // "https://api.mainnet-beta.solana.com",
+      // process.env.REACT_APP_RPC_URL,
+      "confirmed"
+    );
+
+    const fromPubkey = walletAdapter.publicKey;
+    const toPubkey = new PublicKey(toPublicKey);
+    const mint = new PublicKey(mintAddress);
+
+    // Get associated token accounts
+    const fromTokenAccount = await getAssociatedTokenAddress(mint, fromPubkey);
+    const toTokenAccount = await getAssociatedTokenAddress(mint, toPubkey);
+
+    const transferIx = createTransferInstruction(
+      fromTokenAccount,
+      toTokenAccount,
+      fromPubkey,
+      // eslint-disable-next-line no-undef
+      BigInt(amount),
+      [],
+      TOKEN_PROGRAM_ID
+    );
+    // console.log("Transaction: ", transferIx);
+    // console.log("Transaction instructions: ", transferIx.instructions);
+
+    const transaction = new Transaction().add(transferIx);
+    const { blockhash } = await connection.getLatestBlockhash();
+    transaction.recentBlockhash = blockhash;
+    transaction.feePayer = fromPubkey;
+
+    // Sign and send the transaction
+    const signedTx = await walletAdapter.signTransaction(transaction);
+    const txid = await connection.sendRawTransaction(signedTx.serialize(), { skipPreflight: true });
+    const confirmation = await connection.confirmTransaction(txid);
+    // transaction.feePayer = fromPubkey;
+    // transaction.recentBlockhash = (
+    //   await connection.getLatestBlockhash()
+    // ).blockhash;
+
+    // const signedTx = await walletAdapter.signTransaction(transaction);
+    // const txid = await connection.sendRawTransaction(signedTx.serialize());
+
+    console.log("Transaction ID:", txid, "Confirmation:", confirmation);
+    return txid;
+  } catch (error) {
+    console.error("Transfer failed:", error);
+    if (error instanceof SendTransactionError) {
+      console.log("Transaction logs:", await error.getLogs());
+    }
+    throw error;
+  }
+};

@@ -17,7 +17,7 @@ import { db } from '../../Firebase'
 // states
 import { setUser } from './../../redux/userSlice';
 import { setgtMessage } from './../../redux/gtmsgSlice';
-import { gtSuccess, gtError, setgtNull } from './../../redux/gtstatusSlice';
+import { gtSuccess, gtError, setgtNull, gtNeutral } from './../../redux/gtstatusSlice';
 import { startLoading, stopLoading } from './../../redux/loadingSlice';
 import { closeosModal } from './../../redux/osSlice';
 
@@ -60,7 +60,7 @@ export const useUpgrade = () => {
                     // update states
                     var itemUpdate = { ...user, upgraded: true, notis: [ ...prevnotis, newnotis ], lastActivity: now }
                     dispatch(setUser(itemUpdate))
-                    dispatch(gtSuccess())
+                    dispatch(gtNeutral())
                     dispatch(setgtMessage(`🎉 Premium Unlocked!`))
                     console.log(`upgrade success`);
                     dispatch(stopLoading())

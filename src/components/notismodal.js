@@ -41,7 +41,7 @@ const Notifications = () => {
 
                 <div className="grid grid-column-1 gap-10">
                     {(user?.notis || []).map((item, index) => (
-                        <div className="notis-item flex row gap-10">
+                        <div className="notis-item flex row gap-10" key={index}>
                             <img src={images.connect.rs1} alt="" />
 
                             <div className="">
