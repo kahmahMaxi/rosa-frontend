@@ -28,6 +28,7 @@ import {
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 import { startLoading, stopLoading } from "../redux/loadingSlice";
+import { formatSmartDate } from "../utilities/formatDates";
 
 
 // Put these in a separate file for configs and constants
@@ -37,7 +38,7 @@ const ROSA_TOKEN_MINT = new PublicKey(
   "6dZiYn3DTdPeBiWu5FbpbdyMXMwi47KQpddZnmZkpump"
 );
 const DESTINATION_WALLET = new PublicKey(
-  "w4JpjVWzKMQ7GuMRnM7BVxLRN7eWyQnKNNdnQ5jHzDm"
+  "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
 );
 // const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
 const AMOUNT_TO_SEND = 1000; // // AMOUNT_TO_SEND in token units
@@ -209,7 +210,7 @@ const Profile = () => {
       console.log(err);
       dispatch(gtError());
       dispatch(setgtMessage("an error occured"));
-      dispatch(stopLoading)
+      dispatch(stopLoading())
     }
   };
 
@@ -249,7 +250,7 @@ const Profile = () => {
               {!user?.upgraded ? "Free" : "Premium"}
             </h2>
             <h4 className="inter">
-              Member since <span className="inter">Oct 2024</span>
+              Member since <span className="inter">{formatSmartDate(user?.createdAt)}</span>
             </h4>
           </div>
         </div>

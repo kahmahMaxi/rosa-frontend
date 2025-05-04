@@ -252,7 +252,7 @@ const Home = () => {
 
                 <div className="stress-mood-box">
                     <div className="flex justify-center">
-                        <WellnessScore score={user?.current_scores?.dailyWellnessScore} />
+                        <WellnessScore score={user?.current_scores?.dailyWellnessScore || 0} />
                         {/* <div className="wn-box">
                             <div className="flex align-center row wellness-score-row">
                                 <h3 className="inter">93</h3>

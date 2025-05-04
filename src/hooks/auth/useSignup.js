@@ -96,7 +96,7 @@ export const useSignup = () => {
                     dispatch(gtSuccess())
                     dispatch(setgtMessage('signup success'))
                     setLoadingState(false)
-                    navigate('/')
+                    navigate('/dashboard')
                     
                 } else {
                     // username already exixts

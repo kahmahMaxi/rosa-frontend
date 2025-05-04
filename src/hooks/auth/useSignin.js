@@ -76,7 +76,7 @@ export const useSignin = () => {
                 dispatch(gtSuccess())
                 dispatch(setgtMessage('login success'))
                 setLoadingState(false)
-                navigate('/')
+                navigate('/dashboard')
             } else {
                 // if no document exists, notify user
                 console.log(`user with email ${email} does not exixts`)
