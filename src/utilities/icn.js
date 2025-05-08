@@ -125,6 +125,7 @@ import stars from './../media/icons/stars.png'
 import clock_rotate from './../media/icons/clock_rotate.png'
 import clipboard from './../media/icons/clipboard.png'
 import shield_check from './../media/icons/shield_check.png'
+import cart from './../media/icons/cart.png'
 
 
 
@@ -149,6 +150,7 @@ export const icons = {
         stars,
         clipboard,
         shield_check,
+        cart,
     },
 
     header: {

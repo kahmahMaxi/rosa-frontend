@@ -1,4 +1,64 @@
+
+
+/* ringpage */
+@media (max-width: 1300px) {
+    .mobile-app-demo-img img {
+        width: 395px;
+    }
+    .ring_frame_ring {
+        width: 140px;
+        height: 140px;
+        top: 62px;
+        right: 20px;
+    }
+    .ring .gap-190 {
+        gap: 100px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .rosa-info-item-container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .ring-frame-1 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+    .ring-frame-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+    .ring-page-top {
+        height: auto;
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    .meet-rosa-box {
+        width: 100%;
+    }
+    .mobile-app-demo-img img {
+        width: 100%;
+    }
+}
+
+
 /* webpage */
+@media (min-width: 1700px) {
+    .home-frame {
+        padding: 24px 100px;
+    }
+    .rosa-info-item-container {
+        padding: 0 120px;
+    }
+}
+
 @media (max-width: 900px) {
     .home-title-cont {
         padding-left: 30px;

@@ -78,11 +78,29 @@
 .gap-33 {
     gap: 33px;
 }
+.gap-50 {
+    gap: 50px;
+}
 .gap-60 {
     gap: 60px;
 }
+.gap-70 {
+    gap: 70px;
+}
 .gap-80 {
     gap: 80px;
+}
+.gap-100 {
+    gap: 100px;
+}
+.gap-190 {
+    gap: 190px;
+}
+.gap-200 {
+    gap: 200px;
+}
+.gap-200 {
+    gap: 220px;
 }
 
 
@@ -203,6 +221,24 @@
 }
 .mgb-83 {
     margin-bottom: 83px;
+}
+.mgb-100 {
+    margin-bottom: 100px;
+}
+.mgb-110 {
+    margin-bottom: 110px;
+}
+.mgb-120 {
+    margin-bottom: 120px;
+}
+.mgb-130 {
+    margin-bottom: 130px;
+}
+.mgb-140 {
+    margin-bottom: 140px;
+}
+.mgb-150 {
+    margin-bottom: 150px;
 }
 
 

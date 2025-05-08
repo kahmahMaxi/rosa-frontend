@@ -1566,3 +1566,25 @@ export const transferRosaTokens = async (
     throw error;
   }
 };
+
+
+
+
+
+d12c845d-4833-413f-81d9-2e887608574e
+
+
+
+      // BigInt(amount),
+
+
+// const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=march&vs_currencies=usd');
+    // const data = await response.json();
+    // const price = data['march']?.usd;
+    // if (price === undefined) {
+    //   throw new Error('Failed to fetch ROSA price');
+    // }
+
+
+// const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
+const AMOUNT_TO_SEND = 1000; // // AMOUNT_TO_SEND in token units

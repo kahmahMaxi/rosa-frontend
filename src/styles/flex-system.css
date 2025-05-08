@@ -44,6 +44,10 @@
 
 /* _-_flex_-_sizes */
 
+.flex-1 {
+    flex: 1;
+}
+
 .flex-50 {
     flex: 0 0 50%;
 }

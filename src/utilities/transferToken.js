@@ -60,7 +60,6 @@ export const transferRosaTokens = async (
       fromTokenAccount,
       toTokenAccount,
       fromPubkey,
-      // BigInt(amount),
       amount,
       [],
       TOKEN_PROGRAM_ID

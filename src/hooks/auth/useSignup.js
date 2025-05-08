@@ -82,6 +82,7 @@ export const useSignup = () => {
                         username: username,
                         useremail: user.email,
                         notis: notisItem,
+                        chatno: 5,
                         createdAt: new Date().getTime(), // timestamp for when the user is created
                         lastActivity: new Date().getTime(), 
                     };

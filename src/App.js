@@ -40,6 +40,7 @@ import './styles/wellness-score.css'
 import './scripts/main';
 import { SolanaWalletProvider } from './components/SolanaWalletProvider';
 import FullPage from './pages/demovortex';
+import Ring from './pages/ring';
 
 function App() {
 
@@ -68,6 +69,11 @@ function App() {
               <Route 
                   index
                   element={<WebPage />}
+                />
+
+                <Route 
+                  path='/ring'
+                  element={<Ring />}
                 />
                 
                 {/* auths */}

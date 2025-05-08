@@ -83,8 +83,7 @@ const WebPage = () => {
                     className="home-vortex"
                 >
 
-                    <div className="home-frame">
-                        
+                    <div className={`home-frame ${windowWidth > 1280 ? 'flex column' : ''}`}> 
 
                         <div className="flex row justify-space-between align-center mgb-80">
                             <div className="flex row aligm-center gap-13">
@@ -108,85 +107,97 @@ const WebPage = () => {
                             </div> : null}
                         </div>
 
-                        <div className={`${windowWidth < 500 ? 'mgb-50' : 'mgb-70'} home-title-cont`}>
-                            <div className="home-title-box">
-                                <h1 className="inter mgb-25">
-                                    Experience the future of mental health support with Rosa, your health Al companion.
-                                </h1>
-                                <Link to="/auth" className="home-enter-btn cursor-pointer">
-                                    <h3 className="inter">Get Started</h3>
-                                </Link>
-                            </div>
-                        </div>
+                        <div className={`flex column justify-space-between flex-1 ${windowWidth < 500 ? 'gap-50' : 'gap-70'}`}>
+                            <div>
+                                <div className={` home-title-cont ${windowWidth < 500 ? 'mgb-50' : ''}`}>
+                                    <div className="home-title-box">
+                                        <h1 className="inter mgb-25">
+                                            Experience the future of mental health support with Rosa, your health Al companion.
+                                        </h1>
+                                        <div className="flex align-center row gap-16">
+                                            <Link to="/auth" className="home-enter-btn flex align-center cursor-pointer">
+                                                <h3 className="inter">Get Started</h3>
+                                            </Link>
+                                            <a href="" target="_blank" className="app-btn ">
+                                                <img src={images.web_page.g_play_badge} alt="" />
+                                            </a>
+                                            <a href="" target="_blank" className="app-btn ">
+                                                <img src={images.web_page.app_store_badge} alt="" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        {windowWidth < 500 ? <div className="flex row gap-12 mgb-32">
-                            <Link to="http://gitbook.neurosa.io" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
-                                <img src={icons.webpage.file} alt="" />
-                                <h3 className="inter">Whitepaper</h3>
-                            </Link>
-                            <Link to="https://github.com/Rosa-Health/" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
-                                <img src={icons.webpage.git} alt="" />
-                                <h3 className="inter">GitHub</h3>
-                            </Link>
-                        </div> : null}
-
-                        <div className="flex row wrap align-flex-end justify-space-between">
-                            <div className={`ring-display-container flex ${windowWidth < 500 ? 'align-flex-start' : 'align-flex-end'}`}>
-                                <div className="ring-display-box">
-                                    <h2 className="inter mgb-5">Get your ROSA RING</h2>
-                                    <h4 className="inter mgb-20 wt_sub_title">Track your mental and health easy and stylish</h4>
-                                    <Link to="https://youtu.be/8KldCljbBH0" target="_blank" className="watch-trailer-btn flex row align-center gap-13 cursor-pointer">
-                                        <img src={icons.crisis.play}  alt="" />
-                                        <h3 className="inter">Watch trailer</h3>
+                                {windowWidth < 500 ? <div className="flex row gap-12 mgb-32">
+                                    <Link to="http://gitbook.neurosa.io" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
+                                        <img src={icons.webpage.file} alt="" />
+                                        <h3 className="inter">Whitepaper</h3>
                                     </Link>
-                                </div>
-
-                                <img src={images.web_page.rs_ring} className="rs_ring" alt="" />
+                                    <Link to="https://github.com/Rosa-Health/" target="_blank" className="home-head-btn flex row gap-10 cursor-pointer">
+                                        <img src={icons.webpage.git} alt="" />
+                                        <h3 className="inter">GitHub</h3>
+                                    </Link>
+                                </div> : null}
                             </div>
 
-                            <div className={`grid ${windowWidth < 500 ? 'grid-column-1' : 'grid-column-2'} row grid-column-gap-40 grid-row-gap-45 rs-features-container`}>
-                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
-                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
-                                        <img src={icons.webpage.clock_rotate} alt="" />
+                            <div className="flex row wrap align-flex-end justify-space-between">
+                                <div className={`ring-display-container flex ${windowWidth < 500 ? 'align-flex-start' : 'align-flex-end'}`}>
+                                    <div className="ring-display-box">
+                                        <h2 className="inter mgb-5">Get your ROSA RING</h2>
+                                        <h4 className="inter mgb-20 wt_sub_title">Track your mental and health easy and stylish</h4>
+                                        <Link to="/ring" className="watch-trailer-btn flex row align-center gap-13 cursor-pointer">
+                                            <img src={icons.rightbar.arrow_right_p}  alt="" />
+                                            <h3 className="inter">Learn more</h3>
+                                        </Link>
                                     </div>
-                                    <div className="">
-                                        <h2 className="inter mgb-5">24/7 Support</h2>
-                                        <h4 className="inter">Always here when you need someone to talk to</h4>
-                                    </div>
+
+                                    <img src={images.web_page.rs_ring} className="rs_ring" alt="" />
                                 </div>
 
-                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
-                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
-                                        <img src={icons.webpage.shield_check} alt="" />
+                                <div className={`grid ${windowWidth < 500 ? 'grid-column-1' : 'grid-column-2'} row grid-column-gap-40 grid-row-gap-45 rs-features-container`}>
+                                    <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                        <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                            <img src={icons.webpage.clock_rotate} alt="" />
+                                        </div>
+                                        <div className="">
+                                            <h2 className="inter mgb-5">24/7 Support</h2>
+                                            <h4 className="inter">Always here when you need someone to talk to</h4>
+                                        </div>
                                     </div>
-                                    <div className="">
-                                        <h2 className="inter mgb-5">Private</h2>
-                                        <h4 className="inter">Secure and confidential conversations</h4>
-                                    </div>
-                                </div>
 
-                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
-                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
-                                        <img src={icons.webpage.stars} alt="" />
+                                    <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                        <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                            <img src={icons.webpage.shield_check} alt="" />
+                                        </div>
+                                        <div className="">
+                                            <h2 className="inter mgb-5">Private</h2>
+                                            <h4 className="inter">Secure and confidential conversations</h4>
+                                        </div>
                                     </div>
-                                    <div className="">
-                                        <h2 className="inter mgb-5">AI Powered</h2>
-                                        <h4 className="inter">Advanced language model trained for mental health</h4>
-                                    </div>
-                                </div>
 
-                                <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
-                                    <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
-                                        <img src={icons.webpage.clipboard} alt="" />
+                                    <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                        <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                            <img src={icons.webpage.stars} alt="" />
+                                        </div>
+                                        <div className="">
+                                            <h2 className="inter mgb-5">AI Powered</h2>
+                                            <h4 className="inter">Advanced language model trained for mental health</h4>
+                                        </div>
                                     </div>
-                                    <div className="">
-                                        <h2 className="inter mgb-5">Accessible</h2>
-                                        <h4 className="inter">Available on any device via the website and mobile app</h4>
+
+                                    <div className={`rs-feature-item ${windowWidth < 500 ? 'flex row align-center gap-16' : ''}`}>
+                                        <div className="rs-features-icon-box mgb-16 flex justify-center align-center">
+                                            <img src={icons.webpage.clipboard} alt="" />
+                                        </div>
+                                        <div className="">
+                                            <h2 className="inter mgb-5">Accessible</h2>
+                                            <h4 className="inter">Available on any device via the website and mobile app</h4>
+                                        </div>
                                     </div>
-                                </div>
+                                </div>                            
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </Vortex>

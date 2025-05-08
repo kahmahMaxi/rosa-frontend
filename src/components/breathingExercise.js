@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -143,8 +143,13 @@ const BreathingExercise = ({ showbe }) => {
                     <h4 className="inter text-align-center mgb-24">{currentStep?.steps[currentindex].content}</h4>
 
                     <div className="grid grid-column-2 gap-12">
-                        <button onClick={handlePrev}>Back</button>
-                        <button className="be-next" onClick={handleNext}>Next</button>
+                        <div className="">
+                            {currentindex !== 0 ? <button onClick={handlePrev}>Back</button> : null}
+                        </div>
+                        
+                        <div className="">
+                            {(currentStep?.steps.length !== (currentindex+1)) ? <button className="be-next" onClick={handleNext}>Next</button> : null}
+                        </div>
                     </div>
 
 

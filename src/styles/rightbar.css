@@ -281,6 +281,18 @@
     font-size: 14px;
     font-weight: 400;
     color: rgba(113, 123, 188, 1);
+    /* color: var(--n100); */
+}
+.core-box {
+    background: rgba(182, 103, 30, 1);
+    width: 23px;
+    height: 23px;
+    border-radius: 50px;
+}
+.rightbar-inner .email-box span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--d-white);
 }
 
 .phy-info-row {

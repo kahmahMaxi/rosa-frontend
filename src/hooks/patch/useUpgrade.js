@@ -49,16 +49,18 @@ export const useUpgrade = () => {
                     // get the first matching document (assuming usernames are unique)
                     const userDoc = userquerySnapshot.docs[0];
                     const userDocRef = doc(db, "usersdetails", userDoc.id);
+                    const prevchatno = user.chatno || 0
+                    const newchatno = prevchatno + 10
                     const prevnotis = user.notis || []
                     const newnotis = { title: '🎉 Premium Unlocked!', body: "You've just leveled up! Enjoy exclusive features, faster performance, and all the alpha as a ROSA Premium user. Welcome to the inner circle 🌟" }
     
-                    const updatedData = { upgraded: true, notis: [ ...prevnotis, newnotis ], lastActivity: now }
+                    const updatedData = { upgraded: true, notis: !user.upgraded ? [ ...prevnotis, newnotis ] : [...prevnotis], chatno: newchatno, lastActivity: now }
         
                     // Update the document with the new data
                     await updateDoc(userDocRef, updatedData);
     
                     // update states
-                    var itemUpdate = { ...user, upgraded: true, notis: [ ...prevnotis, newnotis ], lastActivity: now }
+                    var itemUpdate = { ...user, upgraded: true, notis: [ ...prevnotis, newnotis ], chatno: newchatno, lastActivity: now }
                     dispatch(setUser(itemUpdate))
                     dispatch(gtNeutral())
                     dispatch(setgtMessage(`🎉 Premium Unlocked!`))

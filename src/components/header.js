@@ -101,7 +101,7 @@ const Header = () => {
 
       <Notifications />
 
-      {path.pathname !== "/auth" && path.pathname !== '/' ? (
+      {path.pathname !== "/auth" && path.pathname !== '/' && path.pathname !== '/ring' ? (
         <div className="main-header">
           <div className="main-header-inner flex row align-center justify-space-between">
             <div className="">

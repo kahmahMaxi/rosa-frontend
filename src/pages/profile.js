@@ -35,14 +35,47 @@ import { formatSmartDate } from "../utilities/formatDates";
 const SOLANA_RPC = process.env.REACT_APP_RPC_URL;
 const connection = new Connection(SOLANA_RPC);
 const ROSA_TOKEN_MINT = new PublicKey(
-  "6dZiYn3DTdPeBiWu5FbpbdyMXMwi47KQpddZnmZkpump"
+  "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"
 );
 const DESTINATION_WALLET = new PublicKey(
   "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
 );
-// const AMOUNT_TO_SEND = 5 * 10 ** 6; // assuming 6 decimals
-const AMOUNT_TO_SEND = 1000; // // AMOUNT_TO_SEND in token units
 
+// Function to fetch ROSA price from CoinGecko
+async function getRosaPrice() {
+  try {
+    const priceResponse = await fetch(
+      'https://lite-api.jup.ag/price/v2?ids=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'
+    );
+  
+    const priceData = await priceResponse.json();
+  
+    // console.log(priceData);
+    console.log(priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price);
+
+    return priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price;
+  } catch (error) {
+    console.error('Error fetching ROSA price:', error);
+    throw error;
+  }
+}
+
+// Function to fetch token decimals
+async function getTokenDecimals(mintAddress) {
+  try {
+    const mintInfo = await connection.getParsedAccountInfo(mintAddress);
+    if (mintInfo.value && mintInfo.value.data) {
+      const parsedData = mintInfo.value.data.parsed;
+      console.log(parsedData.info.decimals)
+      return parsedData.info.decimals;
+    } else {
+      throw new Error('Failed to get mint info');
+    }
+  } catch (error) {
+    console.error('Error fetching token decimals:', error);
+    throw error;
+  }
+}
 
 // Put these in a separate file for utility functions
 const getSolBalance = async (walletAddress) => {
@@ -158,6 +191,15 @@ const Profile = () => {
 
     const solBalance = await getSolBalance(publicKey); // works fine
     const rosaBalance = await getTokenBalance(publicKey, ROSA_TOKEN_MINT);
+
+    // Calculate dynamic AMOUNT_TO_SEND
+    const pricePerRosa = await getRosaPrice();
+    if (pricePerRosa <= 0) {
+      throw new Error('Invalid ROSA price');
+    }
+    const decimals = await getTokenDecimals(ROSA_TOKEN_MINT);
+    const tokens = 20 / pricePerRosa; // Number of ROSA tokens for 20 USD
+    const amountToSend = Math.floor(tokens * Math.pow(10, decimals)); // Raw units
     
 
     console.log(
@@ -166,26 +208,26 @@ const Profile = () => {
       "ROSA Balance:",
       rosaBalance,
       "amount to send:",
-      AMOUNT_TO_SEND,
+      amountToSend,
     );
 
-    if (rosaBalance < AMOUNT_TO_SEND) {
+    if (rosaBalance < amountToSend) {
       dispatch(gtError());
       dispatch(setgtMessage("Insufficient $ROSA tokens to upgrade"));
       dispatch(stopLoading())
       return;
     }
 
-    const real_amount_to_send = AMOUNT_TO_SEND * 10 ** 6
+    // Optional: Calculate token amount for logging only
+    const tokenAmount = amountToSend / Math.pow(10, decimals);
+    console.log("Transfer starting", "Token amount:", tokenAmount, "Raw units:", amountToSend);
 
-    console.log("transfer starting");
-    // TODO: Wrap this in a try-catch block to handle errors like rejecting the transaction and others
     try {
       const tx = await transferRosaTokens(
         SOLANA_RPC,
         wallet.adapter,
         DESTINATION_WALLET.toBase58(),
-        real_amount_to_send,
+        amountToSend,
         ROSA_TOKEN_MINT.toBase58()
       );
   
@@ -255,11 +297,14 @@ const Profile = () => {
           </div>
         </div>
 
-        {!user?.upgraded ? (
           <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
             Upgrade
           </h5>
-        ) : null}
+        {/* {!user?.upgraded ? (
+          <h5 className="inter cursor-pointer" onClick={handleTransferToken}>
+            Upgrade
+          </h5>
+        ) : null} */}
       </div>
 
       <div

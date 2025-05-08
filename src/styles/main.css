@@ -149,7 +149,7 @@ global_-_styles
 }
 
 .home {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 .picker-result-box {
     overflow-y: hidden;
@@ -426,6 +426,9 @@ body {
 }
 .wheat_b {
     background: wheat;
+}
+.height100 {
+    height: 100%;
 }
 
 @keyframes loadfade {
@@ -953,12 +956,12 @@ animation_-_s
 .home {
     width: 100%;
     /* height: 100%; */
-    height: 100vh;
+    /* height: 100vh; */
     position: fixed;
     top: 0;
     left: 0;
     padding: 0;
-    background: rgba(16, 19, 35, 1);
+    /* background: rgba(16, 19, 35, 1); */
     /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./../media/img/bg7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -968,6 +971,19 @@ animation_-_s
 .home-frame {
     height: 100vh;
     padding: 24px;
+    /* background: hotpink; */
+}
+.ring-page-top {
+    height: 86vh;
+}
+.home-frame::-webkit-scrollbar {
+    width: 4px;
+}
+.home-frame::-webkit-scrollbar-track {
+    background: #000000;
+}
+.home-frame::-webkit-scrollbar-thumb {
+    background: rgba(238, 70, 188, 1);
 }
 
 .home-vortex {
@@ -1029,7 +1045,8 @@ animation_-_s
 .home-enter-btn {
     background: rgba(238, 70, 188, 1);
     border-radius: 12px;
-    padding: 13px 24px;
+    padding: 0 24px;
+    height: 48px;
     width: fit-content;
     display: inline-block;
 }
@@ -1079,6 +1096,109 @@ animation_-_s
     height: 20px;
     object-fit: contain;
 }
+
+.ring-frame-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 24px;
+    /* background: rgba(16, 19, 35, 1); */
+    background: #000000;
+    width: 100%;
+    z-index: 99;
+}
+.ring-frame-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--n100);
+}
+.ring-frame-header h5 {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(113, 123, 188, 1);
+}
+.home-frame.ring {
+    padding-top: 40px;
+    /* background: hotpink; */
+}
+.home-frame h6 {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+.ring-frame-1 {
+    max-width: 450px;
+}
+.meet-rosa-box {
+    width: 400px;
+    padding: 16px;
+    background: rgba(41, 48, 86, 1);
+    border: 1px solid rgba(54, 63, 114, 1);
+    border-radius: 24px;
+}
+.meet-rosa-box img {
+    width: 160px;
+    object-fit: contain;
+}
+.ring-frame-2 {
+    flex: 1;
+    /* background: hotpink; */
+}
+.mobile-app-demo-img img {
+    width: 550px;
+}
+.rs_work_text {
+    width: 200px;
+}
+.rs_work_text h2 {
+    font-weight: 400 !important;
+}
+.home-enter-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.ring_frame_ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    top: 170px;
+    right: 190px;
+}
+
+.rosa-info-item-container {
+    padding: 0 40px;
+}
+.rosa-info-item {
+    max-width: 330px;
+}
+.rosa-info-item img {
+    width: 230px;
+}
+.rosa-info-item h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--n100);
+}
+.rosa-info-item h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(175, 181, 217, 1);
+}
+
+.app-btn img {
+    width: 160px;
+    height: 48px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
 
 
 .home-text {
@@ -3325,6 +3445,7 @@ animation_-_s
     background: rgba(41, 48, 86, 1);
     border-radius: 12px;
     padding: 10px 0;
+    width: 100%;
     text-align: center;
     font-size: 14px;
     font-weight: 600;

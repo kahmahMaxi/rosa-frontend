@@ -129,9 +129,9 @@ const AddPfComp = ({ whatpfc }) => {
                 console.log(inputmessage, pfcchatbox)
                 if(user) {
                     const chatno = user.chatno || 0
-                    if(chatno > 5 && !user.upgraded) {
+                    if(chatno < 1) {
                         dispatch(gtError())
-                        dispatch(setgtMessage('upgrade to premium to continue using rosa'))
+                        dispatch(setgtMessage("you've used up your cores upgrade to get more cores"))
                     } else {
                         // const prevMessages = user.connectionsChats || []
                         const prevtherapy = user.connectionsChats?.therapy || []

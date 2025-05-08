@@ -216,7 +216,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className={`new-qa-box plus ${windowWidth < 500 ? 'flex row gap-10' : ''}`}>
+                <Link to="/insights" className={`new-qa-box plus ${windowWidth < 500 ? 'flex row gap-10' : ''}`}>
                     <div className="flex justify-center align-center new-qa-box-icon">
                         <img src={icons.home.plus} alt="" />
                     </div>
@@ -224,7 +224,7 @@ const Home = () => {
                         <h2 className="inter">Wellness</h2>
                         <p className="inter">View recommendations and exercises</p>
                     </div>
-                </div>
+                </Link>
 
                 <div className={`new-qa-box air ${windowWidth < 500 ? 'flex row gap-10' : ''} cursor-pointer`} onClick={() => dispatch(setmodalgeneral('breathing exercise'))}>
                     <div className="flex justify-center align-center new-qa-box-icon">

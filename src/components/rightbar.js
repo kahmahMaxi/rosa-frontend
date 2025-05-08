@@ -200,7 +200,7 @@ const RightBar = () => {
 
             <OpenSchedule showSchedule={osmodal} />
 
-            {pathlocation.pathname !== '/auth' && pathlocation.pathname !== '/' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
+            {pathlocation.pathname !== '/auth' && pathlocation.pathname !== '/' && pathlocation.pathname !== '/ring' ? <div className={`rightbar ${showrightbar ? 'active' : ''}`}>
 
                 <div className="rightbar-inner">
 
@@ -220,7 +220,12 @@ const RightBar = () => {
 
                         <div className="">
                             <h2 className='inter'>{user?.useremail}</h2>
-                            <h3 className="inter">{user?.physical_info ? user.physical_info.age : '_'} years of age</h3>
+                            <div className="flex row align-center gap-5">
+                                <div className="core-box flex justify-center align-center">
+                                    <span className='inter'>{user?.chatno || 0}</span>
+                                </div>
+                                <h3 className="inter">Cores ⚡</h3>
+                            </div>
                         </div>
                     </div>
 
