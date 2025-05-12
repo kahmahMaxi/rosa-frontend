@@ -26,6 +26,7 @@ import { useAiscore } from "../hooks/general/useAiscore";
 import { icons } from "../utilities/icn";
 import { images } from "../utilities/img";
 import { allQuestions } from "../utilities/allQuestions";
+// import MoodMessage from "../components/moodmessage";
 
 
 const Home = () => {  
@@ -152,6 +153,61 @@ const Home = () => {
         handleAiscore()
     }, [moodadd])
 
+    useEffect(() => {
+        if(user) {
+            if(user.mood_logs.length < 4) {
+                dispatch(setmodalgeneral("moodmessage"))
+            }
+        }
+    }, [])
+
+    const MoodMessage = () => (
+        <div className={`notis-cont ${modalgeneral === 'moodmessage' ? 'active' : ''}`}>
+
+            <div className={`notis-inner moodmessage-inner`}>
+
+                <div className="flex justify-space-between align-center mgb-16">
+                    <h2 className="inter">Message</h2>
+
+                    <div className="modals-close-icon flex justify-center align-center cursor-pointer" onClick={() => dispatch(setmodalgeneral(null))}>
+                        <img src={icons.header.close} alt="" />
+                    </div>
+                </div>
+
+                <div className="grid grid-column-1 gap-30">
+                    
+                    <div className="notis-item">
+                        {/* <img src={images.connect.rs1} alt="" /> */}
+                        <div className="">
+                            <h3 className="inter mgb-10">🧠 Get the Full Picture</h3>
+                            <h4 className="inter">
+                                To unlock your complete wellness insights, ROSA needs at least 4 mood check-ins. The more you share, the better ROSA understands how you're really feeling.
+                            </h4>
+                        </div>
+                    </div>
+
+                    <div className={`grid ${windowWidth < 500 ? 'gridn-column-1' : 'grid-column-2'} row gap-20`}>
+                        <div className="flex justify-center moodmessage-btn cursor-pointer" 
+                            onClick={() => {
+                                handleOpenLogMood()
+                                dispatch(setmodalgeneral(null))
+                            }}
+                        >
+                            {/* <p className="inter">Add Mood Entry</p> */}
+                            <p className="inter">Let’s Do This</p>
+                        </div>
+                        <div className="flex justify-center moodmessage-btn tp cursor-pointer" onClick={() => dispatch(setmodalgeneral(null))}>
+                            <p className="inter">Maybe Later</p>
+                        </div>
+                    </div>
+                
+                </div>
+
+            </div>
+
+        </div>
+    )
+
 
 
 
@@ -191,6 +247,8 @@ const Home = () => {
                 questions={questions}
                 // submit={handleSubmit}
             />
+
+            {MoodMessage()}
 
             {windowWidth < 500 ?
                 <div className="grid grid-column-2 row gap-10 mgb-20">

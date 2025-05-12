@@ -887,6 +887,9 @@ animation_-_s
     overflow-x: auto;
     scroll-behavior: smooth;
 }
+.notis-cont .notis-inner.moodmessage-inner {
+    height: auto;
+}
 .notis-cont.active .notis-inner {
     pointer-events: all;
 }
@@ -944,6 +947,24 @@ animation_-_s
     height: 70px;
     object-fit: contain;
     border-radius: 12px;
+}
+
+.moodmessage-btn {
+    width: 100%;
+    padding: 10px 0;
+    background: rgba(238, 70, 188, 1);
+    border-radius: 12px;
+    color: var(--n100);
+    font-weight: 600;
+    font-size: 14px;
+}
+.moodmessage-btn.tp {
+    background: rgba(62, 71, 132, 1);
+}
+.moodmessage-btn p {
+    color: var(--n100);
+    font-weight: 600;
+    font-size: 14px;
 }
 
 

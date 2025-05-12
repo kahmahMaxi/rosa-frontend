@@ -96,7 +96,8 @@ export const useAiscore = () => {
                 if(user.mood_logs) {
                     if(user.mood_logs.length === 16 || user.mood_logs.length === 32 || user.mood_logs.length === 48 || user.mood_logs.length === 64 || user.mood_logs.length === 80 
                         || user.mood_logs.length === 96 || user.mood_logs.length === 112 || user.mood_logs.length === 128 || user.mood_logs.length === 144 || user.mood_logs.length === 160
-                        || user.mood_logs.length === 176 || user.mood_logs.length === 192 || user.mood_logs.length === 208 || user.mood_logs.length === 224 || user.mood_logs.length === 240) {
+                        || user.mood_logs.length === 176 || user.mood_logs.length === 192 || user.mood_logs.length === 208 || user.mood_logs.length === 224 || user.mood_logs.length === 240
+                        || user.mood_logs.length === 256 || user.mood_logs.length === 272 || user.mood_logs.length === 288 || user.mood_logs.length === 302 || user.mood_logs.length === 318) {
                         console.log('prompt ai')
                         dispatch(startLoading())
                         const now = new Date().getTime()

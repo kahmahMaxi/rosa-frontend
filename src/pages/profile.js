@@ -35,25 +35,25 @@ import { formatSmartDate } from "../utilities/formatDates";
 const SOLANA_RPC = process.env.REACT_APP_RPC_URL;
 const connection = new Connection(SOLANA_RPC);
 const ROSA_TOKEN_MINT = new PublicKey(
-  "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"
+  "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN" // replace
 );
 const DESTINATION_WALLET = new PublicKey(
-  "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG"
+  "3g4uL9VzyEsgWRYgP4BXxrnH4qaDDVm3ysLrVudHG7MG" // replace
 );
 
 // Function to fetch ROSA price from CoinGecko
 async function getRosaPrice() {
   try {
     const priceResponse = await fetch(
-      'https://lite-api.jup.ag/price/v2?ids=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'
+      'https://lite-api.jup.ag/price/v2?ids=JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN' // replace the ca here
     );
   
     const priceData = await priceResponse.json();
   
     // console.log(priceData);
-    console.log(priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price);
+    console.log(priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price); // replace
 
-    return priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price;
+    return priceData.data['JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN'].price; // replace
   } catch (error) {
     console.error('Error fetching ROSA price:', error);
     throw error;
