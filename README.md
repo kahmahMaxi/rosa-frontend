@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# 🌹 Rosa Tech – AI Wellness Web Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Rosa Tech web platform is a privacy-first, AI-powered mental health companion that operates entirely in-browser. It empowers users with real-time therapeutic conversations, wellness tracking, and personal growth tools — all without requiring app installation. Built using React, Firebase, and token-gating via Solana.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 Features
 
-### `npm start`
+- 🤖 AI-powered **Therapist**, **Wellness Coach**, and **Instructor**
+- 📊 Daily scoring system for **wellness, physical health,** and **mental clarity**
+- 🧠 Smart prompts every 2–3 hours, adapting to your last check-in
+- 🔐 Token-gated premium features (via Solana wallet connection)
+- 🔄 Mood log history & progress reflection
+- 🔒 Anonymous, privacy-first experience
+- ☁️ Firebase for authentication and backend services
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧱 Tech Stack
 
-### `npm test`
+- **Frontend:** React (CRA)
+- **State:** Redux Toolkit / Context API
+- **AI:** OpenAI GPT (multi-persona integration)
+- **Blockchain:** Solana (token gating with Phantom wallet)
+- **Backend:** Firebase (Firestore, Auth, Functions)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v18+ recommended)
+- A Firebase project
+- A Solana token deployed (optional for testing premium features)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the Repository
 
-### `npm run eject`
+```bash
+git clone https://github.com/neurosa-ai/rosa.git
+cd rosa-tech
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Configure Environment Variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+REACT_APP_FIREBASE_API_KEY=""
+REACT_APP_FIREBASE_AUTH_DOMAIN=""
+REACT_APP_FIREBASE_PROJECT_ID=""
+REACT_APP_FIREBASE_STORAGE_BUCKET=""
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=""
+REACT_APP_FIREBASE_APP_ID=""
+REACT_APP_FIREBASE_MEASUREMENT_ID=""
+REACT_APP_AI_API=""
+REACT_APP_RPC_URL=""
+```
 
-## Learn More
+### 3. Run Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 📂 Folder Structure
 
-### Code Splitting
+```bash
+/src
+ ├── /public         
+ ├── /src              # Expo Router pages
+    ├── /components               
+    ├── /fonts              
+    ├── /hooks              
+    ├── /media            
+    ├── /pages           
+    └── /redux              
+    └── /scripts              
+    └── /styles              
+    └── /utilities              
+```
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔐 Token Gating (Solana)
 
-### Analyzing the Bundle Size
+Rosa Premium features are unlocked by connecting a Solana wallet (Phantom, Solflare, etc.) and verifying that the user holds rosa token.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Make sure you:
 
-### Making a Progressive Web App
+Have a Solana wallet browser extension installed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+### 📜 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project is licensed under the MIT License. See LICENSE for details.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 💬 Contact
 
-### `npm run build` fails to minify
+Team Rosa 🌹
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🌐 [ROSA](https://neurosa.ai)
+
+Twitter: [@neurosamd](https://x.com/neurosamd)
+
+
+
+
